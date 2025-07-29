@@ -1,0 +1,115 @@
+/* Start NavBar Components */
+nav
+{
+    width: 95%;
+    height: 65px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    border-bottom: solid 1px #E5E8EB;
+    position: relative;
+}
+.nav_part
+{
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+.nav_part:first-child
+{
+    gap: 40px;   
+}
+nav .logo
+{
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+}
+nav .menu
+{
+    display: flex;
+    list-style-type: none;
+    gap: 24px;
+}
+nav .menu li
+{
+    font-size: 16px;
+    font-weight: 500;
+}
+nav .dropdown_menu
+{
+    width: 100%;
+    position: absolute;
+    top: calc(100% + 16px);
+    left: 0;
+    z-index: 500;
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(8,1fr);
+    justify-items: start;
+    gap: 32px;
+    padding: 0 24px;
+    background-color: #FCFAF7;
+}
+nav li
+{
+    transition: 0.3s;
+    cursor: pointer;
+}
+nav li:hover
+{
+    color: #A18745;
+}
+nav .search
+{
+    display: flex;
+    position: relative;
+}
+nav .search input
+{
+    width: 160px;
+    height: 40px;
+    background-color: #F5F0E5;
+    border: none;
+    border-radius: 8px;
+    padding-left: 40px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: 0.5s;
+}
+nav .search input:focus
+{
+    outline: none;
+    width: 500px;
+}
+nav .search input::placeholder
+{
+    color: #A18745;
+}
+nav .search img
+{
+    position: absolute;
+    top: 50%;
+    left: 8px;
+    transform: translateY(-50%);
+    filter: brightness(0) saturate(100%) invert(57%) sepia(6%) saturate(3223%) hue-rotate(5deg) brightness(94%) contrast(82%);
+}
+nav .options
+{
+    display: flex;
+    gap: 16px;
+}
+nav .options span
+{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F5F0E5;
+    border-radius: 8px;
+    padding: 8px;
+    cursor: pointer;
+}
+/* End NavBar Components */
