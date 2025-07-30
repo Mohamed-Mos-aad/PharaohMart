@@ -86,7 +86,17 @@ nav li
     transition: 0.3s;
     cursor: pointer;
 }
+nav li a
+{
+    color: black;
+    text-decoration: none;
+    transition: 0.3s;
+}
 nav li:hover
+{
+    color: #A18745;
+}
+nav li a:hover
 {
     color: #A18745;
 }

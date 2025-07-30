@@ -1,0 +1,66 @@
+/* Start Card Slider Component */
+.cards_slider
+{
+    width: 100%;
+    position: relative;
+}
+.cards_slider_bar
+{
+    overflow: hidden;
+}
+.cards_slider button
+{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F5F0E5;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+}
+.cards_slider button:first-of-type
+{
+    transform: translateX(-50%);
+    left: 0;
+}
+.cards_slider button:last-of-type
+{
+    transform: translateX(50%);
+    right: 0;
+}
+.cards
+{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(16,1fr);
+    gap: 16px;
+    transition: 1s;
+}
+.cards .card_item
+{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    cursor: pointer;
+}
+.cards .card_item .card_img
+{
+    width: 160px;
+    height: 160px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    border-radius: 16px;
+}
+.cards .card_item h3
+{
+    font-size: 16px;
+    font-weight: 500;
+}
+/* End Card Slider Component */

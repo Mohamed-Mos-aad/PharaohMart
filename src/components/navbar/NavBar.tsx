@@ -7,28 +7,29 @@ import cartIcon from '../../assets/icons/navbar/cartIcon.svg'
 import addAuthIcon from '../../assets/icons/navbar/addAuthIcon.svg'
 // ** Hooks && Tools
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router';
 
 
 
 export default function NavBar() {
     // ** States
-    const [menuOpened,setMenuOpened] = useState<boolean>(true);
-    const [dropDownMenuOpened,setDropDownMenuOpened] = useState<boolean>(false);
+    const [isMainMenuOpen,setIsMainMenuOpen] = useState<boolean>(true);
+    const [isDropdownOpen,setIsDropdownOpen] = useState<boolean>(false);
 
 
 
     // ** Handlers
-    const menuStateToggelHandler = ()=>{
+    const menuStateToggleHandler = ()=>{
         if(window.innerWidth < 800)
         {
-            setMenuOpened(!menuOpened);
+            setIsMainMenuOpen(!isMainMenuOpen);
         }
     }
-    const dropDownMenuStateToggelHandler = ()=>{
-        setDropDownMenuOpened(!dropDownMenuOpened);
+    const dropDownMenuStateToggleHandler = ()=>{
+        setIsDropdownOpen(!isDropdownOpen);
         if(window.innerWidth < 800)
         {
-            setMenuOpened(false);
+            setIsMainMenuOpen(false);
         }
     }
 
@@ -38,7 +39,7 @@ export default function NavBar() {
     useEffect(()=>{
         if(window.innerWidth < 800)
         {
-            setMenuOpened(false);
+            setIsMainMenuOpen(false);
         }
     },[])
 
@@ -52,29 +53,49 @@ export default function NavBar() {
                         PharaohMart
                     </div>
                 </div>
-                <div className={style.menu_btns} onClick={menuStateToggelHandler}>
+                <div className={style.menu_btns} onClick={menuStateToggleHandler}>
                     <span></span>
                     <span></span>
                     <span></span>
                 </div>
                 {
-                    dropDownMenuOpened &&
+                    isDropdownOpen &&
                     <div className={style.dropdown_menu}>
                         <ul>
-                            <li onClick={dropDownMenuStateToggelHandler}>clothes</li>
-                            <li onClick={dropDownMenuStateToggelHandler}>cars</li>
-                            <li onClick={dropDownMenuStateToggelHandler}>phones</li>
+                            <li onClick={dropDownMenuStateToggleHandler}>
+                                <Link to={'/clothes'}>
+                                    clothes
+                                </Link>
+                            </li>
+                            <li onClick={dropDownMenuStateToggleHandler}>
+                                <Link to={'/cars'}>
+                                    cars
+                                </Link>
+                            </li>
+                            <li onClick={dropDownMenuStateToggleHandler}>
+                                <Link to={'/phones'}>
+                                    phones
+                                </Link>
+                            </li>
                         </ul>
                     </div>
                 }
                 {
-                    menuOpened &&
+                    isMainMenuOpen &&
                     <div className={style.nav_part}>
                         <ul className={style.menu}>
-                            <li onClick={menuStateToggelHandler}>Home</li>
-                            <li onClick={dropDownMenuStateToggelHandler}>Shop</li>
-                            <li onClick={menuStateToggelHandler}>Deals</li>
-                            <li onClick={menuStateToggelHandler}>Services</li>
+                            <li onClick={menuStateToggleHandler}>
+                                <Link to={'/'}>Home</Link>
+                            </li>
+                            <li onClick={dropDownMenuStateToggleHandler}>
+                                Shop
+                            </li>
+                            <li onClick={menuStateToggleHandler}>
+                                <Link to={'/deals'}>Deals</Link>
+                            </li>
+                            <li onClick={menuStateToggleHandler}>
+                                <Link to={'/services'}>Services</Link>
+                            </li>
                         </ul>
                         <div className={style.nav_part_2}>
                             <div className={style.search}>

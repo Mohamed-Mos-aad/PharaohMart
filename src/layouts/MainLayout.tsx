@@ -1,8 +1,10 @@
+// ** Style
+import style from '../style/layouts/mainLayout.module.css'
 // ** Components
 import Footer from "../components/Footer";
 import NavBar from "../components/navbar/NavBar";
-// ** Pages
-import Home from './../pages/Home';
+// ** Hooks && Tools
+import { Outlet } from "react-router";
 
 
 
@@ -10,8 +12,10 @@ import Home from './../pages/Home';
 export default function MainLayout() {
     return (
         <>
-            <NavBar />
-            <Home />
+            <div className={style.main_content}>
+                <NavBar />
+                <Outlet />
+            </div>
             <Footer />
         </>
     )

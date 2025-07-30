@@ -9,14 +9,16 @@ import HomeSection from '../components/HomeSection'
 export default function Home() {
     return (
         <>
-            <main className={style.home}>
-                <Slider />
-                <HomeSection sectionTitle='Featured Categories'/>
-                <HomeSection sectionTitle='Best Sellers'/>
-                <HomeSection sectionTitle='Deals of the Day'/>
-                <HomeSection sectionTitle='New Arrivals'/>
-                <HomeSection sectionTitle='Recommended for You'/>
-            </main>
+                <div className="global_container">
+                    <main className={style.home}>
+                        <Slider />
+                        <HomeSection sectionTitle='Featured Categories'/>
+                        <HomeSection sectionTitle='Best Sellers'/>
+                        <HomeSection sectionTitle='Deals of the Day'/>
+                        <HomeSection sectionTitle='New Arrivals'/>
+                        <HomeSection sectionTitle='Recommended for You'/>
+                    </main>
+                </div>
         </>
     )
 }

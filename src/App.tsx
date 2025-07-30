@@ -1,7 +1,7 @@
 // ** Style
 import './App.css'
 // ** Layouts
-import MainLayout from './layouts/MainLayout'
+import { Routers } from './routers'
 
 
 
@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <main className='main'>
-        <MainLayout />
+        <Routers />
       </main>
     </>
   )
