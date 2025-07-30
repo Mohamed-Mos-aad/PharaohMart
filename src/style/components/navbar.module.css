@@ -6,6 +6,7 @@ nav
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 32px;
     margin: auto;
     border-bottom: solid 1px #E5E8EB;
     position: relative;
@@ -16,9 +17,16 @@ nav
     align-items: center;
     gap: 32px;
 }
-.nav_part:first-child
+.nav_part:last-child
 {
-    gap: 40px;   
+    width: 100%;
+    justify-content: space-between;
+}
+nav .nav_part_2
+{
+    display: flex;
+    align-items: center;
+    gap: 32px;
 }
 nav .logo
 {
@@ -32,6 +40,23 @@ nav .menu
     list-style-type: none;
     gap: 24px;
 }
+nav .menu_btns
+{
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+}
+nav .menu_btns span
+{
+    width: 24px;
+    height: 4px;
+    background-color: #A18745;
+    border-radius: 8px;
+}
 nav .menu li
 {
     font-size: 16px;
@@ -41,15 +66,19 @@ nav .dropdown_menu
 {
     width: 100%;
     position: absolute;
-    top: calc(100% + 16px);
+    top: calc(100% + 1px);
     left: 0;
-    z-index: 500;
+    z-index: 10000;
+}
+nav .dropdown_menu ul
+{
+    width: 100%;
     list-style-type: none;
     display: grid;
     grid-template-columns: repeat(8,1fr);
     justify-items: start;
     gap: 32px;
-    padding: 0 24px;
+    padding: 24px 0;
     background-color: #FCFAF7;
 }
 nav li
@@ -113,3 +142,175 @@ nav .options span
     cursor: pointer;
 }
 /* End NavBar Components */
+
+
+
+/* Start Media Query */
+/* Extra small devices (phones, portrait) */
+@media (max-width: 575.98px) 
+{
+    .nav_part:last-child
+    {
+        height: calc(100vh - 65px);
+        background-color: #FCFAF7;
+        position: absolute;
+        left: 0;
+        top: 100%;
+        z-index: 9999;
+        flex-direction: column;
+        justify-content: start;
+        gap: 20%;
+    }
+    nav .menu_btns
+    {
+        display: flex;
+    }
+    nav .menu
+    {
+        width: 100%;
+        flex-direction: column;
+        gap: 32px;
+        padding-top: 24px;
+    }
+    nav .menu li
+    {
+        width: 100%;
+        text-align: start;
+    }
+    nav .dropdown_menu
+    {
+        width: 100%;
+        height: calc(100vh - 65px);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-color: #FCFAF7;
+    }    
+    nav .dropdown_menu ul
+    {
+        width: 100%;
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+        justify-items: start;
+        gap: 32px;
+        padding:0;
+        padding-top: 24px;
+    }
+    .nav_part_2
+    {
+        width: 100%;
+        flex-direction: column;
+    }
+    nav .search
+    {
+        width: 100%;
+    }
+    nav .search input
+    {
+        width: 100%;
+    }
+    nav .search input:focus
+    {
+        width: 100%;
+    }
+}
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 799.98px) 
+{
+    .nav_part:last-child
+    {
+        height: calc(100vh - 65px);
+        background-color: #FCFAF7;
+        position: absolute;
+        left: 0;
+        top: 100%;
+        z-index: 9999;
+        flex-direction: column;
+        justify-content: start;
+        gap: 20%;
+    }
+    nav .menu_btns
+    {
+        display: flex;
+    }
+    nav .menu
+    {
+        width: 100%;
+        flex-direction: column;
+        gap: 32px;
+        padding-top: 24px;
+    }
+    nav .menu li
+    {
+        width: 100%;
+        text-align: start;
+    }
+    nav .dropdown_menu
+    {
+        width: 100%;
+        height: calc(100vh - 65px);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-color: #FCFAF7;
+    }    
+    nav .dropdown_menu ul
+    {
+        width: 100%;
+        list-style-type: none;
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        justify-items: start;
+        gap: 32px;
+        padding:0;
+        padding-top: 24px;
+    }
+    .nav_part_2
+    {
+        width: 100%;
+        flex-direction: column;
+    }
+    nav .search
+    {
+        width: 100%;
+    }
+    nav .search input
+    {
+        width: 100%;
+    }
+    nav .search input:focus
+    {
+        width: 100%;
+    }
+}
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 800px) and (max-width: 919.98px) 
+{
+    nav .search
+    {
+        width: 100%;
+    }
+    nav .search input
+    {
+        width: 100%;
+    }
+    nav .search input:focus
+    {
+        width: 100%;
+    }
+}
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 920px) and (max-width: 1199.98px) 
+{
+    nav .search input:focus
+    {
+        width: 200px;
+    }
+}
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) 
+{
+
+}
+/* End Media Query */

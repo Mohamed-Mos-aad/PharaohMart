@@ -1,0 +1,80 @@
+/* Start Home Section Components */
+.home_section
+{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    color: #1C170D;
+}
+.home_section .title h2
+{
+    font-size: 22px;
+    font-weight: 700;
+}
+.cards_slider
+{
+    position: relative;
+}
+.cards_slider_bar
+{
+    overflow: hidden;
+}
+.cards_slider_btns
+{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    z-index: 100;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+}
+.cards_slider_btns button
+{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F5F0E5;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+}
+.cards_slider_btns button:first-of-type
+{
+    transform: translateX(-50%);
+}
+.cards_slider_btns button:last-of-type
+{
+    transform: translateX(50%);
+}
+.cards
+{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(16,1fr);
+    gap: 16px;
+    transition: 1s;
+}
+.cards .card_item
+{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.cards .card_item .card_img
+{
+    width: 160px;
+    height: 160px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    border-radius: 16px;
+}
+.cards .card_item h3
+{
+    font-size: 16px;
+    font-weight: 500;
+}
+/* End Home Section Components */
