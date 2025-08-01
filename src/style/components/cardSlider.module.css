@@ -37,30 +37,8 @@
 .cards
 {
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(16,1fr);
+    display: flex;
     gap: 16px;
     transition: 1s;
-}
-.cards .card_item
-{
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    cursor: pointer;
-}
-.cards .card_item .card_img
-{
-    width: 160px;
-    height: 160px;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    border-radius: 16px;
-}
-.cards .card_item h3
-{
-    font-size: 16px;
-    font-weight: 500;
 }
 /* End Card Slider Component */

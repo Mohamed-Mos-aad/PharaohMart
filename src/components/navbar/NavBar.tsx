@@ -7,7 +7,9 @@ import cartIcon from '../../assets/icons/navbar/cartIcon.svg'
 import addAuthIcon from '../../assets/icons/navbar/addAuthIcon.svg'
 // ** Hooks && Tools
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
+// ** Data
+import { productCategories } from '../../data/fakeData'
 
 
 
@@ -32,6 +34,20 @@ export default function NavBar() {
             setIsMainMenuOpen(false);
         }
     }
+
+
+
+    // ** Render
+    const categoriesRender = productCategories.map(category => 
+        <li onClick={dropDownMenuStateToggleHandler} key={category.name}>
+            <Link 
+                to={category.path}
+                state={{ id: category.name, name: category.name }}
+            >
+                {category.name}
+            </Link>
+        </li>
+    )
 
 
 
@@ -62,21 +78,7 @@ export default function NavBar() {
                     isDropdownOpen &&
                     <div className={style.dropdown_menu}>
                         <ul>
-                            <li onClick={dropDownMenuStateToggleHandler}>
-                                <Link to={'/clothes'}>
-                                    clothes
-                                </Link>
-                            </li>
-                            <li onClick={dropDownMenuStateToggleHandler}>
-                                <Link to={'/cars'}>
-                                    cars
-                                </Link>
-                            </li>
-                            <li onClick={dropDownMenuStateToggleHandler}>
-                                <Link to={'/phones'}>
-                                    phones
-                                </Link>
-                            </li>
+                            {categoriesRender}
                         </ul>
                     </div>
                 }

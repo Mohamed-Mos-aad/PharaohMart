@@ -8,6 +8,7 @@ import CardSlider from './cardSlider/CardSlider';
 // ** Interfaces
 interface IHomeSection{
     sectionTitle: string;
+    category: string;
     // data: {
     //     productImg: {
     //         src: string,
@@ -19,14 +20,14 @@ interface IHomeSection{
 
 
 
-export default function HomeSection({sectionTitle}:IHomeSection) {
+export default function HomeSection({sectionTitle,category}:IHomeSection) {
     return (
         <>
             <section className={style.home_section}>
                 <div className={style.title}>
                     <h2>{sectionTitle}</h2>
                 </div>
-                <CardSlider />
+                <CardSlider category={category}/>
             </section>
         </>
     )

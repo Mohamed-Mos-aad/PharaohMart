@@ -60,10 +60,15 @@
 {
     width: 40px;
     height: 40px;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
     cursor: pointer;
+}
+.product_item_photos .product_photos span img
+{
+    height: 40px;
 }
 .product_item_photos .preview
 {
