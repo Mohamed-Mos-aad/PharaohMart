@@ -105,15 +105,15 @@ export default function NavBar() {
                                 <img src={searchIcon} alt="search icon" />
                             </div>
                             <div className={style.options}>
-                                <span>
+                                <Link to={'/favourite'}>
                                     <img src={heartIcon} alt="heart icon" />
-                                </span>
-                                <span>
+                                </Link>
+                                <Link to={'/cart'}>
                                     <img src={cartIcon} alt="cart icon" />
-                                </span>
-                                <span>
+                                </Link>
+                                <Link to={'/u'}>
                                     <img src={addAuthIcon} alt="addAuth icon" />
-                                </span>
+                                </Link>
                             </div>
                         </div>
                     </div>
