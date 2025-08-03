@@ -111,7 +111,7 @@ export default function NavBar() {
                                 <Link to={'/cart'}>
                                     <img src={cartIcon} alt="cart icon" />
                                 </Link>
-                                <Link to={'/u'}>
+                                <Link to={'/u/welcome'}>
                                     <img src={addAuthIcon} alt="addAuth icon" />
                                 </Link>
                             </div>

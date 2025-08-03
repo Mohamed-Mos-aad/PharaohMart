@@ -13,15 +13,15 @@ export default function Cart() {
                 <div className={style.cart}>
                     <h1>Shopping Cart</h1>
                     <div className={style.cart_products}>
-                        <CartItem />
-                        <CartItem />
-                        <CartItem />
+                        <CartItem productName='Wireless Noise-Canceling Headphones' productSeller='Sold by: Tech Emporium'/>
+                        <CartItem productName='Wireless Noise-Canceling Headphones' productSeller='Sold by: Tech Emporium'/>
+                        <CartItem productName='Wireless Noise-Canceling Headphones' productSeller='Sold by: Tech Emporium'/>
                     </div>
                     <div className={style.cart_coupon}>
                         <input type="text" placeholder='Enter Coupon'/>
                     </div>
                     <h2>Order Summary</h2>
-                    <CartDetails />
+                    <CartDetails cartSubtotal={280} cartDelivery={5} cartDiscount={10}/>
                     <div className={style.cart_btns}>
                         <button>Proceed to Checkout</button>
                     </div>

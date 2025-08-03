@@ -7,7 +7,15 @@ import { useState } from 'react'
 
 
 
-export default function CartItem() {
+// ** Interfacrs
+interface ICartItem{
+    productName: string;
+    productSeller: string;
+}
+
+
+
+export default function CartItem({productName,productSeller}:ICartItem) {
     // ** States
     const [productCount,setProductCount] = useState<number>(1)
 
@@ -36,8 +44,8 @@ export default function CartItem() {
                         <img src={testImg} alt="test img" />
                     </div>
                     <div className={style.product_data}>
-                        <h2>Wireless Noise-Canceling Headphones</h2>
-                        <h3>Sold by: Tech Emporium</h3>
+                        <h2>{productName}</h2>
+                        <h3>{productSeller}</h3>
                     </div>
                 </div>
                 <div className={style.product_count}>

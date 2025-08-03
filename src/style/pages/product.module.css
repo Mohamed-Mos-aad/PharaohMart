@@ -15,8 +15,8 @@
     display: flex;
     font-size: 16px;
     font-weight: 500;
-    color: #A18745;
     margin-bottom: 32px;
+    color: black;
 }
 .product .product_data h3 span
 {
@@ -24,7 +24,7 @@
 }
 .product .product_data h3 div
 {
-    color: black;
+    color: #A18745;
 }
 .product .product_data h2
 {

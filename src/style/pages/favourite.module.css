@@ -1,0 +1,86 @@
+/* Start Favourite Page */
+.favourite
+{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+.favourite .category_data
+{
+    display: flex;
+    flex-direction: column;
+}
+.favourite .category_data h3
+{
+    display: flex;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 32px;
+}
+.favourite .category_data h3 span
+{
+    padding: 0 4px;
+}
+.favourite .category_data h3 div
+{
+    color: #C78F00;
+}
+.favourite .category_data h2
+{
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+.favourite .category_options
+{
+    display: flex;
+    justify-content: space-between;
+}
+.favourite .category_options .display_btns
+{
+    display: flex;
+    gap: 16px;
+}
+.favourite .category_options .display_btns button
+{
+    width: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.favourite .category_options .display_btns button img
+{
+    width: 100%;
+}
+.favourite .category_options > button
+{
+    background-color: #C78F00;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    cursor: pointer;
+}
+.favourite .category_options > button img
+{
+    margin-right: 8px;
+}
+.favourite .category_cards.cards_display
+{
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    justify-items: center;
+    gap: 40px;
+}
+.favourite .category_cards.list_display
+{
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    gap: 24px;
+}
+/* End Favourite Page */

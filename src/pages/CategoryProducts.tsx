@@ -10,9 +10,11 @@ import rightArrowIcon from '../assets/icons/category/rightArrowIcon.svg'
 import ProductCard from "../components/product/ProductCard";
 // ** Hooks && Tools
 import { useLocation } from 'react-router-dom';
+import { useState } from 'react';
 // ** Data
 import { fakeData } from '../data/fakeData';
-import { useState } from 'react';
+// ** Interfaces
+import type { IProduct } from '../interfaces'
 
 
 
@@ -21,12 +23,17 @@ export default function CategoryProducts() {
     const location = useLocation();
     const { state } = location;
     const categoryName = state.name as string;
-    
+    const itemsPerPage = 10;
+
 
 
     // ** States
     const [displayList,setDisplayList] = useState<boolean>(false);
     const [currentPage,setCurrentPage] = useState<number>(1);
+    const currentData:IProduct[] = fakeData;
+    const filteredData = currentData.filter(product => product.category === categoryName);
+    const totalItems = filteredData.length;
+    const totalPages = Math.ceil(totalItems / itemsPerPage);
 
 
 
@@ -39,27 +46,20 @@ export default function CategoryProducts() {
         {
             setCurrentPage(currentPage - 1)
         }
-        else if(dir === 'right' && currentPage < 6)
+        else if(dir === 'right' && currentPage < totalPages)
         {
             setCurrentPage(currentPage + 1)
         }
     }
+    const paginatedData = filteredData.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
 
 
     // ** Renders
-    const productsCardsRender = fakeData.map(product =>{
-        if(!categoryName) return;
-
-        if(product.category === categoryName)
-        {
-            return(
-                <ProductCard id={product.id} name={product.name} price={product.price.productPrice} listDisplay={displayList} key={product.id}/>
-            )
-        }
-    })
+    const productsCardsRender = paginatedData?.map(product =>(
+        <ProductCard id={product.id} name={product.name} price={product.price.productPrice} listDisplay={displayList} key={product.id}/>
+    ))
     const paginationButtonsRender = ()=>{
-        const totalPages = 10 as number;
         const buttons = [];
         const pageRange = 1;
         
