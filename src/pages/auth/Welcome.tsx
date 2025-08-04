@@ -1,9 +1,22 @@
 // ** Style
+import { useNavigate } from 'react-router'
 import style from '../../style/pages/auth/welcome.module.css'
 
 
 
 export default function Welcome() {
+    // ** Defaults
+    const navigate = useNavigate();
+
+
+
+    // ** Handlers
+    const openSignUpHandler = ()=>{
+        navigate('/u/sign-up')
+    }
+
+
+
     return (
         <>
             <div className="global_container">
@@ -11,8 +24,8 @@ export default function Welcome() {
                     <h1>Join our community</h1>
                     <h2>Choose your role to get started</h2>
                     <div className={style.welcome_btns}>
-                        <button>Shop for products</button>
-                        <button>Sell your products online</button>
+                        <button onClick={openSignUpHandler}>Shop for products</button>
+                        <button onClick={openSignUpHandler}>Sell your products online</button>
                     </div>
                 </div>
             </div>

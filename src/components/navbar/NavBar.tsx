@@ -90,7 +90,7 @@ export default function NavBar() {
                                 <Link to={'/'}>Home</Link>
                             </li>
                             <li onClick={dropDownMenuStateToggleHandler}>
-                                Shop
+                                Categories
                             </li>
                             <li onClick={menuStateToggleHandler}>
                                 <Link to={'/deals'}>Deals</Link>

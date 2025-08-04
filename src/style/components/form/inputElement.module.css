@@ -1,53 +1,31 @@
-/* Start Welcome Page */
-.auth_welcome
+/* Start Input element Components */
+.input_element
 {
+    width: 50%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 16px;
+    gap: 8px;
 }
-.auth_welcome h1
-{
-    font-size: 28px;
-    font-weight: 700;
-}
-.auth_welcome h2
+.input_element label
 {
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 500;
 }
-.auth_form p
+.input_element input
 {
-    font-size: 16px;
-    font-weight: 400;
-}
-.welcome_btns
-{
-    width: 40%;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin: auto;
-}
-.welcome_btns button
-{
+    width: 100%;
+    background-color: #F5F0E5;
     border: none;
-    border-radius: 50px;
-    padding: 20px;
+    border-radius: 12px;
+    padding: 16px;
     font-size: 16px;
-    font-weight: 700;
-    color: #171412;
-    cursor: pointer;
+    font-weight: 400;
 }
-.welcome_btns button:first-of-type
+.input_element input::placeholder
 {
-    background-color: #EDB026;
+    color: #A18745;
 }
-.welcome_btns button:last-of-type
-{
-    background-color: #ebc97b;
-}
-/* End Welcome Page */
+/* End Input element Components */
 
 
 
@@ -55,7 +33,7 @@
 /* Extra small devices (phones, portrait) */
 @media (max-width: 575.98px) 
 {
-    .welcome_btns
+    .input_element
     {
         width: 100%;
     }
@@ -63,7 +41,7 @@
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) 
 {
-    .welcome_btns
+    .input_element
     {
         width: 75%;
     }
@@ -71,7 +49,7 @@
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) 
 {
-    .welcome_btns
+    .input_element
     {
         width: 65%;
     }
@@ -79,10 +57,7 @@
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) 
 {
-    .welcome_btns
-    {
-        width: 55%;
-    }
+
 }
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) 
