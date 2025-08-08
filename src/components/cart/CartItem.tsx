@@ -3,34 +3,40 @@ import style from '../../style/pages/cart.module.css'
 // ** Assets
 import testImg from '../../assets/images/test/Product imgs/productImg1.png'
 // ** Hooks && Tools
-import { useState } from 'react'
+import { useAppDispatch } from '../../app/hooks';
+import { updateQuantity } from '../../app/features/cart/cartSlice';
 
 
 
 // ** Interfacrs
 interface ICartItem{
+    productId: string;
     productName: string;
     productSeller: string;
+    productQuantity: number;
 }
 
 
 
-export default function CartItem({productName,productSeller}:ICartItem) {
-    // ** States
-    const [productCount,setProductCount] = useState<number>(1)
+export default function CartItem({productId,productName,productSeller,productQuantity}:ICartItem) {
+    // ** Defaults
+    const dispatch = useAppDispatch();
 
 
 
     // ** Handlers
     const changeProductCountHandler = (changeType:string)=>{
+        let newQuantity = productQuantity;
         if(changeType === '+')
         {
-            setProductCount(productCount + 1);
+            newQuantity = productQuantity + 1;
         }
         else if(changeType === '-')
         {
-            setProductCount(productCount - 1);
+            newQuantity = productQuantity - 1;
         }
+
+        dispatch(updateQuantity({ productId, quantity: newQuantity }));
     } 
 
 
@@ -50,7 +56,7 @@ export default function CartItem({productName,productSeller}:ICartItem) {
                 </div>
                 <div className={style.product_count}>
                     <button onClick={()=>{changeProductCountHandler('-')}}>-</button>
-                    <span>{productCount}</span>
+                    <span>{productQuantity}</span>
                     <button onClick={()=>{changeProductCountHandler('+')}}>+</button>
                 </div>
             </div>

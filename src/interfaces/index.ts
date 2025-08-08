@@ -34,3 +34,13 @@ export interface IProduct{
     mainImage: string,
     images: string[]
 }
+
+
+export interface ISignUpData{
+    userFullName: string,
+    userEmail: string,
+    userPhoneNumber: string,
+    userPassword: string,
+    userConfirmPassword: string,
+    userStoreName: string
+}

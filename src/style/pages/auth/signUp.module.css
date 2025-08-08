@@ -2,9 +2,11 @@
 .auth_form
 {
     width: 100%;
+    min-height: calc(100vh - 129px);
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 16px;
 }
 .auth_form h1

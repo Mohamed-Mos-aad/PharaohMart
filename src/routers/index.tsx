@@ -27,7 +27,7 @@ export const Routers = ()=>(
             <Route path="favourite" element={<Favourite />} />
         </Route>
         <Route path="/u" element={<MainLayout />}>
-            <Route path="welcome" element={<Welcome />} />
+            <Route index element={<Welcome />} />
             <Route path="sign-up" element={<SignUp />} />
             <Route path="Login" element={<LogIn />} />
             <Route path="otp" element={<Otp />} />

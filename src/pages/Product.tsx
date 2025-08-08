@@ -3,6 +3,8 @@ import style from '../style/pages/product.module.css'
 // ** Hooks && Tools
 import { useEffect, useState } from 'react';
 import { useParams } from "react-router";
+import { useAppDispatch, useAppSelector } from '../app/hooks';
+import { addProduct } from '../app/features/cart/cartSlice';
 // ** Components
 import HomeSection from '../components/HomeSection'
 import ProductData from '../components/product/ProductData'
@@ -11,6 +13,7 @@ import UserReview from '../components/product/UserReview'
 import OverRate from '../components/product/OverRate'
 // ** Interfaces
 import type { IProduct } from '../interfaces';
+// ** Data
 import { fakeData } from '../data/fakeData';
 
 
@@ -18,11 +21,35 @@ import { fakeData } from '../data/fakeData';
 export default function Product() {
     // ** Defaults
     const { id } = useParams();
+    const dispatch = useAppDispatch()
+    const cart = useAppSelector(state => state.cart)
 
 
 
     // ** States
     const [productData,setProductData] = useState<IProduct>();
+
+
+
+    // ** Handlers
+    const addToCartHandler = () => {
+        if(!productData) return;
+
+        const exists = cart.products.some(
+            product => product.productId === productData.id
+        );
+
+        if (!exists) {
+            dispatch(addProduct({
+                productId: productData.id,
+                name: productData.name,
+                sellerName: productData.name,
+                quantity: 1,
+                price: productData.price.productPrice,
+                imageUrl: productData.mainImage
+            }));
+        }
+    }
 
 
 
@@ -53,7 +80,8 @@ export default function Product() {
                 <div className={style.product}>
                     <ProductData name={productData?.name} seller={'by Fashionista'}/>
                     <ProductItem productDescription='This elegant summer dress is perfect for any occasion. Made from lightweight, breathable fabric, it features a flattering silhouette and intricate detailing. Available in multiple sizes and colors.'
-                    productPrice={productData?.price.productPrice || 0} productDiscount={productData?.price.productDiscount || ''} productOff={productData?.price.productOff || ''}/>
+                    productPrice={productData?.price.productPrice || 0} productDiscount={productData?.price.productDiscount || ''} productOff={productData?.price.productOff || ''}
+                    addProductHandler={addToCartHandler}/>
                     <div className={style.product_review}>
                         <div className={style.customers_reviews}>
                             {reviewRender}

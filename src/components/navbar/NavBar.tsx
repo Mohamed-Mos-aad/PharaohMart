@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 // ** Data
 import { productCategories } from '../../data/fakeData'
+import { useAppSelector } from '../../app/hooks'
 
 
 
@@ -17,6 +18,7 @@ export default function NavBar() {
     // ** States
     const [isMainMenuOpen,setIsMainMenuOpen] = useState<boolean>(true);
     const [isDropdownOpen,setIsDropdownOpen] = useState<boolean>(false);
+    const cart = useAppSelector(state => state.cart)
 
 
 
@@ -105,13 +107,14 @@ export default function NavBar() {
                                 <img src={searchIcon} alt="search icon" />
                             </div>
                             <div className={style.options}>
-                                <Link to={'/favourite'}>
+                                <Link to={'/favourite'} onClick={menuStateToggleHandler}>
                                     <img src={heartIcon} alt="heart icon" />
                                 </Link>
-                                <Link to={'/cart'}>
+                                <Link to={'/cart'} onClick={menuStateToggleHandler}>
                                     <img src={cartIcon} alt="cart icon" />
+                                    {cart.products.length > 0 && <span>{cart.products.length}</span>}
                                 </Link>
-                                <Link to={'/u/welcome'}>
+                                <Link to={'/u'} onClick={menuStateToggleHandler}>
                                     <img src={addAuthIcon} alt="addAuth icon" />
                                 </Link>
                             </div>
