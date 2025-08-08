@@ -13,12 +13,13 @@ interface ICartItem{
     productId: string;
     productName: string;
     productSeller: string;
+    productPrice: number;
     productQuantity: number;
 }
 
 
 
-export default function CartItem({productId,productName,productSeller,productQuantity}:ICartItem) {
+export default function CartItem({productId,productName,productSeller,productPrice,productQuantity}:ICartItem) {
     // ** Defaults
     const dispatch = useAppDispatch();
 
@@ -52,6 +53,7 @@ export default function CartItem({productId,productName,productSeller,productQua
                     <div className={style.product_data}>
                         <h2>{productName}</h2>
                         <h3>{productSeller}</h3>
+                        <h4>${productPrice}</h4>
                     </div>
                 </div>
                 <div className={style.product_count}>

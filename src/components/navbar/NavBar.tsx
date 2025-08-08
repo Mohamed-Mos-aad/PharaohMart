@@ -19,6 +19,7 @@ export default function NavBar() {
     const [isMainMenuOpen,setIsMainMenuOpen] = useState<boolean>(true);
     const [isDropdownOpen,setIsDropdownOpen] = useState<boolean>(false);
     const cart = useAppSelector(state => state.cart)
+    const favourite = useAppSelector(state => state.favourite)
 
 
 
@@ -109,6 +110,7 @@ export default function NavBar() {
                             <div className={style.options}>
                                 <Link to={'/favourite'} onClick={menuStateToggleHandler}>
                                     <img src={heartIcon} alt="heart icon" />
+                                    {favourite.products.length > 0 && <span>{favourite.products.length}</span>}
                                 </Link>
                                 <Link to={'/cart'} onClick={menuStateToggleHandler}>
                                     <img src={cartIcon} alt="cart icon" />

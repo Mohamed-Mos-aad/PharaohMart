@@ -4,7 +4,7 @@ import style from '../style/pages/product.module.css'
 import { useEffect, useState } from 'react';
 import { useParams } from "react-router";
 import { useAppDispatch, useAppSelector } from '../app/hooks';
-import { addProduct } from '../app/features/cart/cartSlice';
+import { addProductToCart } from '../app/features/cart/cartSlice';
 // ** Components
 import HomeSection from '../components/HomeSection'
 import ProductData from '../components/product/ProductData'
@@ -15,6 +15,7 @@ import OverRate from '../components/product/OverRate'
 import type { IProduct } from '../interfaces';
 // ** Data
 import { fakeData } from '../data/fakeData';
+import { addProductToFavourite } from '../app/features/favourite/favouriteSlice';
 
 
 
@@ -22,7 +23,8 @@ export default function Product() {
     // ** Defaults
     const { id } = useParams();
     const dispatch = useAppDispatch()
-    const cart = useAppSelector(state => state.cart)
+    const cart = useAppSelector(state => state.cart);
+    const favourite = useAppSelector(state => state.favourite);
 
 
 
@@ -40,7 +42,25 @@ export default function Product() {
         );
 
         if (!exists) {
-            dispatch(addProduct({
+            dispatch(addProductToCart({
+                productId: productData.id,
+                name: productData.name,
+                sellerName: productData.name,
+                quantity: 1,
+                price: productData.price.productPrice,
+                imageUrl: productData.mainImage
+            }));
+        }
+    }
+    const addToFavouriteHandler = ()=> {
+        if(!productData) return;
+
+        const exists = favourite.products.some(
+            product => product.productId === productData.id
+        );
+
+        if (!exists) {
+            dispatch(addProductToFavourite({
                 productId: productData.id,
                 name: productData.name,
                 sellerName: productData.name,
@@ -81,7 +101,8 @@ export default function Product() {
                     <ProductData name={productData?.name} seller={'by Fashionista'}/>
                     <ProductItem productDescription='This elegant summer dress is perfect for any occasion. Made from lightweight, breathable fabric, it features a flattering silhouette and intricate detailing. Available in multiple sizes and colors.'
                     productPrice={productData?.price.productPrice || 0} productDiscount={productData?.price.productDiscount || ''} productOff={productData?.price.productOff || ''}
-                    addProductHandler={addToCartHandler}/>
+                    addToCartHandler={addToCartHandler}
+                    addToFavouriteHandler={addToFavouriteHandler}/>
                     <div className={style.product_review}>
                         <div className={style.customers_reviews}>
                             {reviewRender}

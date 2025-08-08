@@ -33,7 +33,7 @@ export const CartSlice = createSlice({
     name: 'cart',
     initialState,
     reducers: {
-        addProduct: (state, action: PayloadAction<{
+        addProductToCart: (state, action: PayloadAction<{
             productId: string,
             name: string,
             sellerName: string,
@@ -57,4 +57,4 @@ export const CartSlice = createSlice({
 })
 
 
-export const { addProduct, updateQuantity } = CartSlice.actions;
+export const { addProductToCart, updateQuantity } = CartSlice.actions;

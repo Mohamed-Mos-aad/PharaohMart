@@ -29,14 +29,12 @@ export default function CartDetails({cartSubtotal,cartDelivery,cartDiscount}:ICa
 
     // ** UseEffect
     useEffect(()=>{
-        const totalPrice = cartDetailst.subtotal + cartDetailst.delivery - cartDetailst.discount;
+        const subtotal = parseFloat(cart.totalAmount.toFixed(2));
+        const totalPrice = parseFloat((subtotal + cartDetailst.delivery - cartDetailst.discount).toFixed(2));
         setCartDetailst(prev => ({
             ...prev,
-            total: totalPrice
-        }))
-        setCartDetailst(prev => ({
-            ...prev,
-            subtotal: cart.totalAmount
+            total: totalPrice,
+            subtotal: subtotal
         }))
     },[cartDetailst.subtotal, cartDetailst.delivery, cartDetailst.discount, cart])
 

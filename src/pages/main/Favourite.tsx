@@ -2,24 +2,19 @@
 import style from '../../style/pages/favourite.module.css'
 // ** Hooks && Tools
 import { useState } from 'react';
+import { useAppSelector } from '../../app/hooks';
 // ** Assets
 import listDisplayIcon from '../../assets/icons/category/listDisplayIcon.svg'
 import cardDisplayIcon from '../../assets/icons/category/cardDisplayIcon.svg'
-import sortIcon from '../../assets/icons/category/sortIcon.svg'
 // ** Components
 import ProductCard from '../../components/product/ProductCard';
-// ** Data
-import { fakeData } from '../../data/fakeData';
 
 
 
 export default function Favourite() {
-    // ** Defaults
-    const categoryName = 'Home & Living' as string;
-
-
-
     // ** States
+    const favouriteProducts = useAppSelector(state => state.favourite);
+
     const [displayList,setDisplayList] = useState<boolean>(false);
 
 
@@ -32,15 +27,10 @@ export default function Favourite() {
 
 
     // ** Renders
-    const productsCardsRender = fakeData.map(product =>{
-        if(!categoryName) return;
-
-        if(product.category === categoryName)
-        {
-            return(
-                <ProductCard id={product.id} name={product.name} price={product.price.productPrice} listDisplay={displayList} key={product.id}/>
-            )
-        }
+    const productsCardsRender = favouriteProducts.products.map(product =>{
+        if(!favouriteProducts) return;
+        
+        return <ProductCard id={product.productId} name={product.name} price={product.price} listDisplay={displayList} key={product.productId}/>
     })
 
 
@@ -62,10 +52,6 @@ export default function Favourite() {
                                 <img src={cardDisplayIcon} alt="card display icon" />
                             </button>
                         </div>
-                        <button>
-                            <img src={sortIcon} alt="sort icon" />
-                            Sort By
-                        </button>
                     </div>
                     <div className={`${style.category_cards} ${displayList ? style.list_display : style.cards_display}`}>
                         {productsCardsRender}

@@ -16,12 +16,13 @@ interface IProductItem{
     productPrice: number;
     productDiscount: string;
     productOff: string;
-    addProductHandler: ()=> void
+    addToCartHandler: ()=> void,
+    addToFavouriteHandler: ()=> void
 }
 
 
 
-export default function ProductItem({productDescription,productPrice,productDiscount,productOff,addProductHandler}:IProductItem) {
+export default function ProductItem({productDescription,productPrice,productDiscount,productOff,addToCartHandler,addToFavouriteHandler}:IProductItem) {
     // ** States
     const [previewPhoto,setPreviewPhoto] = useState<string>(productImg1);
 
@@ -59,10 +60,10 @@ export default function ProductItem({productDescription,productPrice,productDisc
                     <p>{productDescription}</p>
                     <h3>${productPrice}<span>{productOff}</span><span>{productDiscount}Off</span></h3>
                     <div className={style.product_btns}>
-                        <button onClick={addProductHandler}>Add to Cart</button>
+                        <button onClick={addToCartHandler}>Add to Cart</button>
                         <button>Buy Now</button>
                     </div>
-                    <button>Add to Wishlist</button>
+                    <button onClick={addToFavouriteHandler}>Add to Wishlist</button>
                 </div>
             </div>
         </>
