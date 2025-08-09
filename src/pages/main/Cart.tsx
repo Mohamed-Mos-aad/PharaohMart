@@ -1,15 +1,29 @@
 // ** Style
 import style from '../../style/pages/cart.module.css'
-// ** Assets
+// ** Hooks && Tools
+import { useAppSelector } from '../../app/hooks'
+import { useNavigate } from 'react-router'
+// ** Components
 import CartItem from '../../components/cart/CartItem'
 import CartDetails from '../../components/cart/CartDetails'
-import { useAppSelector } from '../../app/hooks'
 
 
 
 export default function Cart() {
+    // ** Default 
+    const navigate = useNavigate();
+
+
+
     // ** States
     const cart = useAppSelector(state => state.cart);
+
+
+
+    // ** Handlers
+    const goToCheckoutHandler = ()=>{
+        navigate('/checkout');
+    }
 
 
 
@@ -34,7 +48,7 @@ export default function Cart() {
                     <h2>Order Summary</h2>
                     <CartDetails cartSubtotal={0} cartDelivery={5} cartDiscount={0}/>
                     <div className={style.cart_btns}>
-                        <button>Proceed to Checkout</button>
+                        <button onClick={goToCheckoutHandler}>Proceed to Checkout</button>
                     </div>
                 </div>
             </div>

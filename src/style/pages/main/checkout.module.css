@@ -1,0 +1,84 @@
+/* Start Checkout Page */
+.checkout
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 40px;
+}
+.checkout h1
+{
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 40px;
+    color: #1C170D;
+}
+.checkout h2
+{
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24px;
+    color: #1C170D;
+}
+.delivery
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+.inputs_row
+{
+    width: 50%;
+    display: flex;
+    gap: 16px;
+}
+.paymentMethod
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.paymentMethod .inputs_row
+{
+    width: 100%;
+    border: solid 1px #EBE0CC;
+    border-radius: 8px;
+    padding: 0 16px;
+    cursor: pointer;
+}
+.paymentMethod .inputs_row label
+{
+    width: 100%;
+    padding: 16px 16px 16px 0;
+    cursor: pointer;
+}
+.checkout h3
+{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    color: #A18745;
+}
+.checkout h3 span
+{
+    color: #1C170D;
+}
+.checkout button
+{
+    width: 40%;
+    background-color: #C78F00;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    cursor: pointer;
+}
+/* End Checkout Page */

@@ -7,6 +7,7 @@ import Home from "../pages/Home";
 import CategoryProducts from "../pages/CategoryProducts";
 import Cart from "../pages/main/Cart";
 import Favourite from "../pages/main/Favourite";
+import Checkout from "../pages/main/Checkout";
 // Auth Pages
 import Welcome from "../pages/auth/Welcome";
 import SignUp from "../pages/auth/SignUp";
@@ -24,6 +25,7 @@ export const Routers = ()=>(
             <Route path="product/:id" element={<Product />} />
             <Route path="categories/:id" element={<CategoryProducts />} />
             <Route path="cart" element={<Cart />} />
+            <Route path="checkout" element={<Checkout />} />
             <Route path="favourite" element={<Favourite />} />
         </Route>
         <Route path="/u" element={<MainLayout />}>
