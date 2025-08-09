@@ -1,0 +1,33 @@
+/* Start Dashboard NavBar Components */
+.dashboard_navBar
+{
+    position: sticky;
+    top: 0;
+    width: 24%;
+    height: 100vh;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.dashboard_navBar ul
+{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    list-style-type: none;
+}
+.dashboard_navBar ul li
+{
+    display: flex;
+    gap: 12px;
+    border-radius: 12px;
+    padding: 12px 24px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.dashboard_navBar ul li.active
+{
+    background-color: #F2F0E8;
+}
+/* End Dashboard NavBar Components */
