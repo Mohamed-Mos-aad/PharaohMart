@@ -20,14 +20,30 @@
 .dashboard_navBar ul li
 {
     display: flex;
+    align-items: center;
     gap: 12px;
     border-radius: 12px;
     padding: 12px 24px;
     cursor: pointer;
     transition: 0.5s;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 21px;
+    color: #1C170D;
 }
 .dashboard_navBar ul li.active
 {
     background-color: #F2F0E8;
+}
+.dashboard_navBar ul li a
+{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 21px;
+    color: #1C170D;
+    text-decoration: none;
 }
 /* End Dashboard NavBar Components */

@@ -16,10 +16,17 @@ export default function DashboardLayout() {
 
     // ** UseEffect
     useEffect(()=>{
-        if(window.innerWidth > 768)
-        {
-            setGoodScreen(true)
-        }
+        const handleResize = () => {
+            setGoodScreen(window.innerWidth > 1024);
+        };
+
+        handleResize();
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
     },[])
 
 
@@ -35,7 +42,7 @@ export default function DashboardLayout() {
                     </>
                     :
                     <div className={style.bad_screen}>
-                        <h1>Open on Tablet & Pc</h1>                        
+                        <h1>Open on Pc</h1>                        
                     </div>
                 }
             </div>

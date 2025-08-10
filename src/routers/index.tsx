@@ -18,6 +18,7 @@ import Success from "../pages/auth/Success";
 // ** Dashboard Pages
 import DashboardLayout from "../layouts/DashboardLayout";
 import Dashboard from "../pages/dashboard/Dashboard";
+import DashboardProducts from "../pages/dashboard/DashboardProducts";
 
 
 
@@ -40,6 +41,7 @@ export const Routers = ()=>(
         </Route>
         <Route path="/dashboard" element={<DashboardLayout />}>
             <Route index element={<Dashboard />} />
+            <Route path="products" element={<DashboardProducts />} />
         </Route>
     </Routes>
 )

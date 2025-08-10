@@ -1,0 +1,67 @@
+/* Start Drop Menu element Components */
+
+.drop_menu
+{
+    width: 160px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    background-color: #F5F0E5;
+    border-radius: 16px;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+.drop_menu h2
+{
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: #1A170F;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; 
+}
+.drop_menu img
+{
+    transform: translateY(2px);
+}
+.drop_menu.opened
+{
+    border-radius: 16px 16px 0 0;
+}
+.drop_menu.opened img
+{
+    transform: translateY(2px) rotate(180deg);
+}
+.drop_menu ul
+{
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    list-style-type: none;
+    background-color: #F5F0E5;
+    border-radius: 0 0 16px 16px;
+    cursor: pointer;
+}
+.drop_menu.opened ul
+{
+    display: flex;
+    flex-direction: column;
+}
+.drop_menu ul li
+{
+    border: solid 1px #FAFAFA;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: #1A170F;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; 
+}
+/* End Drop Menu element Components */

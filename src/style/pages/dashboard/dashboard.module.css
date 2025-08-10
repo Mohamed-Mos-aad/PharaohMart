@@ -78,11 +78,15 @@
 .dashboard table th,
 .dashboard table td 
 {
+    max-width: 150px;
     border: 1px solid #E8E0CF;
     border-left: none;
     border-right: none;
     padding: 16px;
     text-align: start;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; 
 }
 .dashboard table tbody tr td .product_img
 {
