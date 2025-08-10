@@ -9,6 +9,7 @@ import deleteIcon from '../../assets/icons/dashboard/products/deleteIcon.svg'
 import style from '../../style/pages/dashboard/dashboardProducts.module.css'
 // ** Components
 import DropMenuElement from '../../components/form/DropMenuElement'
+import DashboardHeader from '../../components/dashboard/DashboardHeader'
 
 
 
@@ -17,10 +18,7 @@ export default function DashboardProducts() {
         <>
             <div className="dashboard_container">
                 <div className={style.dashboard_products}>
-                    <div className={style.dashboard_header}>
-                        <h1>Dashboard</h1>
-                        <p>Welcome back, Amelia! Here's an overview of your seller performance.</p>
-                    </div>
+                    <DashboardHeader title='My Products' description="Manage your product listings efficiently."/>
                     <div className={style.search_element}>
                         <img src={searchIcon} alt="search icon" />
                         <input type="text" placeholder='Search products by name'/>

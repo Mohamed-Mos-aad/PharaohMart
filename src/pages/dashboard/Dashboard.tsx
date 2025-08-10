@@ -2,6 +2,8 @@
 import testImg from '../../assets/images/test/Product imgs/productImg1.png'
 // ** Style
 import style from '../../style/pages/dashboard/dashboard.module.css'
+// ** Components
+import DashboardHeader from '../../components/dashboard/DashboardHeader'
 
 
 
@@ -10,10 +12,7 @@ export default function Dashboard() {
         <>
             <div className="dashboard_container">
                 <div className={style.dashboard}>
-                    <div className={style.dashboard_header}>
-                        <h1>Dashboard</h1>
-                        <p>Welcome back, Amelia! Here's an overview of your seller performance.</p>
-                    </div>
+                    <DashboardHeader title='Dashboard' description="Welcome back, Amelia! Here's an overview of your seller performance."/>
                     <div className={style.dashboard_cards}>
                         <div className={style.card}>
                             <h3>Total Sales (Today)</h3>

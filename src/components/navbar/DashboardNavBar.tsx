@@ -13,25 +13,31 @@ import logoutIcon from '../../assets/icons/dashboard/logoutIcon.svg'
 import style from '../../style/components/navbar/dashboardNavBar.module.css'
 // ** Hooks && Tools
 import { useEffect, useState } from 'react'
-import { useLocation } from 'react-router'
-import { Link } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router'
 
 
 
 export default function DashboardNavBar() {
     // ** Defaults
     const location = useLocation();
+    const navigate = useNavigate();
 
 
 
     // ** States
-    const [activePage,setActivePage] = useState<string>('');
+    const [activePage,setActivePage] = useState<string>('dashboard');
 
 
 
     // ** Handlers
     const selectPageHandler = (page:string)=>{
-        setActivePage(page);
+        if (page !== 'dashboard') {
+            setActivePage(page);
+            navigate(`/dashboard/${page}`);
+        } else {
+            setActivePage('dashboard');
+            navigate(`/dashboard`)
+        }
     }
 
 
@@ -40,13 +46,10 @@ export default function DashboardNavBar() {
     useEffect(()=>{
         const parts = location.pathname.split('/');
         const page = parts[2];
-        if(!page)
-        {
-            setActivePage('');
-        }
-        else
-        {
+        if (page) {
             setActivePage(page);
+        } else {
+            setActivePage('dashboard');
         }
     },[location])
     
@@ -56,67 +59,47 @@ export default function DashboardNavBar() {
         <>
             <div className={style.dashboard_navBar}>
                 <ul>
-                    <li className={activePage === '' ? style.active : ''} onClick={()=>{selectPageHandler('')}}>
-                        <Link to={'/dashboard'}>
-                            <img src={dashboardIcon} alt="dashboard icon" />
-                            dashboard
-                        </Link>
+                    <li className={activePage === 'dashboard' ? style.active : ''} onClick={()=>{selectPageHandler('dashboard')}}>
+                        <img src={dashboardIcon} alt="dashboard icon" />
+                        dashboard
                     </li>
                     <li className={activePage === 'products' ? style.active : ''} onClick={()=>{selectPageHandler('products')}}>
-                        <Link to={'/dashboard/products'}>
-                            <img src={productsIcon} alt="products icon" />
-                            products
-                        </Link>
+                        <img src={productsIcon} alt="products icon" />
+                        products
                     </li>
                     <li className={activePage === 'addProduct' ? style.active : ''} onClick={()=>{selectPageHandler('addProduct')}}>
-                        <Link to={'/dashboard/addProduct'}>
-                            <img src={addProductIcon} alt="addProduct icon" />
-                            addProduct
-                        </Link>
+                        <img src={addProductIcon} alt="addProduct icon" />
+                        addProduct
                     </li>
                     <li className={activePage === 'orders' ? style.active : ''} onClick={()=>{selectPageHandler('orders')}}>
-                        <Link to={'/dashboard/orders'}>
-                            <img src={ordersIcon} alt="orders icon" />
-                            orders
-                        </Link>
+                        <img src={ordersIcon} alt="orders icon" />
+                        orders
                     </li>
                     <li className={activePage === 'Inventory' ? style.active : ''} onClick={()=>{selectPageHandler('Inventory')}}>
-                        <Link to={'/dashboard/Inventory'}>
-                            <img src={productsIcon} alt="products icon" />
-                            Inventory
-                        </Link>
+                        <img src={productsIcon} alt="products icon" />
+                        Inventory
                     </li>
                     <li className={activePage === 'messages' ? style.active : ''} onClick={()=>{selectPageHandler('messages')}}>
-                        <Link to={'/dashboard/messages'}>
-                            <img src={messagesIcon} alt="messages icon" />
-                            messages
-                        </Link>
+                        <img src={messagesIcon} alt="messages icon" />
+                        messages
                     </li>
                     <li className={activePage === 'payment' ? style.active : ''} onClick={()=>{selectPageHandler('payment')}}>
-                        <Link to={'/dashboard/payment'}>
-                            <img src={paymentIcon} alt="payment icon" />
-                            payment
-                        </Link>
+                        <img src={paymentIcon} alt="payment icon" />
+                        payment
                     </li>
                     <li className={activePage === 'setting' ? style.active : ''} onClick={()=>{selectPageHandler('setting')}}>
-                        <Link to={'/dashboard/setting'}>
-                            <img src={settingIcon} alt="setting icon" />
-                            setting
-                        </Link>
+                        <img src={settingIcon} alt="setting icon" />
+                        setting
                     </li>
                     <li className={activePage === 'analytics' ? style.active : ''} onClick={()=>{selectPageHandler('analytics')}}>
-                        <Link to={'/dashboard/analytics'}>
-                            <img src={analyticsIcon} alt="analytics icon" />
-                            analytics
-                        </Link>
+                        <img src={analyticsIcon} alt="analytics icon" />
+                        analytics
                     </li>
                 </ul>
                 <ul>
                     <li className={activePage === 'help' ? style.active : ''} onClick={()=>{selectPageHandler('help')}}>
-                        <Link to={'/dashboard/Help'}>
-                            <img src={helpIcon} alt="Help icon" />
-                            Help
-                        </Link>
+                        <img src={helpIcon} alt="Help icon" />
+                        Help
                     </li>
                     <li>
                         <img src={logoutIcon} alt="Logout icon" />
