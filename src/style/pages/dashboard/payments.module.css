@@ -1,0 +1,179 @@
+/* Start Payments Page */
+.payments
+{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+.payments section
+{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+.payments section h3
+{
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 28px;
+    color: #1C170D;
+}
+.payments .payments_cards
+{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+.payments .payments_cards .card
+{
+    border: solid 1px #E8E0CF;
+    border-radius: 12px;
+    padding: 24px;
+}
+.payments .payments_cards .card h2
+{
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    color: #1C170D;
+}
+.payments .payments_cards .card h3
+{
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 30px;
+    color: #1C170D;
+}
+.payments table 
+{
+    border-collapse: collapse;
+    width: 100%;
+}
+.payments table tr td
+{
+    color: #99854D;
+}
+.payments table tr td div
+{
+    width: 75%;
+    background-color: #F2F0E8;
+    border-radius: 20px;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: #1C170D;
+    text-align: center;
+}
+.payments table tr td:last-of-type
+{
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    cursor: pointer;
+}
+.payments table th,
+.payments table td 
+{
+    max-width: 150px;
+    border: 1px solid #E8E0CF;
+    border-left: none;
+    border-right: none;
+    padding: 16px;
+    text-align: start;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; 
+}
+.payments .bank_method
+{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.payments .bank_method .method_img
+{
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F2F0E8;
+    border-radius: 8px;
+}
+.payments .bank_method .method_details h4
+{
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    color: #1C170D;
+}
+.payments .bank_method .method_details h5
+{
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    color: #99854D;
+}
+.payments section button
+{
+    width: fit-content;
+    background-color: #F2F0E8;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: #1C170D;
+    cursor: pointer;
+}
+.payments section p
+{
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #1C170D;
+}
+.payments .paeg_btn
+{
+    width: fit-content;
+    background-color: #EDB026;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: #1C170D;
+    cursor: pointer;
+}
+/* End Payments Page */
+
+
+
+/* Start Media Query */
+/* Extra small devices (phones, portrait) */
+@media (max-width: 575.98px) 
+{
+}
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) 
+{
+    
+}
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) 
+{
+
+}
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) 
+{
+
+}
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) 
+{
+
+}
+/* End Media Query */

@@ -1,113 +1,23 @@
-// ** Assets
-import xIcon from '../../assets/icons/dashboard/add product/xIcon.svg'
 // ** Style
 import style from '../../style/pages/dashboard/addProduct.module.css'
 // ** components
 import DashboardHeader from "../../components/dashboard/DashboardHeader";
 import InputElement from './../../components/form/InputElement';
 import DropMenuElement from './../../components/form/DropMenuElement';
+import UploadPhotos from '../../components/form/UploadPhotos';
 // ** Hooks && Tools
-import { useEffect, useRef, useState, type DragEvent } from 'react';
+import ToggleElement from '../../components/form/ToggleElement';
 
 
 
 export default function AddProduct() {
-    // ** States
-    const [files, setFiles] = useState<File[]>([]);
-    const [inputToggle,setInputToggle] = useState<boolean>(false);
-
-
-
-    // ** Ref
-    const uploadImagesRef = useRef<HTMLDivElement>(null);
-
-
-
-    // ** Handlers
-    const handleDrop = (e: DragEvent<HTMLDivElement>) => {
-        e.preventDefault();
-        const droppedFiles = Array.from(e.dataTransfer.files);
-        const validImages = droppedFiles.filter(file =>
-            file.type === 'image/jpeg' || file.type === 'image/png'
-        );
-        if (validImages.length > 0) {
-            if (files.length + validImages.length <= 5) {
-                setFiles((prevFiles) => [...prevFiles, ...validImages]);
-            }
-        }
-    };
-    const handleDragOver = (e: DragEvent<HTMLDivElement>) => {
-        e.preventDefault(); 
-    };
-    const removeUploadedPhotoHandler = (index:number)=>{
-        const updatedFiles = [...files];
-        updatedFiles.splice(index, 1);
-        setFiles(updatedFiles);   
-    }
-    const changeToggleStateHandler = ()=>{
-        setInputToggle(!inputToggle);
-    }
-    
-    
-    
-    // ** Renders
-    const renderUploadedIamgesRender = files.map((file,index) =>{
-        const fileURL = URL.createObjectURL(file);
-        return (
-            <div className={style.product_photo} key={file.name + index}>
-                <img src={fileURL} alt="product photo" />
-                <span onClick={()=>{removeUploadedPhotoHandler(index)}}>
-                    <img src={xIcon} alt="delete Icon" />
-                </span>
-            </div>
-        )
-    })
-
-
-
-    // ** UseEffect
-    useEffect(()=>{
-        if(files.length === 5 )
-        {
-            if(uploadImagesRef.current)
-            {
-                uploadImagesRef.current.style.cursor = 'no-drop';
-            }
-        }
-        else if(files.length < 6 )
-        {
-            if(uploadImagesRef.current)
-            {
-                uploadImagesRef.current.style.cursor = 'default';
-            }
-        }
-    },[files])
-
-
-
     return (
         <>
             <div className="dashboard_container">
                 <div className={style.add_product}>
                     <DashboardHeader title='Add New Product' description="Provide detailed information about yourproduct to attract customers."/>
                     <h2>Product Images</h2>
-                    <div 
-                        className={style.upload_images} 
-                        onDrop={handleDrop} 
-                        onDragOver={handleDragOver}
-                        ref={uploadImagesRef}
-                    >
-                        {files.length < 1 ?
-                            <>
-                                <h3>Drag and drop images here</h3>
-                                <p>Recommended dimensions: 1000x1000px. Supported formats: JPG, PNG. You can upload up to 5 images.</p>
-                            </>
-                            :
-                            <div className={style.uploaded_images}>
-                                {renderUploadedIamgesRender}
-                            </div>
-                        }
-                    </div>
+                    <UploadPhotos title='Drag and drop images here' description='Recommended dimensions: 1000x1000px. Supported formats: JPG, PNG. You can upload up to 5 images.' quantity={5}/>
                     <section>
                         <h2>Basic Information</h2>
                         <InputElement id="productName" label="Product Title" name="productName" placeholder="Enter product name" type="text" onChange={()=>{}} />
@@ -158,12 +68,7 @@ export default function AddProduct() {
                     </section>
                     <section>
                         <h2>Visibility & Publication</h2>
-                        <div className={style.toggle_input_element}>
-                            <h4>Publish Now</h4>
-                            <div className={`${style.toggle_element} ${inputToggle && style.toggle_element_true}`} onClick={changeToggleStateHandler}>
-                                <span></span>
-                            </div>
-                        </div>
+                        <ToggleElement title='Publish Now' />
                     </section>
                     <section>
                         <span>Schedule Publishing (Optional)</span>

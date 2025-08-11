@@ -12,71 +12,6 @@
     line-height: 28px;
     color: #1C170D;
 }
-.add_product .upload_images
-{
-    width: 100%;
-    height: 184px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    border: dashed 2px #E8E0CF;
-    border-radius: 12px;
-    text-align: center;
-}
-.add_product .upload_images h3
-{
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 23px;
-    color: #1C170D;
-}
-.add_product .upload_images p
-{
-    width: 50%;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 21px;
-    color: #1C170D;
-}
-.add_product .upload_images .uploaded_images
-{
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(5,1fr);
-    gap: 32px;
-    padding: 32px;
-}
-.add_product .upload_images .uploaded_images .product_photo
-{
-    width: 100%;
-    height: 120px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    position: relative;
-}
-.add_product .upload_images .uploaded_images .product_photo > img
-{
-    height: 120px;
-}
-
-.add_product .upload_images .uploaded_images .product_photo span
-{
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 24px;
-    height: 24px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #EDB026;
-    border-radius: 24px;
-    cursor: pointer;
-}
 .add_product section
 {
     display: flex;
@@ -121,43 +56,6 @@
     font-weight: 400;
     line-height: 24px;
     color: #1C170D;
-}
-.add_product .toggle_input_element
-{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.add_product .toggle_input_element .toggle_element
-{
-    width: 52px;
-    height: 32px;
-    background-color: #F2F0E8;
-    border-radius: 32px;
-    position: relative;
-    cursor: pointer;
-    transition: 0.5s;
-}
-.add_product .toggle_input_element .toggle_element.toggle_element_true
-{
-    background-color: #EDB026;
-}
-.add_product .toggle_input_element .toggle_element span
-{
-    position: absolute;
-    top: 50%;
-    left: 4px;
-    width: 27px;
-    height: 27px;
-    background-color: #FFFFFF;
-    border-radius: 27px;
-    transform: translateY(-50%);
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
-    transition: left 0.5s;
-}
-.add_product .toggle_input_element .toggle_element.toggle_element_true span
-{
-    left: 21px;
 }
 .add_product .product_btns
 {

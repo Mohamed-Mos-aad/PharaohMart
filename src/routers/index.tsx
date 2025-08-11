@@ -20,6 +20,10 @@ import DashboardLayout from "../layouts/DashboardLayout";
 import Dashboard from "../pages/dashboard/Dashboard";
 import DashboardProducts from "../pages/dashboard/DashboardProducts";
 import AddProduct from "../pages/dashboard/AddProduct";
+import Orders from "../pages/dashboard/Orders";
+import Inventory from "../pages/dashboard/Inventory";
+import Payments from "../pages/dashboard/Payments";
+import Setting from "../pages/dashboard/Setting";
 
 
 
@@ -44,6 +48,10 @@ export const Routers = ()=>(
             <Route index element={<Dashboard />} />
             <Route path="products" element={<DashboardProducts />} />
             <Route path="addProduct" element={<AddProduct />} />
+            <Route path="orders" element={<Orders />} />
+            <Route path="inventory" element={<Inventory />} />
+            <Route path="payment" element={<Payments />} />
+            <Route path="setting" element={<Setting />} />
         </Route>
     </Routes>
 )

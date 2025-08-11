@@ -1,0 +1,39 @@
+/* Start Toggle Element component */
+.toggle_input_element
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.toggle_input_element .toggle_element
+{
+    width: 52px;
+    height: 32px;
+    background-color: #F2F0E8;
+    border-radius: 32px;
+    position: relative;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.toggle_input_element .toggle_element.toggle_element_true
+{
+    background-color: #EDB026;
+}
+.toggle_input_element .toggle_element span
+{
+    position: absolute;
+    top: 50%;
+    left: 4px;
+    width: 27px;
+    height: 27px;
+    background-color: #FFFFFF;
+    border-radius: 27px;
+    transform: translateY(-50%);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    transition: left 0.5s;
+}
+.toggle_input_element .toggle_element.toggle_element_true span
+{
+    left: 21px;
+}
+/* End Toggle Element component */
