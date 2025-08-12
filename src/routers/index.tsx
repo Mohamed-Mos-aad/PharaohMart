@@ -24,6 +24,7 @@ import Orders from "../pages/dashboard/Orders";
 import Inventory from "../pages/dashboard/Inventory";
 import Payments from "../pages/dashboard/Payments";
 import Setting from "../pages/dashboard/Setting";
+import Help from "../pages/dashboard/Help";
 
 
 
@@ -52,6 +53,7 @@ export const Routers = ()=>(
             <Route path="inventory" element={<Inventory />} />
             <Route path="payment" element={<Payments />} />
             <Route path="setting" element={<Setting />} />
+            <Route path="help" element={<Help />} />
         </Route>
     </Routes>
 )

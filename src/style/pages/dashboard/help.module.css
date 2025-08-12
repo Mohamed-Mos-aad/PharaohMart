@@ -1,0 +1,67 @@
+/* Start Help Page */
+.help
+{
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+.help section
+{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+.help section h2
+{
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 28px;
+    color: #1C170D;
+}
+.help section button
+{
+    width: fit-content;
+    background-color: #EDB026;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    color: #1C170D;
+    cursor: pointer;
+}
+.help table
+{
+    border-collapse: collapse;
+    width: 100%;
+}
+.help table:first-of-type tr td
+{
+    color: #99854D;
+}
+.help table th,
+.help table td 
+{
+    max-width: 150px;
+    border: 1px solid #E8E0CF;
+    border-left: none;
+    border-right: none;
+    padding: 16px;
+    text-align: start;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; 
+}
+.help table:last-of-type tr td div
+{
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    background-color: #F2F0E8;
+    border-radius: 24px;
+    padding: 8px 16px;
+    color: #1C170D;
+    text-align: center;
+}
+/* End Help Page */
