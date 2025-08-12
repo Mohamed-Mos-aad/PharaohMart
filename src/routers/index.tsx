@@ -25,6 +25,7 @@ import Inventory from "../pages/dashboard/Inventory";
 import Payments from "../pages/dashboard/Payments";
 import Setting from "../pages/dashboard/Setting";
 import Help from "../pages/dashboard/Help";
+import ChatLayout from "../layouts/ChatLayout";
 
 
 
@@ -55,5 +56,6 @@ export const Routers = ()=>(
             <Route path="setting" element={<Setting />} />
             <Route path="help" element={<Help />} />
         </Route>
+        <Route path="messages" element={<ChatLayout />} />
     </Routes>
 )

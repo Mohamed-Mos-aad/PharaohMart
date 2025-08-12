@@ -86,22 +86,12 @@
 {
     color: #99854D;
 }
-.dashboard table:last-of-type thead tr th:last-of-type
-{
-    text-align: center;
-}
-.dashboard table:last-of-type tr td:last-of-type
-{
-    display: flex;
-    justify-content: center;
-    border-top: none;
-}
 .dashboard table:last-of-type tr td:last-of-type div
 {
     width: 50%;
     background-color: #F2F0E8;
     border-radius: 12px;
-    padding: 16px;
+    padding: 10px 16px;
     color: #1C170D;
     text-align: center;
 }

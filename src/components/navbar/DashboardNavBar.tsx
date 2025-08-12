@@ -31,13 +31,17 @@ export default function DashboardNavBar() {
 
     // ** Handlers
     const selectPageHandler = (page:string)=>{
-        if (page !== 'dashboard') {
+        if (page !== 'dashboard'){
             setActivePage(page);
             navigate(`/dashboard/${page}`);
-        } else {
+        }
+        else {
             setActivePage('dashboard');
             navigate(`/dashboard`)
         }
+    }
+    const openChatHandler = ()=>{
+        navigate(`/messages`)
     }
 
 
@@ -79,7 +83,7 @@ export default function DashboardNavBar() {
                         <img src={productsIcon} alt="products icon" />
                         Inventory
                     </li>
-                    <li className={activePage === 'messages' ? style.active : ''} onClick={()=>{selectPageHandler('messages')}}>
+                    <li onClick={openChatHandler}>
                         <img src={messagesIcon} alt="messages icon" />
                         messages
                     </li>
