@@ -7,6 +7,7 @@ import DropMenuElement from './../../components/form/DropMenuElement';
 import UploadPhotos from '../../components/form/UploadPhotos';
 // ** Hooks && Tools
 import ToggleElement from '../../components/form/ToggleElement';
+import TextAreaInputElement from '../../components/form/TextAreaInputElement';
 
 
 
@@ -21,7 +22,7 @@ export default function AddProduct() {
                     <section>
                         <h2>Basic Information</h2>
                         <InputElement id="productName" label="Product Title" name="productName" placeholder="Enter product name" type="text" onChange={()=>{}} />
-                        <InputElement id="productDescription" label="Product Description" name="productDescription" placeholder="Enter product name" type="text" onChange={()=>{}} />
+                        <TextAreaInputElement id="productDescription" label="Product Description" name="productDescription" placeholder="Enter product description" onChange={()=>{}} />
                     </section>
                     <section>
                         <h2>Category & Subcategory</h2>

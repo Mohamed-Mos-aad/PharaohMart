@@ -25,6 +25,42 @@
     line-height: 21px;
     color: #99854D;
 }
+
+.dashboard_products .search_element
+{
+    position: relative;
+}
+.dashboard_products .search_element
+{
+    display: flex;
+    position: relative;
+}
+.dashboard_products .search_element input
+{
+    width: 100%;
+    background-color: #F5F0E5;
+    border: none;
+    border-radius: 8px;
+    padding: 16px 16px 16px 56px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: 0.5s;
+}
+.dashboard_products .search_element input:focus
+{
+    outline: none;
+}
+.dashboard_products .search_element input::placeholder
+{
+    color: #A18745;
+}
+.dashboard_products .search_element img
+{
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    transform: translateY(-50%);
+}
 .dashboard_products table 
 {
     border-collapse: collapse;

@@ -6,6 +6,7 @@ import InputElement from './../../components/form/InputElement';
 // ** Hooks && Tools
 import UploadPhotos from '../../components/form/UploadPhotos';
 import ToggleElement from '../../components/form/ToggleElement';
+import TextAreaInputElement from '../../components/form/TextAreaInputElement';
 
 
 
@@ -36,11 +37,11 @@ export default function Setting() {
                     </section>
                     <section>
                         <h3>Return Policy</h3>
-                        <InputElement id="storeReturnPolicy" label="Return Policy" name="storeReturnPolicy" placeholder="Enter Return Policy" type="text" onChange={()=>{}}/>
+                        <TextAreaInputElement id="storeReturnPolicy" label="Return Policy" name="storeReturnPolicy" placeholder="Enter Return Policy" onChange={()=>{}}/>
                     </section>
                     <section>
                         <h3>Shipping Policy</h3>
-                        <InputElement id="StoreShippingPolicy" label="Shipping Policy" name="storeShippingPolicy" placeholder="Enter Shipping Policy" type="" onChange={()=>{}}/>
+                        <TextAreaInputElement id="StoreShippingPolicy" label="Shipping Policy" name="storeShippingPolicy" placeholder="Enter Shipping Policy" onChange={()=>{}}/>
                     </section>
                     <section>
                         <h3>Store Status</h3>
