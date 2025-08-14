@@ -1,3 +1,13 @@
+// ** Hooks && Tools
+import axios from "axios";
+
+
+
+// ** Apis
+const api = axios.create({
+    baseURL: import.meta.env.VITE_LOCAL_API,
+    headers: { 'Content-Type': 'application/json' }
+});
 
 
 
