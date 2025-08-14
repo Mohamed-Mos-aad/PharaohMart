@@ -9,7 +9,7 @@ import DashboardHeader from "../../components/dashboard/DashboardHeader";
 
 export default function Analytics() {
     // ** States
-    const [selectedDateFilter,setSelectedDateFilter] = useState<number>(3);
+    const [selectedDateFilter,setSelectedDateFilter] = useState<number>(1);
 
 
 

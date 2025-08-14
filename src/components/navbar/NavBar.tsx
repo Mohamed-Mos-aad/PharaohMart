@@ -11,16 +11,17 @@ import { Link } from 'react-router-dom';
 // ** Data
 import { productCategories } from '../../data/fakeData'
 import { useAppSelector } from '../../app/hooks'
+import { getCategories } from '../../services/CategoriesService'
 
 
 
 export default function NavBar() {
     // ** States
+    const [categories,setCategories] = useState([]);
     const [isMainMenuOpen,setIsMainMenuOpen] = useState<boolean>(true);
     const [isDropdownOpen,setIsDropdownOpen] = useState<boolean>(false);
     const cart = useAppSelector(state => state.cart)
     const favourite = useAppSelector(state => state.favourite)
-
 
 
     // ** Handlers
@@ -60,7 +61,21 @@ export default function NavBar() {
         {
             setIsMainMenuOpen(false);
         }
-    },[])
+
+
+
+        const fetchCategories = async () => {
+            try {
+                const categoriesData = await getCategories();
+                console.log(categories);
+                setCategories(categoriesData);
+            } catch (error) {
+                console.error('فشل في جلب الأقسام:', error);
+            }
+        };
+
+        fetchCategories();
+    },[categories])
 
 
 
