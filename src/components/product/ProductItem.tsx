@@ -1,7 +1,6 @@
 // ** Style
 import style from '../../style/pages/product.module.css'
 // ** Assets
-import productImg1 from '../../assets/images/test/Product imgs/productImg1.png'
 import productImg2 from '../../assets/images/test/Product imgs/productImg2.png'
 import productImg3 from '../../assets/images/test/Product imgs/productImg3.png'
 import productImg4 from '../../assets/images/test/Product imgs/productImg4.png'
@@ -12,6 +11,10 @@ import { useState } from 'react'
 
 // ** Interfaces
 interface IProductItem{
+    productPhoto: {
+        src: string;
+        alt: string
+    };
     productDescription: string;
     productPrice: number;
     productDiscount: string;
@@ -22,9 +25,9 @@ interface IProductItem{
 
 
 
-export default function ProductItem({productDescription,productPrice,productDiscount,productOff,addToCartHandler,addToFavouriteHandler}:IProductItem) {
+export default function ProductItem({productPhoto,productDescription,productPrice,productDiscount,productOff,addToCartHandler,addToFavouriteHandler}:IProductItem) {
     // ** States
-    const [previewPhoto,setPreviewPhoto] = useState<string>(productImg1);
+    const [previewPhoto,setPreviewPhoto] = useState<string>(productPhoto.src);
 
 
 
@@ -40,8 +43,8 @@ export default function ProductItem({productDescription,productPrice,productDisc
             <div className={style.product_item}>
                 <div className={style.product_item_photos}>
                     <div className={style.product_photos}>
-                        <span onClick={()=>{selectPreviewPhotoHandler(productImg1)}}>
-                            <img src={productImg1} alt="product Img1" />
+                        <span onClick={()=>{selectPreviewPhotoHandler(productPhoto.src)}}>
+                            <img src={productPhoto.src} alt={productPhoto.alt} />
                         </span>
                         <span onClick={()=>{selectPreviewPhotoHandler(productImg2)}}>
                             <img src={productImg2} alt="product Img2" />

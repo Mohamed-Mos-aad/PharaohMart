@@ -23,6 +23,7 @@ export default function CategoryProducts() {
     const location = useLocation();
     const { state } = location;
     const categoryName = state.name as string;
+    const pathName = state.pathData as string;
     const itemsPerPage = 10;
 
 
@@ -31,7 +32,7 @@ export default function CategoryProducts() {
     const [displayList,setDisplayList] = useState<boolean>(false);
     const [currentPage,setCurrentPage] = useState<number>(1);
     const currentData:IProduct[] = fakeData;
-    const filteredData = currentData.filter(product => product.category === categoryName);
+    const filteredData = currentData.filter(product => product.category.toLowerCase() === categoryName.toLowerCase());
     const totalItems = filteredData.length;
     const totalPages = Math.ceil(totalItems / itemsPerPage);
 
@@ -57,7 +58,7 @@ export default function CategoryProducts() {
 
     // ** Renders
     const productsCardsRender = paginatedData?.map(product =>(
-        <ProductCard id={product.id} name={product.name} price={product.price.productPrice} listDisplay={displayList} key={product.id}/>
+        <ProductCard id={product.id} name={product.name} price={product.price.productPrice} listDisplay={displayList} key={product.id} thumbnailImg={{src: product.mainImage, alt: product.name}}/>
     ))
     const paginationButtonsRender = ()=>{
         const buttons = [];
@@ -112,8 +113,8 @@ export default function CategoryProducts() {
             <div className="global_container">
                 <div className={style.category_products}>
                     <div className={style.category_data}>
-                        <h3>Home <span>/</span><div>{categoryName}</div></h3>
-                        <h2>Category name</h2>
+                        <h3>Home <span>/</span><div>{pathName}</div></h3>
+                        <h2>{categoryName}</h2>
                     </div>
                     <div className={style.category_options}>
                         <div className={style.display_btns}>

@@ -2,6 +2,7 @@
 export interface IProduct{
     id: string,
     name: string,
+    description: string,
     category: string,
     price: {
         productPrice: number;
@@ -34,6 +35,7 @@ export interface IProduct{
     mainImage: string,
     images: string[]
 }
+
 
 
 export interface ISignUpData{

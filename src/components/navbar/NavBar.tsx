@@ -1,27 +1,32 @@
 // ** Style
 import style from '../../style/components/navbar.module.css'
 // ** Assets
-import searchIcon from '../../assets/icons/navbar/searchIcon.svg'
 import heartIcon from '../../assets/icons/navbar/heartIcon.svg'
 import cartIcon from '../../assets/icons/navbar/cartIcon.svg'
 import addAuthIcon from '../../assets/icons/navbar/addAuthIcon.svg'
+// ** Components
+import NavBarSearchElement from '../search/NavBarSearchElement'
 // ** Hooks && Tools
-import { useEffect, useState } from 'react'
+import { memo, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
+import { useAppSelector } from '../../app/hooks'
 // ** Data
 import { productCategories } from '../../data/fakeData'
-import { useAppSelector } from '../../app/hooks'
+// ** Api
 import { getCategories } from '../../services/CategoriesService'
 
 
 
 export default function NavBar() {
+    // ** Defaults
+    const MemoLink = memo(Link);
     // ** States
     const [categories,setCategories] = useState([]);
     const [isMainMenuOpen,setIsMainMenuOpen] = useState<boolean>(true);
     const [isDropdownOpen,setIsDropdownOpen] = useState<boolean>(false);
     const cart = useAppSelector(state => state.cart)
     const favourite = useAppSelector(state => state.favourite)
+
 
 
     // ** Handlers
@@ -46,7 +51,7 @@ export default function NavBar() {
         <li onClick={dropDownMenuStateToggleHandler} key={category.name}>
             <Link 
                 to={category.path}
-                state={{ id: category.name, name: category.name }}
+                state={{ id: category.name, name: category.name, pathData: category.name }}
             >
                 {category.name}
             </Link>
@@ -105,35 +110,32 @@ export default function NavBar() {
                     <div className={style.nav_part}>
                         <ul className={style.menu}>
                             <li onClick={menuStateToggleHandler}>
-                                <Link to={'/'}>Home</Link>
+                                <MemoLink to={'/'}>Home</MemoLink>
                             </li>
                             <li onClick={dropDownMenuStateToggleHandler}>
                                 Categories
                             </li>
                             <li onClick={menuStateToggleHandler}>
-                                <Link to={'/deals'}>Deals</Link>
+                                <MemoLink to={'/deals'}>Deals</MemoLink>
                             </li>
                             <li onClick={menuStateToggleHandler}>
-                                <Link to={'/services'}>Services</Link>
+                                <MemoLink to={'/services'}>Services</MemoLink>
                             </li>
                         </ul>
                         <div className={style.nav_part_2}>
-                            <div className={style.search}>
-                                <input type="text" placeholder="Search"/>
-                                <img src={searchIcon} alt="search icon" />
-                            </div>
+                            <NavBarSearchElement />
                             <div className={style.options}>
-                                <Link to={'/favourite'} onClick={menuStateToggleHandler}>
+                                <MemoLink to={'/favourite'} onClick={menuStateToggleHandler}>
                                     <img src={heartIcon} alt="heart icon" />
                                     {favourite.products.length > 0 && <span>{favourite.products.length}</span>}
-                                </Link>
-                                <Link to={'/cart'} onClick={menuStateToggleHandler}>
+                                </MemoLink>
+                                <MemoLink to={'/cart'} onClick={menuStateToggleHandler}>
                                     <img src={cartIcon} alt="cart icon" />
                                     {cart.products.length > 0 && <span>{cart.products.length}</span>}
-                                </Link>
-                                <Link to={'/u'} onClick={menuStateToggleHandler}>
+                                </MemoLink>
+                                <MemoLink to={'/u'} onClick={menuStateToggleHandler}>
                                     <img src={addAuthIcon} alt="addAuth icon" />
-                                </Link>
+                                </MemoLink>
                             </div>
                         </div>
                     </div>

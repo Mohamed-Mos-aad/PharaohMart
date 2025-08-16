@@ -94,12 +94,15 @@ export default function Product() {
 
 
 
+    if(!productData) return
+
+    
     return (
         <>
             <div className="global_container">
                 <div className={style.product}>
                     <ProductData name={productData?.name} seller={'by Fashionista'}/>
-                    <ProductItem productDescription='This elegant summer dress is perfect for any occasion. Made from lightweight, breathable fabric, it features a flattering silhouette and intricate detailing. Available in multiple sizes and colors.'
+                    <ProductItem productPhoto={{src: productData.mainImage, alt: productData.name}} productDescription={productData.description}
                     productPrice={productData?.price.productPrice || 0} productDiscount={productData?.price.productDiscount || ''} productOff={productData?.price.productOff || ''}
                     addToCartHandler={addToCartHandler}
                     addToFavouriteHandler={addToFavouriteHandler}/>

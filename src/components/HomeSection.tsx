@@ -9,13 +9,6 @@ import CardSlider from './cardSlider/CardSlider';
 interface IHomeSection{
     sectionTitle: string;
     category: string;
-    // data: {
-    //     productImg: {
-    //         src: string,
-    //         alt: string
-    //     },
-    //     productName: string
-    // }[];
 }
 
 

@@ -20,7 +20,7 @@ interface ICardSlider{
 export default function CardSlider({category}:ICardSlider) {
     // ** States
     const [sliderSteps,setSliderSteps] = useState<number>(0);
-
+    const filteredData = fakeData.filter(product => product.category.toLowerCase() === category.toLowerCase());
 
 
     // ** Ref
@@ -30,9 +30,10 @@ export default function CardSlider({category}:ICardSlider) {
 
     // ** Handlers
     const sliderMoveHandler = (dir:string)=>{
-        const totalCards = 9;
+        const totalCards = filteredData.length;
         const sliderBar = sldierRef.current?.parentElement;
         if (!sldierRef.current || !sliderBar) return;
+        if (totalCards <= 0) return;
 
         const cardWidth = 176;
         const visibleWidth = sliderBar.clientWidth;
@@ -62,14 +63,9 @@ export default function CardSlider({category}:ICardSlider) {
 
 
     // ** Renders
-    const cardsRender = fakeData.map(product =>{
-        if(product.category != category)
-        {
-            return(
-                <ProductCard id={product.id} name={product.name} key={product.id}/>
-            )
-        }
-    })
+    const cardsRender = filteredData.map(product =>
+        <ProductCard id={product.id} name={product.name} key={product.id} thumbnailImg={{src: product.mainImage, alt: product.name}}/>
+    )
 
 
 
