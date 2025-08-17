@@ -64,7 +64,7 @@ export default function CardSlider({category}:ICardSlider) {
 
     // ** Renders
     const cardsRender = filteredData.map(product =>
-        <ProductCard id={product.id} name={product.name} key={product.id} thumbnailImg={{src: product.mainImage, alt: product.name}}/>
+        <ProductCard id={product.id} name={product.name} price={product.price.productPrice} key={product.id} thumbnailImg={{src: product.mainImage, alt: product.name}}/>
     )
 
 

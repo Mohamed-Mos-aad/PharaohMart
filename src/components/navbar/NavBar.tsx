@@ -7,7 +7,7 @@ import addAuthIcon from '../../assets/icons/navbar/addAuthIcon.svg'
 // ** Components
 import NavBarSearchElement from '../search/NavBarSearchElement'
 // ** Hooks && Tools
-import { memo, useEffect, useState } from 'react'
+import { memo, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../app/hooks'
 // ** Data
@@ -20,12 +20,20 @@ import { getCategories } from '../../services/CategoriesService'
 export default function NavBar() {
     // ** Defaults
     const MemoLink = memo(Link);
+
+
+
     // ** States
     const [categories,setCategories] = useState([]);
     const [isMainMenuOpen,setIsMainMenuOpen] = useState<boolean>(true);
     const [isDropdownOpen,setIsDropdownOpen] = useState<boolean>(false);
     const cart = useAppSelector(state => state.cart)
     const favourite = useAppSelector(state => state.favourite)
+
+
+
+    // ** Ref
+    const dropdownRef = useRef<HTMLDivElement>(null);
 
 
 
@@ -61,6 +69,31 @@ export default function NavBar() {
 
 
     // ** UseEffect
+    useEffect(()=>{
+        const handleClickOutside = (event: MouseEvent) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+                setIsDropdownOpen(false);
+            }
+        };
+
+        const handleScroll = () => {
+            setIsDropdownOpen(false);
+        };
+
+        if (isDropdownOpen) {
+            document.addEventListener("mousedown", handleClickOutside);
+            window.addEventListener("scroll", handleScroll);
+        } else {
+            document.removeEventListener("mousedown", handleClickOutside);
+            window.removeEventListener("scroll", handleScroll);
+        }
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+            window.removeEventListener("scroll", handleScroll);
+        };
+    },[isDropdownOpen])
+
     useEffect(()=>{
         if(window.innerWidth < 800)
         {
@@ -99,7 +132,7 @@ export default function NavBar() {
                 </div>
                 {
                     isDropdownOpen &&
-                    <div className={style.dropdown_menu}>
+                    <div className={style.dropdown_menu} ref={dropdownRef}>
                         <ul>
                             {categoriesRender}
                         </ul>

@@ -1,20 +1,17 @@
 // ** Style
 import style from '../../style/pages/product.module.css'
-// ** Assets
-import productImg2 from '../../assets/images/test/Product imgs/productImg2.png'
-import productImg3 from '../../assets/images/test/Product imgs/productImg3.png'
-import productImg4 from '../../assets/images/test/Product imgs/productImg4.png'
 // ** Hooks && Tools
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 
 
 // ** Interfaces
 interface IProductItem{
-    productPhoto: {
+    productThumbnail: {
         src: string;
         alt: string
     };
+    productPhotos: string[];
     productDescription: string;
     productPrice: number;
     productDiscount: string;
@@ -25,16 +22,40 @@ interface IProductItem{
 
 
 
-export default function ProductItem({productPhoto,productDescription,productPrice,productDiscount,productOff,addToCartHandler,addToFavouriteHandler}:IProductItem) {
+export default function ProductItem({productThumbnail,productPhotos,productDescription,productPrice,productDiscount,productOff,addToCartHandler,addToFavouriteHandler}:IProductItem) {
     // ** States
-    const [previewPhoto,setPreviewPhoto] = useState<string>(productPhoto.src);
-
+    const [previewPhoto,setPreviewPhoto] = useState<string>(productThumbnail.src);
+    const [zooming,setZooming] = useState<boolean>(false);
+    const [zoomPosition,setZoomPosition] = useState<{x: number,y:number}>({x: 0, y: 0})
+    
 
 
     // ** Handlers
     const selectPreviewPhotoHandler = (photo:string)=>{
         setPreviewPhoto(photo);
     }
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        setZoomPosition({ x, y });
+    };
+
+
+
+    // ** Render
+    const productPhotosRender = productPhotos.map(photo => 
+        <span onClick={()=>{selectPreviewPhotoHandler(photo)}} key={`${photo}`}>
+            <img src={photo} alt={photo} />
+        </span>
+    )
+
+
+
+    // ** UseEffect
+    useEffect(()=>{
+        setPreviewPhoto(productThumbnail.src);
+    },[productThumbnail])
 
 
 
@@ -43,20 +64,22 @@ export default function ProductItem({productPhoto,productDescription,productPric
             <div className={style.product_item}>
                 <div className={style.product_item_photos}>
                     <div className={style.product_photos}>
-                        <span onClick={()=>{selectPreviewPhotoHandler(productPhoto.src)}}>
-                            <img src={productPhoto.src} alt={productPhoto.alt} />
-                        </span>
-                        <span onClick={()=>{selectPreviewPhotoHandler(productImg2)}}>
-                            <img src={productImg2} alt="product Img2" />
-                        </span>
-                        <span onClick={()=>{selectPreviewPhotoHandler(productImg3)}}>
-                            <img src={productImg3} alt="product Img3" />
-                        </span>
-                        <span onClick={()=>{selectPreviewPhotoHandler(productImg4)}}>
-                            <img src={productImg4} alt="product Img4" />
-                        </span>
+                        {productPhotosRender}
                     </div>
-                    <div className={style.preview} style={{backgroundImage: `url(${previewPhoto})`}}></div>
+                    <div className={style.preview}
+                        style={{backgroundImage: `url(${previewPhoto})`}} onMouseMove={handleMouseMove}
+                        onMouseEnter={() => setZooming(true)}
+                        onMouseLeave={() => setZooming(false)}>
+                        {
+                            zooming && 
+                            <div className={style.zoom} style={{
+                                left: `calc(${zoomPosition.x}% - 100px)`, 
+                                top: `calc(${zoomPosition.y}% - 100px)`,
+                                backgroundImage: `url(${previewPhoto})`,
+                                backgroundPosition: `${zoomPosition.x}% ${zoomPosition.y}%`}}>
+                            </div>
+                        }
+                    </div>
                 </div>
                 <div className={style.product_details}>
                     <h2>Product Details</h2>

@@ -77,6 +77,17 @@
     background-position: center center;
     background-repeat: no-repeat;
     background-size: contain;
+    position: relative;
+    cursor: zoom-in;
+}
+.product_item_photos .preview .zoom
+{
+    width: 100px;
+    height: 100px;
+    background-size: 1000%;
+    position: absolute;
+    border-radius: 4px;
+    pointer-events: none;
 }
 .product .product_item .product_details
 {

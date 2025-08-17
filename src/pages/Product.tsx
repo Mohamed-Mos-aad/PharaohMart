@@ -102,7 +102,7 @@ export default function Product() {
             <div className="global_container">
                 <div className={style.product}>
                     <ProductData name={productData?.name} seller={'by Fashionista'}/>
-                    <ProductItem productPhoto={{src: productData.mainImage, alt: productData.name}} productDescription={productData.description}
+                    <ProductItem productThumbnail={{src: productData.mainImage, alt: productData.name}} productPhotos={productData.images} productDescription={productData.description}
                     productPrice={productData?.price.productPrice || 0} productDiscount={productData?.price.productDiscount || ''} productOff={productData?.price.productOff || ''}
                     addToCartHandler={addToCartHandler}
                     addToFavouriteHandler={addToFavouriteHandler}/>
@@ -114,7 +114,7 @@ export default function Product() {
                             <OverRate overRate={{oneStar: productData?.overRate.oneStar || 0, twoStars: productData?.overRate.twoStars || 0, threeStars: productData?.overRate.threeStars || 0, fourStars: productData?.overRate.fourStars || 0, fiveStars: productData?.overRate.fiveStars || 0}}/>
                         </div>
                     </div>
-                    <HomeSection sectionTitle='Related Products' category='Kids & Toys'/>
+                    <HomeSection sectionTitle='Related Products' category={productData.category}/>
                 </div>
             </div>
         </>
