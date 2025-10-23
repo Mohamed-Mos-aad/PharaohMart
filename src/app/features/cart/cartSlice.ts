@@ -1,5 +1,6 @@
 // ** Hooks && Tools
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import { getPharaohMartData } from "../../../utils/localStorage";
 
 
 
@@ -20,11 +21,15 @@ interface ICartState{
 
 
 // ** Default
-const initialState: ICartState = {
-    products: [],
-    totalAmount: 0,
-    itemCount: 0
-}
+const data = getPharaohMartData();
+const initialState: ICartState = data && data.cart
+    ? data.cart
+    :
+    {
+        products: [],
+        totalAmount: 0,
+        itemCount: 0,
+    };
 
 
 
@@ -45,6 +50,16 @@ export const CartSlice = createSlice({
             state.itemCount += action.payload.quantity
             state.totalAmount += action.payload.price * action.payload.quantity
         },
+        removeProductFromCart: (state, action: PayloadAction<{
+            productId: string,
+            name: string,
+            sellerName: string,
+            quantity: number;
+            price: number;
+            imageUrl: string;
+        }>)=>{
+            state.products = state.products.filter(item => item.productId !== action.payload.productId);
+        },
         updateQuantity: (state, action: PayloadAction<{ productId: string; quantity: number }>) =>{
             const product = state.products.find(p => p.productId === action.payload.productId);
             if(product){
@@ -57,4 +72,4 @@ export const CartSlice = createSlice({
 })
 
 
-export const { addProductToCart, updateQuantity } = CartSlice.actions;
+export const { addProductToCart, updateQuantity, removeProductFromCart } = CartSlice.actions;

@@ -16,13 +16,17 @@ interface IProductItem{
     productPrice: number;
     productDiscount: string;
     productOff: string;
-    addToCartHandler: ()=> void,
-    addToFavouriteHandler: ()=> void
+    addToCartHandler: ()=> void;
+    addToFavouriteHandler: ()=> void;
+    removeFromFavouriteHandler: ()=> void;
+    removeProductFromCartHandler: ()=> void;
+    addedToWishList: boolean;
+    addedToCart: boolean;
 }
 
 
 
-export default function ProductItem({productThumbnail,productPhotos,productDescription,productPrice,productDiscount,productOff,addToCartHandler,addToFavouriteHandler}:IProductItem) {
+export default function ProductItem({productThumbnail, productPhotos, productDescription, productPrice, productDiscount, productOff, addToCartHandler, removeProductFromCartHandler, addToFavouriteHandler, removeFromFavouriteHandler, addedToWishList, addedToCart }:IProductItem) {
     // ** States
     const [previewPhoto,setPreviewPhoto] = useState<string>(productThumbnail.src);
     const [zooming,setZooming] = useState<boolean>(false);
@@ -86,10 +90,20 @@ export default function ProductItem({productThumbnail,productPhotos,productDescr
                     <p>{productDescription}</p>
                     <h3>${productPrice}<span>{productOff}</span><span>{productDiscount}Off</span></h3>
                     <div className={style.product_btns}>
-                        <button onClick={addToCartHandler}>Add to Cart</button>
+                        {
+                            addedToCart ?
+                            <button onClick={removeProductFromCartHandler}>Remove from Cart</button>
+                            :
+                            <button onClick={addToCartHandler}>Add to Cart</button>
+                        }
                         <button>Buy Now</button>
                     </div>
-                    <button onClick={addToFavouriteHandler}>Add to Wishlist</button>
+                    {
+                        addedToWishList ? 
+                            <button onClick={removeFromFavouriteHandler}>remove from Wishlist</button>
+                            :
+                            <button onClick={addToFavouriteHandler}>Add to Wishlist</button>
+                    }
                 </div>
             </div>
         </>

@@ -113,6 +113,49 @@
     align-items: center;
     line-height: 0;
 }
+.filter
+{
+    position: absolute;
+    left: 25px;
+    bottom: 75vh;
+}
+.filter button
+{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #C78F00;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+}
+.filter > ul
+{
+    position: absolute;
+    left: 50px;
+    width: 200px;
+    background-color: #FCFAF7;
+    border: solid 1px #F5F0E5;
+    border-radius: 8px;
+    padding: 16px;
+}
+.filter ul
+{
+    list-style-type: none;
+}
+.filter ul li ul li
+{
+    cursor: pointer;
+}
+.filter ul li ul
+{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-left: 8px;
+}
 /* End Category Products Page */
 
 
@@ -131,6 +174,10 @@
         height: 26px;
         border-radius: 26px;
     }
+    .filter
+    {
+        bottom: 25vh;
+    }
 }
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) 
@@ -140,6 +187,10 @@
         grid-template-columns: repeat(2,1fr);
         gap: 32px;
     }
+    .filter
+    {
+        bottom: 25vh;
+    }
 }
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) 
@@ -148,6 +199,10 @@
     {
         grid-template-columns: repeat(3,1fr);
         gap: 32px;
+    }
+    .filter
+    {
+        bottom: 25vh;
     }
 }
 /* Large devices (desktops, 992px and up) */

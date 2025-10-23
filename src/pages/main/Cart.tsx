@@ -39,17 +39,24 @@ export default function Cart() {
             <div className="global_container">
                 <div className={style.cart}>
                     <h1>Shopping Cart</h1>
-                    <div className={style.cart_products}>
-                        {cartItemsRender}
-                    </div>
-                    <div className={style.cart_coupon}>
-                        <input type="text" placeholder='Enter Coupon'/>
-                    </div>
-                    <h2>Order Summary</h2>
-                    <CartDetails cartSubtotal={0} cartDelivery={5} cartDiscount={0}/>
-                    <div className={style.cart_btns}>
-                        <button onClick={goToCheckoutHandler}>Proceed to Checkout</button>
-                    </div>
+                    {
+                        cart.products.length === 0 ?
+                            <h2>Your cart is empty</h2>
+                        :
+                        <>    
+                            <div className={style.cart_products}>
+                                {cartItemsRender}
+                            </div>
+                            <div className={style.cart_coupon}>
+                                <input type="text" placeholder='Enter Coupon'/>
+                            </div>
+                            <h2>Order Summary</h2>
+                            <CartDetails cartSubtotal={0} cartDelivery={5} cartDiscount={0}/>
+                            <div className={style.cart_btns}>
+                                <button onClick={goToCheckoutHandler}>Proceed to Checkout</button>
+                            </div>
+                        </>
+                    }
                 </div>
             </div>
         </>

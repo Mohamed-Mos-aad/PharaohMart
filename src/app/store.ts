@@ -1,7 +1,11 @@
+// ** Hooks && Tools
 import { configureStore } from '@reduxjs/toolkit'
+import { setPharaohMartData } from '../utils/localStorage';
+// ** Slices
 import { CartSlice } from './features/cart/cartSlice'
 import { FavouriteSlice } from './features/favourite/favouriteSlice'
-// ...
+
+
 
 export const store = configureStore({
     reducer: {
@@ -10,7 +14,15 @@ export const store = configureStore({
     },
 })
 
-// Infer the `RootState` and `AppDispatch` types from the store itself
+
+
+store.subscribe(() => {
+    const state = store.getState();
+    setPharaohMartData("cart", state.cart);
+    setPharaohMartData("favourite", state.favourite);
+});
+
+
+
 export type RootState = ReturnType<typeof store.getState>
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof store.dispatch

@@ -1,5 +1,6 @@
 // ** Hooks && Tools
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import { getPharaohMartData } from "../../../utils/localStorage";
 
 
 
@@ -18,9 +19,13 @@ interface IFavouriteState{
 
 
 // ** Default
-const initialState: IFavouriteState = {
-    products: []
-}
+const data = getPharaohMartData();
+const initialState: IFavouriteState = data && data.favourite
+    ? data.favourite
+    :
+    {
+        products: []
+    }
 
 
 
@@ -38,9 +43,19 @@ export const FavouriteSlice = createSlice({
             imageUrl: string;
         }>) => {
             state.products.push(action.payload)
+        },
+        removeProductFromFavourite: (state, action: PayloadAction<{
+            productId: string,
+            name: string,
+            sellerName: string,
+            quantity: number;
+            price: number;
+            imageUrl: string;
+        }>)=>{
+            state.products = state.products.filter(item => item.productId !== action.payload.productId);
         }
     }
 })
 
 
-export const { addProductToFavourite } = FavouriteSlice.actions;
+export const { addProductToFavourite, removeProductFromFavourite } = FavouriteSlice.actions;

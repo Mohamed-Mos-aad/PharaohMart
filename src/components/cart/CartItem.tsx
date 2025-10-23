@@ -34,7 +34,10 @@ export default function CartItem({productId,productName,productSeller,productPri
         }
         else if(changeType === '-')
         {
-            newQuantity = productQuantity - 1;
+            if(productQuantity > 1)
+            {
+                newQuantity = productQuantity - 1;
+            }
         }
 
         dispatch(updateQuantity({ productId, quantity: newQuantity }));

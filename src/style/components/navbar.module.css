@@ -1,13 +1,13 @@
 /* Start NavBar Components */
 nav
 {
-    width: 95%;
+    width: 100%;
     height: 65px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 32px;
-    margin: auto;
+    padding: 0 32px;
     border-bottom: solid 1px #E5E8EB;
     position: relative;
 }
@@ -47,7 +47,7 @@ nav .menu_btns
     gap: 4px;
     position: absolute;
     top: 50%;
-    right: 0;
+    right: 32px;
     transform: translateY(-50%);
 }
 nav .menu_btns span
@@ -69,6 +69,8 @@ nav .dropdown_menu
     top: calc(100% + 1px);
     left: 0;
     z-index: 10000;
+    padding: 0 32px;
+    background-color: #FCFAF7;
 }
 nav .dropdown_menu ul
 {
@@ -79,7 +81,6 @@ nav .dropdown_menu ul
     justify-items: start;
     gap: 32px;
     padding: 24px 0;
-    background-color: #FCFAF7;
 }
 nav li
 {

@@ -30,7 +30,7 @@ export default function Favourite() {
     const productsCardsRender = favouriteProducts.products.map(product =>{
         if(!favouriteProducts) return;
         
-        return <ProductCard id={product.productId} name={product.name} price={product.price} listDisplay={displayList} key={product.productId}/>
+        return <ProductCard id={product.productId} name={product.name} thumbnailImg={{src: product.imageUrl, alt: product.name}} price={product.price} listDisplay={displayList} key={product.productId}/>
     })
 
 
@@ -43,19 +43,26 @@ export default function Favourite() {
                         <h3>Home <span>/</span><div>Favourite Products</div></h3>
                         <h2>Favourite Products</h2>
                     </div>
-                    <div className={style.category_options}>
-                        <div className={style.display_btns}>
-                            <button onClick={()=>{displayToggleHandler(true)}}>
-                                <img src={listDisplayIcon} alt="list display icon" />
-                            </button>
-                            <button onClick={()=>{displayToggleHandler(false)}}>
-                                <img src={cardDisplayIcon} alt="card display icon" />
-                            </button>
-                        </div>
-                    </div>
-                    <div className={`${style.category_cards} ${displayList ? style.list_display : style.cards_display}`}>
-                        {productsCardsRender}
-                    </div>
+                    {
+                        favouriteProducts.products.length === 0 ?
+                            <h2>Your favorites list is empty</h2>
+                        :
+                        <>  
+                            <div className={style.category_options}>
+                                <div className={style.display_btns}>
+                                    <button onClick={()=>{displayToggleHandler(true)}}>
+                                        <img src={listDisplayIcon} alt="list display icon" />
+                                    </button>
+                                    <button onClick={()=>{displayToggleHandler(false)}}>
+                                        <img src={cardDisplayIcon} alt="card display icon" />
+                                    </button>
+                                </div>
+                            </div>
+                            <div className={`${style.category_cards} ${displayList ? style.list_display : style.cards_display}`}>
+                                {productsCardsRender}
+                            </div>
+                        </>
+                    }
                 </div>
             </div>
         </>
