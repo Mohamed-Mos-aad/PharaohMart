@@ -4,13 +4,15 @@ import { setPharaohMartData } from '../utils/localStorage';
 // ** Slices
 import { CartSlice } from './features/cart/cartSlice'
 import { FavouriteSlice } from './features/favourite/favouriteSlice'
+import { SignUPSlice } from './features/auth/signup/signUPSlice';
 
 
 
 export const store = configureStore({
     reducer: {
         cart: CartSlice.reducer,
-        favourite: FavouriteSlice.reducer
+        favourite: FavouriteSlice.reducer,
+        signUp: SignUPSlice.reducer
     },
 })
 

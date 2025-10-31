@@ -44,5 +44,5 @@ export interface ISignUpData{
     userPhoneNumber: string,
     userPassword: string,
     userConfirmPassword: string,
-    userStoreName: string
+    userStoreName?: string
 }

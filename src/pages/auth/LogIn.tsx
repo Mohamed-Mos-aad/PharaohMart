@@ -6,7 +6,7 @@ import InputElement from "../../components/form/InputElement";
 // ** Hooks && Tools
 import { useState } from "react";
 // ** Interfaces
-import type { ISignUpData } from "../../hooks/interfaces";
+import type { ISignUpData } from "../../interfaces";
 
 export default function LogIn() {
   // ** States

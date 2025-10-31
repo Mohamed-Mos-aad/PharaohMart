@@ -1,17 +1,28 @@
 // ** Style
 import style from "../../style/pages/auth/signUp.module.css";
 // ** Components
-import SwitchAuth from "../../components/auth/SwitchAuth";
 import InputElement from "../../components/form/InputElement";
 // ** Hooks && Tools
 import { useNavigate } from "react-router";
 import { useState } from "react";
 // ** Interfaces
-import type { ISignUpData } from "../../hooks/interfaces";
+import type { ISignUpData } from "../../interfaces";
+import { useAppSelector } from "../../app/hooks";
+// ** Validation
+import { checkFormValidation } from "../../validation";
+
+
 
 export default function SignUp() {
+    // ** App
+  const { userType } = useAppSelector((state) => state.signUp);
+
+
+
   // ** Default
   const navigate = useNavigate();
+
+
 
   // ** States
   const [userData, setUserData] = useState<ISignUpData>({
@@ -20,8 +31,18 @@ export default function SignUp() {
     userPhoneNumber: "",
     userPassword: "",
     userConfirmPassword: "",
-    userStoreName: "",
+    ...(userType === "seller" ? { userStoreName: "" } : {}),
   });
+  const [errors, setErrors] = useState<ISignUpData>({
+    userFullName: "",
+    userEmail: "",
+    userPhoneNumber: "",
+    userPassword: "",
+    userConfirmPassword: "",
+    ...(userType === "seller" ? { userStoreName: "" } : {}),
+  });
+
+
 
   // ** Handlers
   const inputValueChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,11 +51,24 @@ export default function SignUp() {
       ...prev,
       [id]: value,
     }));
+    setErrors(prev =>({
+      ...prev,
+      [id]: ''
+    }))
   };
+  const submitForm = ()=>{
+    const updateErrors = checkFormValidation(userData);
+    setErrors(updateErrors);
+    const success = Object.values(updateErrors).every(value => value === '');
+    if(success) otpPageHandler();
+  }
+
+
   const otpPageHandler = () => {
-    console.log(userData);
     navigate("/u/otp");
   };
+
+
 
   return (
     <>
@@ -47,6 +81,7 @@ export default function SignUp() {
             type="text"
             name="userFullName"
             placeholder="Full Name"
+            error={errors.userFullName}
             onChange={inputValueChangeHandler}
           />
           <InputElement
@@ -55,6 +90,7 @@ export default function SignUp() {
             type="text"
             name="userEmail"
             placeholder="Email"
+            error={errors.userEmail}
             onChange={inputValueChangeHandler}
           />
           <InputElement
@@ -63,6 +99,7 @@ export default function SignUp() {
             type="text"
             name="userPhoneNumber"
             placeholder="Phone Number"
+            error={errors.userPhoneNumber}
             onChange={inputValueChangeHandler}
           />
           <InputElement
@@ -71,6 +108,7 @@ export default function SignUp() {
             type="password"
             name="userPassword"
             placeholder="Password"
+            error={errors.userPassword}
             onChange={inputValueChangeHandler}
           />
           <InputElement
@@ -79,18 +117,23 @@ export default function SignUp() {
             type="password"
             name="userConfirmPassword"
             placeholder="Confirm Password"
+            error={errors.userConfirmPassword}
             onChange={inputValueChangeHandler}
           />
-          <InputElement
-            id="userStoreName"
-            label="Store/Business Name"
-            type="text"
-            name="userStoreName"
-            placeholder="Store/Business Name"
-            onChange={inputValueChangeHandler}
-          />
-          <button onClick={otpPageHandler}>Continue</button>
-          <SwitchAuth to="login" />
+          {
+            userType === 'seller' &&
+            <InputElement
+              id="userStoreName"
+              label="Store/Business Name"
+              type="text"
+              name="userStoreName"
+              placeholder="Store/Business Name"
+              error={errors.userStoreName ?? ''}
+              onChange={inputValueChangeHandler}
+            />
+          }
+          
+          <button onClick={submitForm}>Continue</button>
         </div>
       </div>
     </>

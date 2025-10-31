@@ -4344,293 +4344,293 @@ export const productCategories = [
 ];
 
 
-const featuredCategories = {
-  bestSellers: [
-    {
-      id: "product_11",
-      name: "Silicon Power 256GB SSD 3D NAND A55",
-      category: "Electronics",
-      price: 109,
-      rating: "5 Stars"
-    },
-    {
-      id: "product_12",
-      name: "WD 4TB Gaming Drive for Playstation 4",
-      category: "Electronics",
-      price: 114,
-      rating: "5 Stars"
-    },
-    {
-      id: "product_31",
-      name: "Annibale Colombo Bed",
-      category: "Furniture",
-      price: 1899.99,
-      rating: "5 Stars"
-    },
-    {
-      id: "product_32",
-      name: "Annibale Colombo Sofa",
-      category: "Furniture",
-      price: 2499.99,
-      rating: "5 Stars"
-    },
-    {
-      id: "product_28",
-      name: "Dior J'adore",
-      category: "Fragrances",
-      price: 89.99,
-      rating: "5 Stars"
-    },
-    {
-      id: "product_27",
-      name: "Chanel Coco Noir Eau De Parfum",
-      category: "Fragrances",
-      price: 129.99,
-      rating: "5 Stars"
-    },
-    {
-      id: "product_79",
-      name: "Elegant Golden-Base Stone Top Dining Table",
-      category: "Furniture",
-      price: 66,
-      rating: "5 Stars"
-    },
-    {
-      id: "product_65",
-      name: "Classic White Tee - Timeless Style and Comfort",
-      category: "Clothes",
-      price: 73,
-      rating: "5 Stars"
-    },
-    {
-      id: "product_73",
-      name: "Sleek Modern Laptop for Professionals",
-      category: "Electronics",
-      price: 97,
-      rating: "5 Stars"
-    },
-    {
-      id: "product_15",
-      name: "BIYLACLESEN Women's 3-in-1 Snowboard Jacket",
-      category: "Women's Clothing",
-      price: 56.99,
-      rating: "5 Stars"
-    }
-  ],
-  dealsOfTheDay: [
-    {
-      id: "product_54",
-      name: "Classic Black Hooded Sweatshirt",
-      category: "Clothes",
-      price: 79,
-      discount: "30%"
-    },
-    {
-      id: "product_12",
-      name: "WD 4TB Gaming Drive for Playstation 4",
-      category: "Electronics",
-      price: 114,
-      discount: "25%"
-    },
-    {
-      id: "product_2",
-      name: "Mens Casual Premium Slim Fit T-Shirts",
-      category: "Men's Clothing",
-      price: 16.73,
-      discount: "25%"
-    },
-    {
-      id: "product_7",
-      name: "White Gold Plated Princess Ring",
-      category: "Jewelry",
-      price: 9.99,
-      discount: "25%"
-    },
-    {
-      id: "product_60",
-      name: "Classic Red Baseball Cap",
-      category: "Clothes",
-      price: 35,
-      discount: "25%"
-    },
-    {
-      id: "product_88",
-      name: "Vibrant Pink Classic Sneakers",
-      category: "Shoes",
-      price: 84,
-      discount: "25%"
-    },
-    {
-      id: "product_76",
-      name: "Sleek Smartwatch with Vibrant Display",
-      category: "Electronics",
-      price: 16,
-      discount: "25%"
-    },
-    {
-      id: "product_51",
-      name: "Classic Red Pullover Hoodie",
-      category: "Clothes",
-      price: 9.99,
-      discount: "22%"
-    },
-    {
-      id: "product_5",
-      name: "John Hardy Women's Legends Naga Gold & Silver Dragon Bracelet",
-      category: "Jewelry",
-      price: 695,
-      discount: "20%"
-    },
-    {
-      id: "product_11",
-      name: "Silicon Power 256GB SSD 3D NAND A55",
-      category: "Electronics",
-      price: 109,
-      discount: "20%"
-    }
-  ],
-  newArrivals: [
-    {
-      id: "product_21",
-      name: "Essence Mascara Lash Princess",
-      category: "Beauty",
-      price: 9.99,
-      lastReview: "2025-08-15"
-    },
-    {
-      id: "product_36",
-      name: "Apple",
-      category: "Groceries",
-      price: 1.99,
-      lastReview: "2025-08-15"
-    },
-    {
-      id: "product_51",
-      name: "Classic Red Pullover Hoodie",
-      category: "Clothes",
-      price: 9.99,
-      lastReview: "2025-08-15"
-    },
-    {
-      id: "product_54",
-      name: "Classic Black Hooded Sweatshirt",
-      category: "Clothes",
-      price: 79,
-      lastReview: "2025-08-15"
-    },
-    {
-      id: "product_30",
-      name: "Gucci Bloom Eau de Parfum",
-      category: "Fragrances",
-      price: 79.99,
-      lastReview: "2025-08-15"
-    },
-    {
-      id: "product_27",
-      name: "Chanel Coco Noir Eau De Parfum",
-      category: "Fragrances",
-      price: 129.99,
-      lastReview: "2025-08-15"
-    },
-    {
-      id: "product_49",
-      name: "Juice",
-      category: "Groceries",
-      price: 3.99,
-      lastReview: "2025-08-15"
-    },
-    {
-      id: "product_84",
-      name: "Futuristic Holographic Soccer Cleats",
-      category: "Shoes",
-      price: 39,
-      lastReview: "2025-08-15"
-    },
-    {
-      id: "product_25",
-      name: "Red Nail Polish",
-      category: "Beauty",
-      price: 8.99,
-      lastReview: "2025-08-12"
-    },
-    {
-      id: "product_32",
-      name: "Annibale Colombo Sofa",
-      category: "Furniture",
-      price: 2499.99,
-      lastReview: "2025-08-12"
-    }
-  ],
-  recommendedForYou: [
-    {
-      id: "product_1",
-      name: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
-      category: "Men's Clothing",
-      price: 109.95,
-      rating: "4.5 Stars"
-    },
-    {
-      id: "product_3",
-      name: "Mens Cotton Jacket",
-      category: "Men's Clothing",
-      price: 55.99,
-      rating: "4.5 Stars"
-    },
-    {
-      id: "product_9",
-      name: "WD 2TB Elements Portable External Hard Drive - USB 3.0",
-      category: "Electronics",
-      price: 64,
-      rating: "4.5 Stars"
-    },
-    {
-      id: "product_15",
-      name: "BIYLACLESEN Women's 3-in-1 Snowboard Jacket",
-      category: "Women's Clothing",
-      price: 56.99,
-      rating: "4.5 Stars"
-    },
-    {
-      id: "product_18",
-      name: "MBJ Women's Solid Short Sleeve Boat Neck V-Neck",
-      category: "Women's Clothing",
-      price: 9.85,
-      rating: "4.5 Stars"
-    },
-    {
-      id: "product_23",
-      name: "Powder Canister",
-      category: "Beauty",
-      price: 14.99,
-      rating: "4.5 Stars"
-    },
-    {
-      id: "product_30",
-      name: "Gucci Bloom Eau de Parfum",
-      category: "Fragrances",
-      price: 79.99,
-      rating: "4.5 Stars"
-    },
-    {
-      id: "product_33",
-      name: "Bedside Table African Cherry",
-      category: "Furniture",
-      price: 299.99,
-      rating: "4.5 Stars"
-    },
-    {
-      id: "product_39",
-      name: "Chicken Meat",
-      category: "Groceries",
-      price: 9.99,
-      rating: "4.5 Stars"
-    },
-    {
-      id: "product_40",
-      name: "Cooking Oil",
-      category: "Groceries",
-      price: 4.99,
-      rating: "4.5 Stars"
-    }
-  ]
-}
+// const featuredCategories = {
+//   bestSellers: [
+//     {
+//       id: "product_11",
+//       name: "Silicon Power 256GB SSD 3D NAND A55",
+//       category: "Electronics",
+//       price: 109,
+//       rating: "5 Stars"
+//     },
+//     {
+//       id: "product_12",
+//       name: "WD 4TB Gaming Drive for Playstation 4",
+//       category: "Electronics",
+//       price: 114,
+//       rating: "5 Stars"
+//     },
+//     {
+//       id: "product_31",
+//       name: "Annibale Colombo Bed",
+//       category: "Furniture",
+//       price: 1899.99,
+//       rating: "5 Stars"
+//     },
+//     {
+//       id: "product_32",
+//       name: "Annibale Colombo Sofa",
+//       category: "Furniture",
+//       price: 2499.99,
+//       rating: "5 Stars"
+//     },
+//     {
+//       id: "product_28",
+//       name: "Dior J'adore",
+//       category: "Fragrances",
+//       price: 89.99,
+//       rating: "5 Stars"
+//     },
+//     {
+//       id: "product_27",
+//       name: "Chanel Coco Noir Eau De Parfum",
+//       category: "Fragrances",
+//       price: 129.99,
+//       rating: "5 Stars"
+//     },
+//     {
+//       id: "product_79",
+//       name: "Elegant Golden-Base Stone Top Dining Table",
+//       category: "Furniture",
+//       price: 66,
+//       rating: "5 Stars"
+//     },
+//     {
+//       id: "product_65",
+//       name: "Classic White Tee - Timeless Style and Comfort",
+//       category: "Clothes",
+//       price: 73,
+//       rating: "5 Stars"
+//     },
+//     {
+//       id: "product_73",
+//       name: "Sleek Modern Laptop for Professionals",
+//       category: "Electronics",
+//       price: 97,
+//       rating: "5 Stars"
+//     },
+//     {
+//       id: "product_15",
+//       name: "BIYLACLESEN Women's 3-in-1 Snowboard Jacket",
+//       category: "Women's Clothing",
+//       price: 56.99,
+//       rating: "5 Stars"
+//     }
+//   ],
+//   dealsOfTheDay: [
+//     {
+//       id: "product_54",
+//       name: "Classic Black Hooded Sweatshirt",
+//       category: "Clothes",
+//       price: 79,
+//       discount: "30%"
+//     },
+//     {
+//       id: "product_12",
+//       name: "WD 4TB Gaming Drive for Playstation 4",
+//       category: "Electronics",
+//       price: 114,
+//       discount: "25%"
+//     },
+//     {
+//       id: "product_2",
+//       name: "Mens Casual Premium Slim Fit T-Shirts",
+//       category: "Men's Clothing",
+//       price: 16.73,
+//       discount: "25%"
+//     },
+//     {
+//       id: "product_7",
+//       name: "White Gold Plated Princess Ring",
+//       category: "Jewelry",
+//       price: 9.99,
+//       discount: "25%"
+//     },
+//     {
+//       id: "product_60",
+//       name: "Classic Red Baseball Cap",
+//       category: "Clothes",
+//       price: 35,
+//       discount: "25%"
+//     },
+//     {
+//       id: "product_88",
+//       name: "Vibrant Pink Classic Sneakers",
+//       category: "Shoes",
+//       price: 84,
+//       discount: "25%"
+//     },
+//     {
+//       id: "product_76",
+//       name: "Sleek Smartwatch with Vibrant Display",
+//       category: "Electronics",
+//       price: 16,
+//       discount: "25%"
+//     },
+//     {
+//       id: "product_51",
+//       name: "Classic Red Pullover Hoodie",
+//       category: "Clothes",
+//       price: 9.99,
+//       discount: "22%"
+//     },
+//     {
+//       id: "product_5",
+//       name: "John Hardy Women's Legends Naga Gold & Silver Dragon Bracelet",
+//       category: "Jewelry",
+//       price: 695,
+//       discount: "20%"
+//     },
+//     {
+//       id: "product_11",
+//       name: "Silicon Power 256GB SSD 3D NAND A55",
+//       category: "Electronics",
+//       price: 109,
+//       discount: "20%"
+//     }
+//   ],
+//   newArrivals: [
+//     {
+//       id: "product_21",
+//       name: "Essence Mascara Lash Princess",
+//       category: "Beauty",
+//       price: 9.99,
+//       lastReview: "2025-08-15"
+//     },
+//     {
+//       id: "product_36",
+//       name: "Apple",
+//       category: "Groceries",
+//       price: 1.99,
+//       lastReview: "2025-08-15"
+//     },
+//     {
+//       id: "product_51",
+//       name: "Classic Red Pullover Hoodie",
+//       category: "Clothes",
+//       price: 9.99,
+//       lastReview: "2025-08-15"
+//     },
+//     {
+//       id: "product_54",
+//       name: "Classic Black Hooded Sweatshirt",
+//       category: "Clothes",
+//       price: 79,
+//       lastReview: "2025-08-15"
+//     },
+//     {
+//       id: "product_30",
+//       name: "Gucci Bloom Eau de Parfum",
+//       category: "Fragrances",
+//       price: 79.99,
+//       lastReview: "2025-08-15"
+//     },
+//     {
+//       id: "product_27",
+//       name: "Chanel Coco Noir Eau De Parfum",
+//       category: "Fragrances",
+//       price: 129.99,
+//       lastReview: "2025-08-15"
+//     },
+//     {
+//       id: "product_49",
+//       name: "Juice",
+//       category: "Groceries",
+//       price: 3.99,
+//       lastReview: "2025-08-15"
+//     },
+//     {
+//       id: "product_84",
+//       name: "Futuristic Holographic Soccer Cleats",
+//       category: "Shoes",
+//       price: 39,
+//       lastReview: "2025-08-15"
+//     },
+//     {
+//       id: "product_25",
+//       name: "Red Nail Polish",
+//       category: "Beauty",
+//       price: 8.99,
+//       lastReview: "2025-08-12"
+//     },
+//     {
+//       id: "product_32",
+//       name: "Annibale Colombo Sofa",
+//       category: "Furniture",
+//       price: 2499.99,
+//       lastReview: "2025-08-12"
+//     }
+//   ],
+//   recommendedForYou: [
+//     {
+//       id: "product_1",
+//       name: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
+//       category: "Men's Clothing",
+//       price: 109.95,
+//       rating: "4.5 Stars"
+//     },
+//     {
+//       id: "product_3",
+//       name: "Mens Cotton Jacket",
+//       category: "Men's Clothing",
+//       price: 55.99,
+//       rating: "4.5 Stars"
+//     },
+//     {
+//       id: "product_9",
+//       name: "WD 2TB Elements Portable External Hard Drive - USB 3.0",
+//       category: "Electronics",
+//       price: 64,
+//       rating: "4.5 Stars"
+//     },
+//     {
+//       id: "product_15",
+//       name: "BIYLACLESEN Women's 3-in-1 Snowboard Jacket",
+//       category: "Women's Clothing",
+//       price: 56.99,
+//       rating: "4.5 Stars"
+//     },
+//     {
+//       id: "product_18",
+//       name: "MBJ Women's Solid Short Sleeve Boat Neck V-Neck",
+//       category: "Women's Clothing",
+//       price: 9.85,
+//       rating: "4.5 Stars"
+//     },
+//     {
+//       id: "product_23",
+//       name: "Powder Canister",
+//       category: "Beauty",
+//       price: 14.99,
+//       rating: "4.5 Stars"
+//     },
+//     {
+//       id: "product_30",
+//       name: "Gucci Bloom Eau de Parfum",
+//       category: "Fragrances",
+//       price: 79.99,
+//       rating: "4.5 Stars"
+//     },
+//     {
+//       id: "product_33",
+//       name: "Bedside Table African Cherry",
+//       category: "Furniture",
+//       price: 299.99,
+//       rating: "4.5 Stars"
+//     },
+//     {
+//       id: "product_39",
+//       name: "Chicken Meat",
+//       category: "Groceries",
+//       price: 9.99,
+//       rating: "4.5 Stars"
+//     },
+//     {
+//       id: "product_40",
+//       name: "Cooking Oil",
+//       category: "Groceries",
+//       price: 4.99,
+//       rating: "4.5 Stars"
+//     }
+//   ]
+// }

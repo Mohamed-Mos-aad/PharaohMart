@@ -18,6 +18,8 @@ export default function Otp() {
         minutes: 2,
         seconds: 0
     })
+    const [isTimerActive, setIsTimerActive] = useState(false);
+    const [isOtpSent, setIsOtpSent] = useState(false);
 
 
 
@@ -50,11 +52,20 @@ export default function Otp() {
         console.log(userOtpCode);
         navigate('/u/success')
     }
+    const sendOtpHandler = () => {
+        console.log("OTP sent to email!");
+
+        setIsOtpSent(true);
+        setIsTimerActive(true);
+        setTimer({ minutes: 2, seconds: 0 });
+    };
 
 
 
     // ** UseEffect
     useEffect(()=>{
+        if (!isTimerActive) return;
+
         const startInterval = setInterval(()=>{
             setTimer(prev =>{
                 let newMinutes = prev.minutes;
@@ -74,7 +85,7 @@ export default function Otp() {
         },1000)
 
         return ()=> clearInterval(startInterval);
-    },[])
+    },[isTimerActive])
 
 
 
@@ -93,7 +104,12 @@ export default function Otp() {
                         <input type="text" id='5' maxLength={1} inputMode="numeric" value={userOtpCode[5]} pattern="[0-9]*" onChange={(e)=>{otpCodeChangeHandler(e)}} onKeyDown={handleKeyDown}/>
                     </div>
                     <h2>{timer.minutes < 10 ? '0' + timer.minutes : timer.minutes}:{timer.seconds < 10 ? '0' + timer.seconds : timer.seconds}</h2>
-                    <button onClick={successPageHandler}>Continue</button>
+                    {
+                        isOtpSent ?
+                            <button onClick={successPageHandler} disabled>Continue</button>
+                            :
+                            <button onClick={sendOtpHandler}>Send Code</button>
+                    }
                 </div>
             </div>
         </>
