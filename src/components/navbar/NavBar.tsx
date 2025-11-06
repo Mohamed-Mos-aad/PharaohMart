@@ -4,6 +4,7 @@ import style from '../../style/components/navbar.module.css'
 import heartIcon from '../../assets/icons/navbar/heartIcon.svg'
 import cartIcon from '../../assets/icons/navbar/cartIcon.svg'
 import addAuthIcon from '../../assets/icons/navbar/addAuthIcon.svg'
+import userIcon from '../../assets/icons/navbar/userIcon.svg'
 // ** Components
 import NavBarSearchElement from '../search/NavBarSearchElement'
 // ** Hooks && Tools
@@ -20,6 +21,7 @@ import { getCategories } from '../../services/CategoriesService'
 export default function NavBar() {
     // ** Defaults
     const MemoLink = memo(Link);
+    const authState = localStorage.getItem("token");
 
 
 
@@ -27,8 +29,9 @@ export default function NavBar() {
     const [categories,setCategories] = useState([]);
     const [isMainMenuOpen,setIsMainMenuOpen] = useState<boolean>(true);
     const [isDropdownOpen,setIsDropdownOpen] = useState<boolean>(false);
-    const cart = useAppSelector(state => state.cart)
-    const favourite = useAppSelector(state => state.favourite)
+    const cart = useAppSelector(state => state.cart);
+    const favourite = useAppSelector(state => state.favourite);
+    const [authPopOpened,setAuthPopOpened] = useState<boolean>(false);
 
 
 
@@ -50,6 +53,9 @@ export default function NavBar() {
         {
             setIsMainMenuOpen(false);
         }
+    }
+    const logOutHandler = ()=>{
+        localStorage.removeItem("token");
     }
 
 
@@ -105,7 +111,6 @@ export default function NavBar() {
         const fetchCategories = async () => {
             try {
                 const categoriesData = await getCategories();
-                console.log(categories);
                 setCategories(categoriesData);
             } catch (error) {
                 console.error('فشل في جلب الأقسام:', error);
@@ -166,9 +171,39 @@ export default function NavBar() {
                                     <img src={cartIcon} alt="cart icon" />
                                     {cart.products.length > 0 && <span>{cart.products.length}</span>}
                                 </MemoLink>
-                                <MemoLink to={'/u'} onClick={menuStateToggleHandler}>
-                                    <img src={addAuthIcon} alt="addAuth icon" />
-                                </MemoLink>
+                                <div className={style.icon} onClick={()=>{setAuthPopOpened(prev => !prev)}}>
+                                    { authState ?
+                                        <img src={userIcon} alt="user icon" />
+                                        :
+                                        <img src={addAuthIcon} alt="addAuth icon" />
+                                    }
+                                </div>
+                                {
+                                    authPopOpened && 
+                                    <div className={style.auth_options}>
+                                        { authState ?
+                                            <>
+                                                <MemoLink to={'/u/login'} 
+                                                onClick={()=>{
+                                                    menuStateToggleHandler()
+                                                    logOutHandler()
+                                                }}>
+                                                    Log Out
+                                                </MemoLink>
+                                            </>
+                                            :
+                                            <>
+                                                <MemoLink to={'/u/login'} onClick={menuStateToggleHandler}>
+                                                    Login
+                                                </MemoLink>
+                                                <MemoLink to={'/u'} onClick={menuStateToggleHandler}>
+                                                    Sign Up
+                                                </MemoLink>
+                                            </>
+                                        }
+                                        
+                                    </div>
+                                }
                             </div>
                         </div>
                     </div>

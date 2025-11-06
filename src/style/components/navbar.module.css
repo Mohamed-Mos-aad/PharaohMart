@@ -140,8 +140,9 @@ nav .options
 {
     display: flex;
     gap: 16px;
+    position: relative;
 }
-nav .options a
+nav .options a,.icon
 {
     width: 40px;
     height: 40px;
@@ -169,6 +170,21 @@ nav .options a span
     border-radius: 4px;
     font-size: 12px;
     color: white;
+}
+nav .options .auth_options
+{
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+    width: fit-content;
+    background-color: #F5F0E5;
+    border-radius: 8px;
+}
+nav .options .auth_options a
+{
+    width: 100%;
+    color: black;
+    text-decoration: none;
 }
 /* End NavBar Components */
 

@@ -1,15 +1,24 @@
 // ** Style
-import { useEffect, useState } from 'react';
 import style from '../../style/pages/auth/otp.module.css'
 // ** Hooks && Tools
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router'
-
+import { useAppSelector } from '../../app/hooks';
+import emailjs from '@emailjs/browser';
+// ** Api
+import { signUpAction } from '../../api/auth/SignUp';
 
 
 export default function Otp() {
+    // ** App
+    const { userData } = useAppSelector((state) => state.signUp);
+
     // ** Default
     const navigate = useNavigate();
 
+
+
+    if(!userData?.userEmail) navigate('/u/');
 
 
     // ** States
@@ -20,7 +29,9 @@ export default function Otp() {
     })
     const [isTimerActive, setIsTimerActive] = useState(false);
     const [isOtpSent, setIsOtpSent] = useState(false);
-
+    const [otpCode, setOtpCode] = useState<null | string>(null);
+    const [otpCorrect,setOtpCorrect] = useState<boolean>(false);
+    const [loading,setLoading] = useState<boolean>(false);
 
 
     // ** Handlers
@@ -37,6 +48,7 @@ export default function Otp() {
             nextInput?.focus();
         }
     }
+    
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
         const { key } = e;
         const { id, value } = e.currentTarget;
@@ -48,12 +60,35 @@ export default function Otp() {
             }
         }
     }
-    const successPageHandler = ()=>{
-        console.log(userOtpCode);
-        navigate('/u/success')
+    const generateOtp = () => {
+        let otp = '';
+        for (let i = 0; i < 6; i++) {
+            otp += Math.floor(Math.random() * 10);
+        }
+        return otp;
+    };
+    const successPageHandler = async ()=>{
+        if(!userData) return
+        try {
+            setLoading(true);
+            await signUpAction({...userData});
+        }
+        catch(error){
+            console.log(error)
+        }finally{
+            navigate('/u/success')
+        }
     }
     const sendOtpHandler = () => {
-        console.log("OTP sent to email!");
+        const code = generateOtp();
+        setOtpCode(code)
+        emailjs
+            .send('service_e75s08c', 'template_unfxnz5', {
+                passcode: code,
+                email: userData?.userEmail,
+            }, {
+                publicKey: '3PaUw5fPoj59Hzt83',
+            })
 
         setIsOtpSent(true);
         setIsTimerActive(true);
@@ -64,6 +99,7 @@ export default function Otp() {
 
     // ** UseEffect
     useEffect(()=>{
+        console.log(userData);
         if (!isTimerActive) return;
 
         const startInterval = setInterval(()=>{
@@ -85,7 +121,17 @@ export default function Otp() {
         },1000)
 
         return ()=> clearInterval(startInterval);
-    },[isTimerActive])
+    },[isTimerActive,userData])
+    useEffect(() => {
+        const userCode = userOtpCode.join('');
+        if (userCode.length === 6) {
+            if (userCode === otpCode) {
+                setOtpCorrect(true);
+            } else {
+                setOtpCorrect(false);
+            }
+        }
+    }, [userOtpCode, otpCode]);
 
 
 
@@ -106,7 +152,7 @@ export default function Otp() {
                     <h2>{timer.minutes < 10 ? '0' + timer.minutes : timer.minutes}:{timer.seconds < 10 ? '0' + timer.seconds : timer.seconds}</h2>
                     {
                         isOtpSent ?
-                            <button onClick={successPageHandler} disabled>Continue</button>
+                            <button onClick={successPageHandler} disabled={otpCorrect ? false : true}>{loading ? "Save..." : "Continue"}</button>
                             :
                             <button onClick={sendOtpHandler}>Send Code</button>
                     }

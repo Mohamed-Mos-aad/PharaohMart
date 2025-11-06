@@ -38,11 +38,17 @@ export interface IProduct{
 
 
 
+// ** Auth
 export interface ISignUpData{
     userFullName: string,
     userEmail: string,
     userPhoneNumber: string,
     userPassword: string,
     userConfirmPassword: string,
-    userStoreName?: string
+    userStoreName?: string,
+    role: string
+}
+export interface ISignInData{
+    userEmail: string,
+    userPassword: string,
 }

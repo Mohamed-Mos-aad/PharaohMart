@@ -5,22 +5,25 @@ import InputElement from "../../components/form/InputElement";
 // ** Hooks && Tools
 import { useNavigate } from "react-router";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 // ** Interfaces
 import type { ISignUpData } from "../../interfaces";
 import { useAppSelector } from "../../app/hooks";
 // ** Validation
-import { checkFormValidation } from "../../validation";
+import { checkSignUpValidation } from "../../validation";
+import { pushUserData } from "../../app/features/auth/signup/signUPSlice";
 
 
 
 export default function SignUp() {
-    // ** App
+  // ** App
   const { userType } = useAppSelector((state) => state.signUp);
 
 
 
   // ** Default
   const navigate = useNavigate();
+  const dispatch = useDispatch()
 
 
 
@@ -31,6 +34,7 @@ export default function SignUp() {
     userPhoneNumber: "",
     userPassword: "",
     userConfirmPassword: "",
+    role: userType,
     ...(userType === "seller" ? { userStoreName: "" } : {}),
   });
   const [errors, setErrors] = useState<ISignUpData>({
@@ -39,6 +43,7 @@ export default function SignUp() {
     userPhoneNumber: "",
     userPassword: "",
     userConfirmPassword: "",
+    role: "",
     ...(userType === "seller" ? { userStoreName: "" } : {}),
   });
 
@@ -57,10 +62,13 @@ export default function SignUp() {
     }))
   };
   const submitForm = ()=>{
-    const updateErrors = checkFormValidation(userData);
+    const updateErrors = checkSignUpValidation(userData);
     setErrors(updateErrors);
     const success = Object.values(updateErrors).every(value => value === '');
-    if(success) otpPageHandler();
+    if(success) {
+      dispatch(pushUserData({...userData}))
+      otpPageHandler()
+    };
   }
 
 

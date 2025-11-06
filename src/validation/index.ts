@@ -1,18 +1,19 @@
 // ** Interfaces
-import type { ISignUpData } from "../interfaces";
+import type { ISignInData, ISignUpData } from "../interfaces";
 
 
 
 
 // ** Function
-export const checkFormValidation = ({ userFullName, userEmail, userPhoneNumber, userPassword, userConfirmPassword, userStoreName } : ISignUpData)=>{
+export const checkSignUpValidation = ({ userFullName, userEmail, userPhoneNumber, userPassword, userConfirmPassword, userStoreName } : ISignUpData)=>{
     const errors = {
         userFullName: "",
         userEmail: "",
         userPhoneNumber: "",
         userPassword: "",
         userConfirmPassword: "",
-        userStoreName: ""
+        userStoreName: "",
+        role: ''
     }
 
     if (!userFullName || userFullName.trim().length < 3) {
@@ -39,6 +40,25 @@ export const checkFormValidation = ({ userFullName, userEmail, userPhoneNumber, 
 
     if (userStoreName !== undefined && userStoreName.trim().length < 3) {
         errors.userStoreName = "Please enter your store name";
+    }
+
+    return errors;
+}
+
+export const checkLogInValidation = ({ userEmail, userPassword } : ISignInData)=>{
+    const errors = {
+        userEmail: "",
+        userPassword: "",
+    }
+
+
+
+    if (!userEmail || !/^\S+@\S+\.\S+$/.test(userEmail)) {
+        errors.userEmail = "Please enter a valid email";
+    }
+
+    if (!userPassword || userPassword.trim().length < 8) {
+        errors.userPassword = "Password must be at least 8 characters";
     }
 
     return errors;

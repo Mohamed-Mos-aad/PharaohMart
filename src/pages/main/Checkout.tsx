@@ -32,14 +32,14 @@ export default function Checkout() {
                     <h1>Checkout</h1>
                     <h2>Delivery</h2>
                     <div className={style.delivery}>
-                        <InputElement id='userFullName' label='Full Name' name='userFullName' onChange={()=>{}} placeholder='' type='text'/>
-                        <InputElement id='userAddress' label='Address' name='userAddress' onChange={()=>{}} placeholder='' type=''/>
-                        <InputElement id='userCity' label='City' name='userCity' onChange={()=>{}} placeholder='' type=''/>
+                        <InputElement id='userFullName' label='Full Name' name='userFullName' onChange={()=>{}} placeholder='' type='text' error=''/>
+                        <InputElement id='userAddress' label='Address' name='userAddress' onChange={()=>{}} placeholder='' type='' error=''/>
+                        <InputElement id='userCity' label='City' name='userCity' onChange={()=>{}} placeholder='' type='' error=''/>
                         <div className={style.inputs_row}>
-                            <InputElement id='userState' label='State' name='userState' onChange={()=>{}} placeholder='' type=''/>
-                            <InputElement id='userZipCode' label='Zip Code' name='userZipCode' onChange={()=>{}} placeholder='' type=''/>
+                            <InputElement id='userState' label='State' name='userState' onChange={()=>{}} placeholder='' type='' error=''/>
+                            <InputElement id='userZipCode' label='Zip Code' name='userZipCode' onChange={()=>{}} placeholder='' type='' error=''/>
                         </div>
-                        <InputElement id='userPhoneNumber' label='Phone Number' name='userPhoneNumber' onChange={()=>{}} placeholder='' type=''/>
+                        <InputElement id='userPhoneNumber' label='Phone Number' name='userPhoneNumber' onChange={()=>{}} placeholder='' type='' error=''/>
                     </div>
                     <h2>Payment Method</h2>
                     <div className={style.paymentMethod}>

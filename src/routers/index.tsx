@@ -27,6 +27,8 @@ import Setting from "../pages/dashboard/Setting";
 import Help from "../pages/dashboard/Help";
 import ChatLayout from "../layouts/ChatLayout";
 import Analytics from "../pages/dashboard/Analytics";
+// ** Middleware
+import ProtectedAuthRoutes from "./ProtectedRoute";
 
 
 
@@ -40,12 +42,12 @@ export const Routers = ()=>(
             <Route path="checkout" element={<Checkout />} />
             <Route path="favourite" element={<Favourite />} />
         </Route>
-        <Route path="/u" element={<AuthLayout />}>
-            <Route index element={<Welcome />} />
-            <Route path="sign-up" element={<SignUp />} />
-            <Route path="Login" element={<LogIn />} />
-            <Route path="otp" element={<Otp />} />
-            <Route path="success" element={<Success />} />
+        <Route path="/u" element={<ProtectedAuthRoutes><AuthLayout /></ProtectedAuthRoutes>}>
+                <Route index element={<Welcome />} />
+                <Route path="sign-up" element={<SignUp />} />
+                <Route path="login" element={<LogIn />} />
+                <Route path="otp" element={<Otp />} />
+                <Route path="success" element={<Success />} />
         </Route>
         <Route path="/dashboard" element={<DashboardLayout />}>
             <Route index element={<Dashboard />} />
