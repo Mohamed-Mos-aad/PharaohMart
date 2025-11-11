@@ -18,8 +18,8 @@ export const signUpAction = async (signUpData: ISignUpData) => {
         const registerData = await registerRes.json();
 
         if (!registerData?.user?.id) {
-        console.log("Registration failed:", registerData);
-        return;
+            console.log("Registration failed:", registerData);
+            return;
         }
 
         const userId = registerData.user.id;
@@ -28,22 +28,19 @@ export const signUpAction = async (signUpData: ISignUpData) => {
 
         const roleId = signUpData.role === "seller" ? 4 : 3;
 
-        const updateRes = await fetch(`http://localhost:1337/api/users/${userId}`, {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${adminJwt}`,
-        },
-        body: JSON.stringify({
-            role: roleId,
-            roleType: signUpData.role,
-            phone: signUpData.userPhoneNumber,
-            ...(signUpData.role === "seller" ? { storeName: signUpData.userStoreName } : {}),
-        }),
+        await fetch(`http://localhost:1337/api/users/${userId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${adminJwt}`,
+            },
+            body: JSON.stringify({
+                role: roleId,
+                roleType: signUpData.role,
+                phone: signUpData.userPhoneNumber,
+                ...(signUpData.role === "seller" ? { storeName: signUpData.userStoreName } : {}),
+            }),
         });
-
-        const updateData = await updateRes.json();
-        console.log("User updated successfully:", updateData);
 
     } catch (error) {
         console.log(error);

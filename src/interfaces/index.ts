@@ -1,15 +1,11 @@
 // ** Product
 export interface IProduct{
-    id: string,
+    id?: string,
     name: string,
     description: string,
     category: string,
-    price: {
-        productPrice: number;
-        productDiscount: string;
-        productOff: string;
-    },
-    reviews: {
+    productPrice: number,
+    reviews?: {
         userData: {
             userPhoto: {
                 src: string,
@@ -25,7 +21,7 @@ export interface IProduct{
             unLike: number
         }
     }[],
-    overRate: {
+    overRate?: {
         oneStar: number,
         twoStars: number,
         threeStars: number,
@@ -34,6 +30,18 @@ export interface IProduct{
     }
     mainImage: string,
     images: string[]
+}
+
+
+
+// ** Category
+export interface ICategory{
+    createdAt: string,
+    documentId: string,
+    id: number,
+    publishedAt: string,
+    title: string,
+    updatedAt: string
 }
 
 

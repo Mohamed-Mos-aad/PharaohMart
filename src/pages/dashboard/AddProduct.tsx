@@ -5,29 +5,85 @@ import DashboardHeader from "../../components/dashboard/DashboardHeader";
 import InputElement from './../../components/form/InputElement';
 import DropMenuElement from './../../components/form/DropMenuElement';
 import UploadPhotos from '../../components/form/UploadPhotos';
-// ** Hooks && Tools
 import ToggleElement from '../../components/form/ToggleElement';
 import TextAreaInputElement from '../../components/form/TextAreaInputElement';
+// ** Hooks && Tools
+import { useEffect, useState } from 'react';
+// ** Actions
+import { getCategoriesAction } from '../../api/data/Categories';
+// ** Interfaces
+import type { ICategory, IProduct } from '../../interfaces';
 
 
 
 export default function AddProduct() {
+    // ** States
+    const [productData, setProductData] = useState<IProduct>({
+        name: '',
+        description: '',
+        productPrice: 0,
+        category: '',
+        images: [],
+        mainImage: ''
+    });
+    const [categories, setCategories] = useState<string[]>([]);
+
+
+
+    // ** Handlers
+    const inputValueChangeHandler = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { id, value } = e.currentTarget;
+        setProductData((prev) => ({
+        ...prev,
+        [id]: value,
+        }));
+    };
+
+
+
+    // ** UseEffect
+    useEffect(()=>{
+        const getdata = async ()=>{
+            const result = await getCategoriesAction();
+            const newArray:string[] = [];
+            result.map((item:ICategory) => newArray.push(item.title))
+            setCategories(newArray);
+        }
+
+        getdata();
+    },[])
+    useEffect(()=>{
+        console.log(productData);
+    },[productData]);
+
+
+    
     return (
         <>
             <div className="dashboard_container">
                 <div className={style.add_product}>
                     <DashboardHeader title='Add New Product' description="Provide detailed information about yourproduct to attract customers."/>
                     <h2>Product Images</h2>
-                    <UploadPhotos title='Drag and drop images here' description='Recommended dimensions: 1000x1000px. Supported formats: JPG, PNG. You can upload up to 5 images.' quantity={5}/>
+                    <UploadPhotos 
+                        title='Drag and drop images here' 
+                        description='Recommended dimensions: 1000x1000px. Supported formats: JPG, PNG. You can upload up to 5 images.' 
+                        quantity={5}
+                        onUpload={(urls) => {
+                            setProductData((prev) => ({
+                                ...prev,
+                                images: urls,
+                            }));
+                        }}
+                        />
                     <section>
                         <h2>Basic Information</h2>
-                        <InputElement error='' id="productName" label="Product Title" name="productName" placeholder="Enter product name" type="text" onChange={()=>{}} />
-                        <TextAreaInputElement id="productDescription" label="Product Description" name="productDescription" placeholder="Enter product description" onChange={()=>{}} />
+                        <InputElement error='' id="name" label="Product Title" name="name" placeholder="Enter product name" type="text" onChange={inputValueChangeHandler} />
+                        <TextAreaInputElement id="description" label="Product Description" name="description" placeholder="Enter product description" onChange={inputValueChangeHandler} />
                     </section>
                     <section>
                         <h2>Category & Subcategory</h2>
                         <div className={style.inputs_row}>
-                            <DropMenuElement title="Select a category" selections={[]}/>
+                            <DropMenuElement title="Select a category" selections={categories}/>
                             <DropMenuElement title="Select a subcategory" selections={[]}/>
                         </div>
                     </section>

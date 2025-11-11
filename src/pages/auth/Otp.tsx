@@ -98,7 +98,6 @@ export default function Otp() {
 
     // ** UseEffect
     useEffect(()=>{
-        console.log(userData);
         if (!isTimerActive) return;
 
         const startInterval = setInterval(()=>{
