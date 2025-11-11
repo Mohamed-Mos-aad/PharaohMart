@@ -23,7 +23,7 @@ export default function Help() {
                     </section>
                     <section>
                         <h2>Contact Support</h2>
-                        <InputElement id='userSubject' label='Subject' name='userSubject' placeholder='Enter  the subject of your issue' type='' onChange={()=>{}}/>
+                        <InputElement error='' id='userSubject' label='Subject' name='userSubject' placeholder='Enter  the subject of your issue' type='' onChange={()=>{}}/>
                         <TextAreaInputElement id='userMessage' label='Message' name='userMessage' placeholder='Enter the Message' onChange={()=>{}}/>
                         <UploadPhotos title='File Upload' description='' quantity={5}/>
                         <button>Submit Ticket</button>

@@ -22,20 +22,17 @@ const initialState : ISignUpState = {
 
 
 // ** Slice
-export const SignUPSlice = createSlice({
-    name: 'signUp',
+export const LogInSlice = createSlice({
+    name: 'logIn',
     initialState,
     reducers: {
-        changeSignUpUserType: (state, action:PayloadAction<'seller' | 'buyer'>)=>{
+        changeLogInUserType: (state, action:PayloadAction<'seller' | 'buyer'>)=>{
             state.userType = action.payload
-        },
-        pushUserData: (state, action:PayloadAction<ISignUpData>)=>{
-            state.userData = action.payload
-        },
+        }
     }
 })
 
 
 
 // ** Export
-export const { changeSignUpUserType, pushUserData } = SignUPSlice.actions;
+export const { changeLogInUserType } = LogInSlice.actions;

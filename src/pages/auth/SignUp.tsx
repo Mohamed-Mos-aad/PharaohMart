@@ -66,7 +66,7 @@ export default function SignUp() {
     setErrors(updateErrors);
     const success = Object.values(updateErrors).every(value => value === '');
     if(success) {
-      dispatch(pushUserData({...userData}))
+      dispatch(pushUserData({...userData,userFullName: `{${userData.userFullName}_${Date.now()}}`}))
       otpPageHandler()
     };
   }

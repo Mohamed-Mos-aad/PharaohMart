@@ -6,17 +6,20 @@ import InputElement from "../../components/form/InputElement";
 // ** Hooks && Tools
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
 // ** Interfaces
 import type { ISignInData } from "../../interfaces";
 // ** Validation
 import { checkLogInValidation } from "../../validation";
 // ** Api
 import { LogInAction } from "../../api/auth/LogIn";
+import { changeLogInUserType } from "../../app/features/auth/logIn/logInSlice";
 
 
 export default function LogIn() {
   // ** Defaults
   const navigate = useNavigate();
+  const dispatch = useDispatch()
 
 
 
@@ -47,7 +50,6 @@ export default function LogIn() {
     if(success) {
         try{
           const result = await LogInAction(userData);
-          console.log(result)
           if (result === "Invalid identifier or password" ) {
             setErrors(prev => ({
               ...prev,
@@ -55,7 +57,15 @@ export default function LogIn() {
             }));
             return
           }
-          navigate('/')
+
+          dispatch(changeLogInUserType(result.user.roleType));
+
+          if(result.user.roleType === "seller"){
+            navigate('/dashboard')
+          }
+          else if(result.user.roleType === "buyer"){
+            navigate('/')
+          }
         }catch(error){
           console.log(error);
         }

@@ -9,7 +9,7 @@ import userIcon from '../../assets/icons/navbar/userIcon.svg'
 import NavBarSearchElement from '../search/NavBarSearchElement'
 // ** Hooks && Tools
 import { memo, useEffect, useRef, useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAppSelector } from '../../app/hooks'
 // ** Data
 import { productCategories } from '../../data/fakeData'
@@ -21,6 +21,7 @@ import { getCategories } from '../../services/CategoriesService'
 export default function NavBar() {
     // ** Defaults
     const MemoLink = memo(Link);
+    const navigate = useNavigate();
     const authState = localStorage.getItem("token");
 
 
@@ -56,6 +57,8 @@ export default function NavBar() {
     }
     const logOutHandler = ()=>{
         localStorage.removeItem("token");
+        localStorage.removeItem("userData");
+        navigate("/u/login");
     }
 
 

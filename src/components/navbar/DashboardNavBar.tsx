@@ -43,8 +43,13 @@ export default function DashboardNavBar() {
     const openChatHandler = ()=>{
         navigate(`/messages`)
     }
+    const logOutHandler = ()=>{
+        localStorage.removeItem("token");
+        localStorage.removeItem("userData");
+        navigate("/u/login");
+    }
 
-
+    
 
     // ** UseEffect
     useEffect(()=>{
@@ -105,7 +110,7 @@ export default function DashboardNavBar() {
                         <img src={helpIcon} alt="Help icon" />
                         Help
                     </li>
-                    <li>
+                    <li onClick={logOutHandler}>
                         <img src={logoutIcon} alt="Logout icon" />
                         Logout
                     </li>

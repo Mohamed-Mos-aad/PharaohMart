@@ -28,7 +28,7 @@ import Help from "../pages/dashboard/Help";
 import ChatLayout from "../layouts/ChatLayout";
 import Analytics from "../pages/dashboard/Analytics";
 // ** Middleware
-import ProtectedAuthRoutes from "./ProtectedRoute";
+import { ProtectedAuthRoutes, ProtectedDashboardRoutes } from "./ProtectedRoute";
 
 
 
@@ -49,7 +49,7 @@ export const Routers = ()=>(
                 <Route path="otp" element={<Otp />} />
                 <Route path="success" element={<Success />} />
         </Route>
-        <Route path="/dashboard" element={<DashboardLayout />}>
+        <Route path="/dashboard" element={<ProtectedDashboardRoutes><DashboardLayout /></ProtectedDashboardRoutes>}>
             <Route index element={<Dashboard />} />
             <Route path="products" element={<DashboardProducts />} />
             <Route path="addProduct" element={<AddProduct />} />

@@ -17,14 +17,8 @@ export const LogInAction = async (signUpData: ISignInData)=>{
         const data = await res.json();
         if (res.ok && data.jwt) {
             localStorage.setItem("token", data.jwt);
-            const userRes = await fetch(`http://localhost:1337/api/users/${data.user.id}?populate=role`, {
-                headers: {
-                "Authorization": `Bearer ${data.jwt}`,
-                "Content-Type": "application/json",
-                },
-            });
-            const userData = await userRes.json();
-            return userData;
+            localStorage.setItem("userData", JSON.stringify(data.user));
+            return data;
         } else {
             console.error(data.error?.message || data.message);
             return data.error?.message;

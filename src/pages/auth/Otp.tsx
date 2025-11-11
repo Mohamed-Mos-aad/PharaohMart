@@ -72,11 +72,10 @@ export default function Otp() {
         try {
             setLoading(true);
             await signUpAction({...userData});
+            navigate('/u/success')
         }
         catch(error){
             console.log(error)
-        }finally{
-            navigate('/u/success')
         }
     }
     const sendOtpHandler = () => {

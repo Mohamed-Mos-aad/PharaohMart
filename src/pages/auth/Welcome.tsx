@@ -16,7 +16,7 @@ export default function Welcome() {
 
 
     // ** Handlers
-    const openSignUpHandler = (type: 'seller' | 'user')=>{
+    const openSignUpHandler = (type: 'seller' | 'buyer')=>{
         navigate('/u/sign-up')
         dispatch(changeSignUpUserType(type))
     }
@@ -30,7 +30,7 @@ export default function Welcome() {
                     <h1>Join our community</h1>
                     <h2>Choose your role to get started</h2>
                     <div className={style.welcome_btns}>
-                        <button onClick={()=>{openSignUpHandler('user')}}>Shop for products</button>
+                        <button onClick={()=>{openSignUpHandler('buyer')}}>Shop for products</button>
                         <button onClick={()=>{openSignUpHandler('seller')}}>Sell your products online</button>
                     </div>
                     <SwitchAuth to="login" />

@@ -8,10 +8,24 @@ interface ProtectedRouteProps {
 }
 
 
-export default function ProtectedAuthRoutes({ children }: ProtectedRouteProps) {
+export function ProtectedAuthRoutes({ children }: ProtectedRouteProps) {
     const token = localStorage.getItem("token");
 
     if (token) {
+        return <Navigate to="/" replace/>;
+    }
+
+    
+
+    return <>{children}</>;
+}
+
+
+export function ProtectedDashboardRoutes({ children }: ProtectedRouteProps) {
+    const token = localStorage.getItem("token");
+    const data = JSON.parse(localStorage.getItem("userData") || "null");
+
+    if (!data || data?.userType === 'buyer' || !token) {
         return <Navigate to="/" replace/>;
     }
 
