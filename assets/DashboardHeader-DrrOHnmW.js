@@ -1,1 +1,0 @@
-import{j as e}from"./index-B5aLS6TC.js";const d="_dashboard_header_qyeyx_3",s={dashboard_header:d};function o({title:r,description:a}){return e.jsx(e.Fragment,{children:e.jsxs("div",{className:s.dashboard_header,children:[e.jsx("h1",{children:r}),e.jsx("p",{children:a})]})})}export{o as D};
