@@ -21,10 +21,7 @@ export default function AddProduct() {
     // ** Defaults
     const data = JSON.parse(localStorage.getItem("userData") || "null");
     const now = new Date();
-
-
-    // ** States
-    const [productData, setProductData] = useState<INewProduct>({
+    const defaultData = {
         owner: data.id,
         name: '',
         description: '',
@@ -44,7 +41,10 @@ export default function AddProduct() {
         isPublished: false,
         publishDate: now.toISOString().split('T')[0],
         publishTime: now.toTimeString().split(' ')[0]
-    });
+    };
+
+    // ** States
+    const [productData, setProductData] = useState<INewProduct>(defaultData);
     const [categories, setCategories] = useState<ICategory[]>([]);
 
 
@@ -61,6 +61,7 @@ export default function AddProduct() {
         if(!productData.isPublished) return
         try{
             await addProductAction(productData);
+            setProductData(defaultData);
         }
         catch(error){
             console.log(error);
@@ -73,8 +74,6 @@ export default function AddProduct() {
     useEffect(()=>{
         const getdata = async ()=>{
             const result = await getCategoriesAction();
-            console.log("Categories from API:", result); // <--- هنا
-
             setCategories(result);
         }
 
@@ -115,7 +114,7 @@ export default function AddProduct() {
                                 onSelect={(itemSelected)=>{
                                     setProductData((prev) => ({
                                         ...prev,
-                                        categories: [...(prev.categories || []), (itemSelected.id - 1)]
+                                        categories: [...(prev.categories || []), (itemSelected.id! - 1)]
                                     }));
                                 }}/>
                             <DropMenuElement 
@@ -124,7 +123,7 @@ export default function AddProduct() {
                                 onSelect={(itemSelected)=>{
                                     setProductData((prev) => ({
                                         ...prev,
-                                        categories: [...(prev.categories || []), (itemSelected.id - 1)]
+                                        categories: [...(prev.categories || []), (itemSelected.id! - 1)]
                                     }));
                                 }}/>
                         </div>

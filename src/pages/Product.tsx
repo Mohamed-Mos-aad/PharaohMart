@@ -13,7 +13,7 @@ import ProductItem from "../components/product/ProductItem";
 import UserReview from "../components/product/UserReview";
 import OverRate from "../components/product/OverRate";
 // ** Interfaces
-import type { IProduct } from "../interfaces";
+import type { IFakeDataProduct } from "../interfaces";
 // ** Data
 import { fakeData } from "../data/fakeData";
 import { addProductToFavourite, removeProductFromFavourite } from "../app/features/favourite/favouriteSlice";
@@ -37,7 +37,7 @@ export default function Product() {
   const favouriteProducts = getPharaohMartData();
 
   // ** States
-  const [productData, setProductData] = useState<IProduct>();
+  const [productData, setProductData] = useState<IFakeDataProduct>();
 
   // ** Handlers
   const addToCartHandler = () => {
@@ -54,7 +54,7 @@ export default function Product() {
           name: productData.name,
           sellerName: productData.name,
           quantity: 1,
-          price: productData.productPrice,
+          price: productData.price.productPrice,
           imageUrl: productData.mainImage,
         })
       );
@@ -74,7 +74,7 @@ export default function Product() {
           name: productData.name,
           sellerName: productData.name,
           quantity: 1,
-          price: productData.productPrice,
+          price: productData.price.productPrice,
           imageUrl: productData.mainImage,
         })
       );
@@ -102,7 +102,7 @@ export default function Product() {
           name: productData.name,
           sellerName: productData.name,
           quantity: 1,
-          price: productData.productPrice,
+          price: productData.price.productPrice,
           imageUrl: productData.mainImage,
         })
       );
@@ -122,7 +122,7 @@ export default function Product() {
           name: productData.name,
           sellerName: productData.name,
           quantity: 1,
-          price: productData.productPrice,
+          price: productData.price.productPrice,
           imageUrl: productData.mainImage,
         })
       );
@@ -183,7 +183,7 @@ export default function Product() {
             }}
             productPhotos={productData.images}
             productDescription={productData.description}
-            productPrice={productData?.productPrice || 0}
+            productPrice={productData?.price.productPrice || 0}
             productDiscount={""}
             productOff={""}
             addToCartHandler={addToCartHandler}

@@ -11,7 +11,7 @@ import { useState } from 'react'
 interface IDropMenuElement{
     title: string;
     selections: { id: number; title: string }[];
-    onSelect: (itemSelected: { id: number; title: string }) => void;
+    onSelect: (itemSelected: { id: number | null; title: string }) => void;
 }
 
 
@@ -28,11 +28,8 @@ export default function DropMenuElement({title,selections,onSelect}:IDropMenuEle
         setDropMenuOpened(!dropMenuOpened);
     }
     const selectHandler = (id: number | null, title: string )=>{
-        if(id)
-        {
-            onSelect({id,title});
-            setSelected(title);
-        }
+        onSelect({id,title});
+        setSelected(title);
     }
 
     
@@ -50,7 +47,7 @@ export default function DropMenuElement({title,selections,onSelect}:IDropMenuEle
                 <h2>{selected}</h2>
                 <img src={downArrowIcon} alt="downArrow icon" />
                 <ul>
-                    {selected != title && selected != "All" ? <li onClick={()=>{selectHandler(null,"All")}}>All</li> : ''}
+                    <li onClick={()=>{selectHandler(null,"All")}}>All</li>
                     {selectionsRender}
                 </ul>
             </div>

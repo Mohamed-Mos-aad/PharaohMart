@@ -1,65 +1,70 @@
 // ** Hooks && Tools
 import { Route, Routes } from "react-router-dom";
-// ** Main Pages
-import MainLayout from "../layouts/MainLayout";
-import Product from "../pages/Product";
-import Home from "../pages/Home";
-import CategoryProducts from "../pages/CategoryProducts";
-import Cart from "../pages/main/Cart";
-import Favourite from "../pages/main/Favourite";
-import Checkout from "../pages/main/Checkout";
-// Auth Pages
-import AuthLayout from "../layouts/AuthLayout";
-import Welcome from "../pages/auth/Welcome";
-import SignUp from "../pages/auth/SignUp";
-import LogIn from "../pages/auth/LogIn";
-import Otp from "../pages/auth/Otp";
-import Success from "../pages/auth/Success";
-// ** Dashboard Pages
-import DashboardLayout from "../layouts/DashboardLayout";
-import Dashboard from "../pages/dashboard/Dashboard";
-import DashboardProducts from "../pages/dashboard/DashboardProducts";
-import AddProduct from "../pages/dashboard/AddProduct";
-import Orders from "../pages/dashboard/Orders";
-import Inventory from "../pages/dashboard/Inventory";
-import Payments from "../pages/dashboard/Payments";
-import Setting from "../pages/dashboard/Setting";
-import Help from "../pages/dashboard/Help";
-import ChatLayout from "../layouts/ChatLayout";
-import Analytics from "../pages/dashboard/Analytics";
+import { lazy, Suspense } from "react";
 // ** Middleware
 import { ProtectedAuthRoutes, ProtectedDashboardRoutes } from "./ProtectedRoute";
+// ** Main Pages
+const MainLayout = lazy(()=> import('../layouts/MainLayout')) 
+const Product = lazy(()=> import('../pages/Product')) 
+const Home = lazy(()=> import('../pages/Home'))
+const CategoryProducts = lazy(()=> import('../pages/CategoryProducts')) 
+const Cart = lazy(()=> import('../pages/main/Cart'))
+const Favourite = lazy(()=> import('../pages/main/Favourite')) 
+const Checkout = lazy(()=> import('../pages/main/Checkout')) 
+// Auth Pages
+const AuthLayout = lazy(()=> import('../layouts/AuthLayout')) 
+const Welcome = lazy(()=> import('../pages/auth/Welcome')) 
+const SignUp = lazy(()=> import('../pages/auth/SignUp')) 
+const LogIn = lazy(()=> import('../pages/auth/LogIn'))
+const Otp = lazy(()=> import('../pages/auth/Otp'))
+const Success = lazy(()=> import('../pages/auth/Success')) 
+// ** Dashboard Pages
+const DashboardLayout = lazy(()=> import('../layouts/DashboardLayout')) 
+const Dashboard = lazy(()=> import('../pages/dashboard/Dashboard')) 
+const DashboardProducts = lazy(()=> import('../pages/dashboard/DashboardProducts')) 
+const AddProduct = lazy(()=> import('../pages/dashboard/AddProduct')) 
+const Orders = lazy(()=> import('../pages/dashboard/Orders')) 
+const Inventory = lazy(()=> import('../pages/dashboard/Inventory')) 
+const Payments = lazy(()=> import('../pages/dashboard/Payments')) 
+const Setting = lazy(()=> import('../pages/dashboard/Setting')) 
+const Help = lazy(()=> import('../pages/dashboard/Help'))
+const ChatLayout = lazy(()=> import('../layouts/ChatLayout')) 
+const Analytics = lazy(()=> import('../pages/dashboard/Analytics')) 
+
 
 
 
 export const Routers = ()=>(
-    <Routes>
-        <Route path="/" element={<MainLayout />}>
-            <Route index element={<Home />} />
-            <Route path="product/:id" element={<Product />} />
-            <Route path="categories/:id" element={<CategoryProducts />} />
-            <Route path="cart" element={<Cart />} />
-            <Route path="checkout" element={<Checkout />} />
-            <Route path="favourite" element={<Favourite />} />
-        </Route>
-        <Route path="/u" element={<ProtectedAuthRoutes><AuthLayout /></ProtectedAuthRoutes>}>
-                <Route index element={<Welcome />} />
-                <Route path="sign-up" element={<SignUp />} />
-                <Route path="login" element={<LogIn />} />
-                <Route path="otp" element={<Otp />} />
-                <Route path="success" element={<Success />} />
-        </Route>
-        <Route path="/dashboard" element={<ProtectedDashboardRoutes><DashboardLayout /></ProtectedDashboardRoutes>}>
-            <Route index element={<Dashboard />} />
-            <Route path="products" element={<DashboardProducts />} />
-            <Route path="addProduct" element={<AddProduct />} />
-            <Route path="orders" element={<Orders />} />
-            <Route path="inventory" element={<Inventory />} />
-            <Route path="payment" element={<Payments />} />
-            <Route path="setting" element={<Setting />} />
-            <Route path="analytics" element={<Analytics />} />
-            <Route path="help" element={<Help />} />
-        </Route>
-        <Route path="messages" element={<ChatLayout />} />
-    </Routes>
+    <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+            <Route path="/" element={<MainLayout />}>
+                <Route index element={<Home />} />
+                <Route path="product/:id" element={<Product />} />
+                <Route path="categories/:id" element={<CategoryProducts />} />
+                <Route path="cart" element={<Cart />} />
+                <Route path="checkout" element={<Checkout />} />
+                <Route path="favourite" element={<Favourite />} />
+            </Route>
+            <Route path="/u" element={<ProtectedAuthRoutes><AuthLayout /></ProtectedAuthRoutes>}>
+                    <Route index element={<Welcome />} />
+                    <Route path="sign-up" element={<SignUp />} />
+                    <Route path="login" element={<LogIn />} />
+                    <Route path="otp" element={<Otp />} />
+                    <Route path="success" element={<Success />} />
+            </Route>
+            <Route path="/dashboard" element={<ProtectedDashboardRoutes><DashboardLayout /></ProtectedDashboardRoutes>}>
+                <Route index element={<Dashboard />} />
+                <Route path="products" element={<DashboardProducts />} />
+                <Route path="addProduct" element={<AddProduct />} />
+                <Route path="orders" element={<Orders />} />
+                <Route path="inventory" element={<Inventory />} />
+                <Route path="payment" element={<Payments />} />
+                <Route path="setting" element={<Setting />} />
+                <Route path="analytics" element={<Analytics />} />
+                <Route path="help" element={<Help />} />
+            </Route>
+            <Route path="messages" element={<ChatLayout />} />
+        </Routes>
+    </Suspense>
+
 )

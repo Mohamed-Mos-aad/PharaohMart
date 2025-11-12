@@ -15,7 +15,7 @@ import { useState } from "react";
 // ** Data
 import { fakeData } from "../data/fakeData";
 // ** Interfaces
-import type { IProduct } from "../interfaces";
+import type { IFakeDataProduct } from "../interfaces";
 
 
 
@@ -30,7 +30,7 @@ export default function CategoryProducts() {
   // ** States
   const [displayList, setDisplayList] = useState<boolean>(false);
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const currentData: IProduct[] = fakeData;
+  const currentData: IFakeDataProduct[] = fakeData;
   const filteredData = currentData.filter(
     (product) => product.category.toLowerCase() === categoryName.toLowerCase()
   );
@@ -62,7 +62,7 @@ export default function CategoryProducts() {
     <ProductCard
       id={product.id!}
       name={product.name}
-      price={product.productPrice}
+      price={product.price.productPrice}
       listDisplay={displayList}
       key={product.id}
       thumbnailImg={{ src: product.mainImage, alt: product.name }}

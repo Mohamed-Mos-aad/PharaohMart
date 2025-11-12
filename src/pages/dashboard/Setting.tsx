@@ -45,7 +45,7 @@ export default function Setting() {
                     </section>
                     <section>
                         <h3>Store Status</h3>
-                        <ToggleElement title='Online' />
+                        <ToggleElement title='Online' onChange={()=>{}}/>
                     </section>
                     <div className={style.setting_btn}>
                         <button>Save Changes</button>
