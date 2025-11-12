@@ -1,15 +1,16 @@
 // ** Style
 import style from '../../style/components/form/toggleElement.module.css'
 // ** Hooks && Tools
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 
 
 // ** Interfaces
 interface IToggleElement{
     title: string;
+    onChange: (value:boolean)=> void
 }
-export default function ToggleElement({title}:IToggleElement) {
+export default function ToggleElement({title,onChange}:IToggleElement) {
     // ** States
     const [inputToggle,setInputToggle] = useState<boolean>(false);
 
@@ -17,8 +18,15 @@ export default function ToggleElement({title}:IToggleElement) {
 
     // ** Handlers
     const changeToggleStateHandler = ()=>{
-        setInputToggle(!inputToggle);
+        setInputToggle(prev => !prev);
     }
+
+
+
+    // ** UseEffect
+    useEffect(()=>{
+        onChange(inputToggle);
+    },[inputToggle])
 
 
 

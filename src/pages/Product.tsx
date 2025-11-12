@@ -50,11 +50,11 @@ export default function Product() {
     if (!exists) {
       dispatch(
         addProductToCart({
-          productId: productData.id,
+          productId: productData.id!,
           name: productData.name,
           sellerName: productData.name,
           quantity: 1,
-          price: productData.price.productPrice,
+          price: productData.productPrice,
           imageUrl: productData.mainImage,
         })
       );
@@ -70,11 +70,11 @@ export default function Product() {
     if (exists) {
       dispatch(
         removeProductFromCart({
-          productId: productData.id,
+          productId: productData.id!,
           name: productData.name,
           sellerName: productData.name,
           quantity: 1,
-          price: productData.price.productPrice,
+          price: productData.productPrice,
           imageUrl: productData.mainImage,
         })
       );
@@ -98,11 +98,11 @@ export default function Product() {
     if (!exists) {
       dispatch(
         addProductToFavourite({
-          productId: productData.id,
+          productId: productData.id!,
           name: productData.name,
           sellerName: productData.name,
           quantity: 1,
-          price: productData.price.productPrice,
+          price: productData.productPrice,
           imageUrl: productData.mainImage,
         })
       );
@@ -118,11 +118,11 @@ export default function Product() {
     if (exists) {
       dispatch(
         removeProductFromFavourite({
-          productId: productData.id,
+          productId: productData.id!,
           name: productData.name,
           sellerName: productData.name,
           quantity: 1,
-          price: productData.price.productPrice,
+          price: productData.productPrice,
           imageUrl: productData.mainImage,
         })
       );
@@ -140,7 +140,7 @@ export default function Product() {
 
 
   // ** Renders
-  const reviewRender = productData?.reviews.map((review) => (
+  const reviewRender = productData?.reviews?.map((review) => (
     <UserReview
       key={review.userData.userName}
       userData={{
@@ -183,9 +183,9 @@ export default function Product() {
             }}
             productPhotos={productData.images}
             productDescription={productData.description}
-            productPrice={productData?.price.productPrice || 0}
-            productDiscount={productData?.price.productDiscount || ""}
-            productOff={productData?.price.productOff || ""}
+            productPrice={productData?.productPrice || 0}
+            productDiscount={""}
+            productOff={""}
             addToCartHandler={addToCartHandler}
             addToFavouriteHandler={addToFavouriteHandler}
             removeFromFavouriteHandler={removeFromFavouriteHandler}
@@ -198,11 +198,11 @@ export default function Product() {
             <div className={style.customers_rates}>
               <OverRate
                 overRate={{
-                  oneStar: productData?.overRate.oneStar || 0,
-                  twoStars: productData?.overRate.twoStars || 0,
-                  threeStars: productData?.overRate.threeStars || 0,
-                  fourStars: productData?.overRate.fourStars || 0,
-                  fiveStars: productData?.overRate.fiveStars || 0,
+                  oneStar: productData?.overRate?.oneStar || 0,
+                  twoStars: productData?.overRate?.twoStars || 0,
+                  threeStars: productData?.overRate?.threeStars || 0,
+                  fourStars: productData?.overRate?.fourStars || 0,
+                  fiveStars: productData?.overRate?.fiveStars || 0,
                 }}
               />
             </div>

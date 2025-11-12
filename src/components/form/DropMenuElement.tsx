@@ -10,12 +10,13 @@ import { useState } from 'react'
 // ** Interfaces
 interface IDropMenuElement{
     title: string;
-    selections: string[];
+    selections: { id: number; title: string }[];
+    onSelect: (itemSelected: { id: number; title: string }) => void;
 }
 
 
 
-export default function DropMenuElement({title,selections}:IDropMenuElement) {
+export default function DropMenuElement({title,selections,onSelect}:IDropMenuElement) {
     // ** States
     const [dropMenuOpened,setDropMenuOpened] = useState<boolean>(false);
     const [selected,setSelected] = useState<string>(title);
@@ -26,17 +27,19 @@ export default function DropMenuElement({title,selections}:IDropMenuElement) {
     const dropMenuToggleHandler = ()=>{
         setDropMenuOpened(!dropMenuOpened);
     }
-    const selectHandler = (e: React.MouseEvent<HTMLLIElement, MouseEvent>)=>{
-        const selection = e.currentTarget.innerHTML;
-        console.log(selection);
-        setSelected(selection);
+    const selectHandler = (id: number | null, title: string )=>{
+        if(id)
+        {
+            onSelect({id,title});
+            setSelected(title);
+        }
     }
 
     
     
     // ** Renders
     const selectionsRender = selections.map(selection => 
-        <li key={selection} onClick={(e)=>{selectHandler(e)}}>{selection}</li>
+        <li key={selection.title} onClick={()=>{selectHandler(selection.id,selection.title)}}>{selection.title}</li>
     )
 
 
@@ -47,7 +50,7 @@ export default function DropMenuElement({title,selections}:IDropMenuElement) {
                 <h2>{selected}</h2>
                 <img src={downArrowIcon} alt="downArrow icon" />
                 <ul>
-                    {selected != title && selected != "All" ? <li onClick={(e)=>{selectHandler(e)}}>All</li> : ''}
+                    {selected != title && selected != "All" ? <li onClick={()=>{selectHandler(null,"All")}}>All</li> : ''}
                     {selectionsRender}
                 </ul>
             </div>

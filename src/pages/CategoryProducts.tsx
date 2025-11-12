@@ -60,9 +60,9 @@ export default function CategoryProducts() {
   // ** Renders
   const productsCardsRender = paginatedData?.map((product) => (
     <ProductCard
-      id={product.id}
+      id={product.id!}
       name={product.name}
-      price={product.price.productPrice}
+      price={product.productPrice}
       listDisplay={displayList}
       key={product.id}
       thumbnailImg={{ src: product.mainImage, alt: product.name }}

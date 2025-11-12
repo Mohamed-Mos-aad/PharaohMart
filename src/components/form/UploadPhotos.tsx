@@ -14,7 +14,7 @@ interface IUploadPhotos{
     title: string;
     description: string;
     quantity: number;
-    onUpload?: (images: string[]) => void;
+    onUpload?: (images: number[]) => void;
 }
 interface IUploadedFile {
     file?: File;
@@ -103,8 +103,8 @@ export default function UploadPhotos({quantity, title, description, onUpload}:IU
     },[files,quantity])
     useEffect(() => {
         if (onUpload) {
-            const uploadedUrls = files.map(f => f.url ? `http://localhost:1337${f.url}` : '');
-            onUpload(uploadedUrls);
+            const uploadedIds = files.map(f => f.id).filter((id): id is number => id !== undefined);
+            onUpload(uploadedIds);
         }
     }, [files]);
 

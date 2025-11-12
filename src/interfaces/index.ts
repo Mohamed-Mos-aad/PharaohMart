@@ -1,11 +1,15 @@
 // ** Product
 export interface IProduct{
-    id?: string,
+    id: string,
     name: string,
     description: string,
     category: string,
-    productPrice: number,
-    reviews?: {
+    price: {
+        productPrice: number;
+        productDiscount: string;
+        productOff: string;
+    },
+    reviews: {
         userData: {
             userPhoto: {
                 src: string,
@@ -21,7 +25,7 @@ export interface IProduct{
             unLike: number
         }
     }[],
-    overRate?: {
+    overRate: {
         oneStar: number,
         twoStars: number,
         threeStars: number,
@@ -30,6 +34,28 @@ export interface IProduct{
     }
     mainImage: string,
     images: string[]
+}
+export interface INewProduct{
+    owner: number,
+    name: string; // ** Done
+    description: string;  // ** Done
+    categories: number[] | null;  // ** Done
+    price: number;  // ** Done
+    salePrice?: number | null;  // ** Done
+    stockQuantity?: number;  // ** Done
+    productSKU?: string;  // ** Done
+    lowStockAlert?: number;  // ** Done
+    tags?: string[];
+    weight?: number;  // ** Done
+    length?: number;  // ** Done
+    width?: number;  // ** Done
+    unitWeight?: string;  // ** Done
+    unitDimension?: string;  // ** Done
+    images: number[];  // ** Done
+    mainImage: number | null;  // ** Done
+    isPublished?: boolean;  // ** Done
+    publishDate?: string;  // ** Done
+    publishTime?: string;  // ** Done
 }
 
 

@@ -1,0 +1,50 @@
+{
+  "kind": "collectionType",
+  "collectionName": "reviews",
+  "info": {
+    "singularName": "review",
+    "pluralName": "reviews",
+    "displayName": "Review"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "userPhoto": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "userName": {
+      "type": "string",
+      "required": true
+    },
+    "userRate": {
+      "type": "integer",
+      "required": true
+    },
+    "userComment": {
+      "type": "text",
+      "required": true
+    },
+    "like": {
+      "type": "integer",
+      "required": true
+    },
+    "unLike": {
+      "type": "integer",
+      "required": true
+    },
+    "product": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::product.product",
+      "inversedBy": "reviews"
+    }
+  }
+}

@@ -11,11 +11,7 @@ export const fakeData: IProduct[] = [
     name: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
     description: "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
     category: "Men's Clothing",
-    price: {
-      productPrice: 109.95,
-      productDiscount: "10%",
-      productOff: "$11.00"
-    },
+    productPrice: 109.95,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Alex Smith" }, userName: "Alex Smith", date: "2025-07-21" },
@@ -51,11 +47,7 @@ export const fakeData: IProduct[] = [
     name: "Mens Casual Premium Slim Fit T-Shirts",
     description: "Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing.",
     category: "Men's Clothing",
-    price: {
-      productPrice: 16.73,
-      productDiscount: "25%",
-      productOff: "$5.57"
-    },
+    productPrice: 16.73,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/3cO9c7d.png", alt: "Michael Brown" }, userName: "Michael Brown", date: "2025-08-01" },
@@ -91,11 +83,7 @@ export const fakeData: IProduct[] = [
     name: "Mens Cotton Jacket",
     description: "Great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions, such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors.",
     category: "Men's Clothing",
-    price: {
-      productPrice: 55.99,
-      productDiscount: "15%",
-      productOff: "$8.40"
-    },
+    productPrice: 55.99,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "David Black" }, userName: "David Black", date: "2025-05-20" },
@@ -131,11 +119,7 @@ export const fakeData: IProduct[] = [
     name: "Mens Casual Slim Fit",
     description: "The color could be slightly different between on the screen and in practice. Please note that body builds vary by person, therefore, detailed size information should be reviewed on the product description.",
     category: "Men's Clothing",
-    price: {
-      productPrice: 15.99,
-      productDiscount: "5%",
-      productOff: "$0.80"
-    },
+    productPrice: 15.99,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/1As8dlo.png", alt: "Sarah Green" }, userName: "Sarah Green", date: "2025-08-10" },
@@ -171,11 +155,7 @@ export const fakeData: IProduct[] = [
     name: "John Hardy Women's Legends Naga Gold & Silver Dragon Bracelet",
     description: "From our Legends Collection, the Naga was inspired by the mythical water dragon that protects the ocean's pearl. Wear facing inward to be bestowed with love and abundance, or outward for protection.",
     category: "Jewelry",
-    price: {
-      productPrice: 695,
-      productDiscount: "20%",
-      productOff: "$139.00"
-    },
+    productPrice: 695,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/6DERudP.png", alt: "Jessica King" }, userName: "Jessica King", date: "2025-07-30" },
@@ -211,11 +191,7 @@ export const fakeData: IProduct[] = [
     name: "Solid Gold Petite Micropave",
     description: "Satisfaction Guaranteed. Return or exchange any order within 30 days. Designed and sold by Hafeez Center in the United States.",
     category: "Jewelry",
-    price: {
-      productPrice: 168,
-      productDiscount: "15%",
-      productOff: "$25.20"
-    },
+    productPrice: 168,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Helen Scott" }, userName: "Helen Scott", date: "2025-08-12" },
@@ -251,11 +227,7 @@ export const fakeData: IProduct[] = [
     name: "White Gold Plated Princess Ring",
     description: "Classic Created Wedding Engagement Solitaire Diamond Promise Ring for Her. Gifts to spoil your love more for Engagement, Wedding, Anniversary, Valentine's Day...",
     category: "Jewelry",
-    price: {
-      productPrice: 9.99,
-      productDiscount: "25%",
-      productOff: "$2.50"
-    },
+    productPrice: 9.99,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Chloe Davis" }, userName: "Chloe Davis", date: "2025-06-11" },
@@ -291,11 +263,7 @@ export const fakeData: IProduct[] = [
     name: "Rose Gold Plated Double Flared Tunnel Plug Earrings",
     description: "Rose Gold Plated Double Flared Tunnel Plug Earrings. Made of 316L Stainless Steel",
     category: "Jewelry",
-    price: {
-      productPrice: 10.99,
-      productDiscount: "10%",
-      productOff: "$1.10"
-    },
+    productPrice: 10.99,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/1As8dlo.png", alt: "Mia Rodriguez" }, userName: "Mia Rodriguez", date: "2025-08-12" },
@@ -331,11 +299,7 @@ export const fakeData: IProduct[] = [
     name: "WD 2TB Elements Portable External Hard Drive - USB 3.0",
     description: "USB 3.0 and USB 2.0 Compatibility Fast data transfers Improve PC Performance High Capacity; Compatibility Formatted NTFS for Windows 10, Windows 8.1, Windows 7.",
     category: "Electronics",
-    price: {
-      productPrice: 64,
-      productDiscount: "15%",
-      productOff: "$9.60"
-    },
+    productPrice: 64,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/3cO9c7d.png", alt: "Ethan Moore" }, userName: "Ethan Moore", date: "2025-08-01" },
@@ -371,11 +335,7 @@ export const fakeData: IProduct[] = [
     name: "SanDisk SSD PLUS 1TB Internal SSD",
     description: "Easy upgrade for faster boot up, shutdown, application load and response. Read/write speeds of up to 535MB/s/450MB/s.",
     category: "Electronics",
-    price: {
-      productPrice: 109,
-      productDiscount: "10%",
-      productOff: "$10.90"
-    },
+    productPrice: 109,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/aC3z2fA.png", alt: "Leo Wilson" }, userName: "Leo Wilson", date: "2025-06-03" },
@@ -411,11 +371,7 @@ export const fakeData: IProduct[] = [
     name: "Silicon Power 256GB SSD 3D NAND A55",
     description: "3D NAND flash are applied to deliver high transfer speeds. The advanced SLC Cache Technology allows performance boost and longer lifespan.",
     category: "Electronics",
-    price: {
-      productPrice: 109,
-      productDiscount: "20%",
-      productOff: "$21.80"
-    },
+    productPrice: 109,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Alex Smith" }, userName: "Alex Smith", date: "2025-07-21" },
@@ -451,11 +407,7 @@ export const fakeData: IProduct[] = [
     name: "WD 4TB Gaming Drive for Playstation 4",
     description: "Expand your PS4 gaming experience, Play anywhere. Fast and easy setup with a sleek design and high capacity.",
     category: "Electronics",
-    price: {
-      productPrice: 114,
-      productDiscount: "25%",
-      productOff: "$28.50"
-    },
+    productPrice: 114,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/3cO9c7d.png", alt: "Michael Brown" }, userName: "Michael Brown", date: "2025-08-01" },
@@ -491,11 +443,7 @@ export const fakeData: IProduct[] = [
     name: "Acer SB220Q bi 21.5 inches Full HD IPS Ultra-Thin Monitor",
     description: "21.5 inches Full HD (1920 x 1080) widescreen IPS display with Radeon FreeSync technology. Zero-frame design.",
     category: "Electronics",
-    price: {
-      productPrice: 599,
-      productDiscount: "10%",
-      productOff: "$59.90"
-    },
+    productPrice: 599,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/6DERudP.png", alt: "Jane Doe" }, userName: "Jane Doe", date: "2025-07-19" },
@@ -531,11 +479,7 @@ export const fakeData: IProduct[] = [
     name: "Samsung 49-Inch CHG90 144Hz Curved Gaming Monitor",
     description: "49 inch super ultrawide 32:9 curved gaming monitor with Quantum Dot (QLED) technology and HDR support.",
     category: "Electronics",
-    price: {
-      productPrice: 999.99,
-      productDiscount: "15%",
-      productOff: "$150.00"
-    },
+    productPrice: 999.99,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "David Black" }, userName: "David Black", date: "2025-05-20" },
@@ -571,11 +515,7 @@ export const fakeData: IProduct[] = [
     name: "BIYLACLESEN Women's 3-in-1 Snowboard Jacket",
     description: "US standard size. Material: 100% Polyester; Detachable Liner Fabric: Warm Fleece. Suitable for different seasons.",
     category: "Women's Clothing",
-    price: {
-      productPrice: 56.99,
-      productDiscount: "10%",
-      productOff: "$5.70"
-    },
+    productPrice: 56.99,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Brenda Smith" }, userName: "Brenda Smith", date: "2025-08-14" },
@@ -611,11 +551,7 @@ export const fakeData: IProduct[] = [
     name: "Lock and Love Women's Faux Leather Moto Biker Jacket",
     description: "100% POLYURETHANE(shell) 100% POLYESTER(lining). Faux leather material for style and comfort with a removable hood.",
     category: "Women's Clothing",
-    price: {
-      productPrice: 29.95,
-      productDiscount: "15%",
-      productOff: "$4.49"
-    },
+    productPrice: 29.95,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/aC3z2fA.png", alt: "Jessica King" }, userName: "Jessica King", date: "2025-07-30" },
@@ -651,11 +587,7 @@ export const fakeData: IProduct[] = [
     name: "Rain Jacket Women Windbreaker Striped Climbing Raincoat",
     description: "Lightweight perfect for trip or casual wear. Long sleeve with hooded, adjustable drawstring waist design.",
     category: "Women's Clothing",
-    price: {
-      productPrice: 39.99,
-      productDiscount: "5%",
-      productOff: "$2.00"
-    },
+    productPrice: 39.99,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Deborah Davis" }, userName: "Deborah Davis", date: "2025-08-13" },
@@ -691,11 +623,7 @@ export const fakeData: IProduct[] = [
     name: "MBJ Women's Solid Short Sleeve Boat Neck V-Neck",
     description: "95% RAYON 5% SPANDEX, Made in USA or Imported. Lightweight fabric with great stretch for comfort.",
     category: "Women's Clothing",
-    price: {
-      productPrice: 9.85,
-      productDiscount: "10%",
-      productOff: "$0.99"
-    },
+    productPrice: 9.85,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/6DERudP.png", alt: "Olivia Martinez" }, userName: "Olivia Martinez", date: "2025-07-22" },
@@ -731,11 +659,7 @@ export const fakeData: IProduct[] = [
     name: "Opna Women's Short Sleeve Moisture Wicking Tee",
     description: "100% cationic polyester interlock. Lightweight, roomy and highly breathable with moisture wicking fabric which helps to keep moisture away.",
     category: "Women's Clothing",
-    price: {
-      productPrice: 7.95,
-      productDiscount: "15%",
-      productOff: "$1.19"
-    },
+    productPrice: 7.95,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Chloe Davis" }, userName: "Chloe Davis", date: "2025-06-11" },
@@ -771,11 +695,7 @@ export const fakeData: IProduct[] = [
     name: "DANVOUY Womens T Shirt Casual Cotton Short Sleeve",
     description: "95% Cotton, 5% Spandex. The fabric is soft and has some stretch. Features: Casual, Short Sleeve, Letter Print, V-Neck.",
     category: "Women's Clothing",
-    price: {
-      productPrice: 12.99,
-      productDiscount: "5%",
-      productOff: "$0.65"
-    },
+    productPrice: 12.99,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Jennifer Thompson" }, userName: "Jennifer Thompson", date: "2025-08-12" },
@@ -811,11 +731,7 @@ export const fakeData: IProduct[] = [
     name: "Essence Mascara Lash Princess",
     description: "The Essence Mascara Lash Princess is a popular mascara known for its volumizing and lengthening effects. Achieve dramatic lashes with this long-lasting and cruelty-free formula.",
     category: "Beauty",
-    price: {
-      productPrice: 9.99,
-      productDiscount: "10.48%",
-      productOff: "$1.05"
-    },
+    productPrice: 9.99,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/1As8dlo.png", alt: "Eleanor Collins" }, userName: "Eleanor Collins", date: "2025-04-30" },
@@ -851,11 +767,7 @@ export const fakeData: IProduct[] = [
     name: "Eyeshadow Palette with Mirror",
     description: "The Eyeshadow Palette with Mirror offers a versatile range of eyeshadow shades for creating stunning eye looks. With a built-in mirror, it's convenient for on-the-go makeup application.",
     category: "Beauty",
-    price: {
-      productPrice: 19.99,
-      productDiscount: "18.19%",
-      productOff: "$3.64"
-    },
+    productPrice: 19.99,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/3cO9c7d.png", alt: "Savannah Gomez" }, userName: "Savannah Gomez", date: "2025-04-30" },
@@ -891,11 +803,7 @@ export const fakeData: IProduct[] = [
     name: "Powder Canister",
     description: "The Powder Canister is a finely milled setting powder designed to set makeup and control shine. With a lightweight and translucent formula, it provides a smooth and matte finish.",
     category: "Beauty",
-    price: {
-      productPrice: 14.99,
-      productDiscount: "15%",
-      productOff: "$2.25"
-    },
+    productPrice: 14.99,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Lisa Miller" }, userName: "Lisa Miller", date: "2025-08-11" },
@@ -931,11 +839,7 @@ export const fakeData: IProduct[] = [
     name: "Red Lipstick",
     description: "The Red Lipstick is a classic and bold choice for adding a pop of color to your lips. With a creamy and pigmented formula, it provides a vibrant and long-lasting finish.",
     category: "Beauty",
-    price: {
-      productPrice: 12.99,
-      productDiscount: "12.16%",
-      productOff: "$1.58"
-    },
+    productPrice: 12.99,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Liam Garcia" }, userName: "Liam Garcia", date: "2025-04-30" },
@@ -971,11 +875,7 @@ export const fakeData: IProduct[] = [
     name: "Red Nail Polish",
     description: "The Red Nail Polish offers a rich and glossy red hue for vibrant and polished nails. With a quick-drying formula, it provides a salon-quality finish at home.",
     category: "Beauty",
-    price: {
-      productPrice: 8.99,
-      productDiscount: "11.44%",
-      productOff: "$1.03"
-    },
+    productPrice: 8.99,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/1As8dlo.png", alt: "Clara Berry" }, userName: "Clara Berry", date: "2025-04-30" },
@@ -1011,11 +911,7 @@ export const fakeData: IProduct[] = [
     name: "Calvin Klein CK One",
     description: "CK One by Calvin Klein is a classic unisex fragrance, known for its fresh and clean scent. It's a versatile fragrance suitable for everyday wear.",
     category: "Fragrances",
-    price: {
-      productPrice: 49.99,
-      productDiscount: "20%",
-      productOff: "$10.00"
-    },
+    productPrice: 49.99,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/aC3z2fA.png", alt: "Daniel Cook" }, userName: "Daniel Cook", date: "2025-04-30" },
@@ -1055,11 +951,7 @@ export const fakeData: IProduct[] = [
     name: "Chanel Coco Noir Eau De Parfum",
     description: "Coco Noir by Chanel is an elegant and mysterious fragrance, featuring notes of grapefruit, rose, and sandalwood. Perfect for evening occasions.",
     category: "Fragrances",
-    price: {
-      productPrice: 129.99,
-      productDiscount: "16.51%",
-      productOff: "$21.46"
-    },
+    productPrice: 129.99,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Kimberly Green" }, userName: "Kimberly Green", date: "2025-08-15" },
@@ -1099,11 +991,7 @@ export const fakeData: IProduct[] = [
     name: "Dior J'adore",
     description: "J'adore by Dior is a luxurious and floral fragrance, known for its blend of ylang-ylang, rose, and jasmine. It embodies femininity and sophistication.",
     category: "Fragrances",
-    price: {
-      productPrice: 89.99,
-      productDiscount: "14.72%",
-      productOff: "$13.25"
-    },
+    productPrice: 89.99,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/6DERudP.png", alt: "Penelope Harper" }, userName: "Penelope Harper", date: "2025-04-30" },
@@ -1143,11 +1031,7 @@ export const fakeData: IProduct[] = [
     name: "Dolce Shine Eau de Parfum",
     description: "Dolce Shine by Dolce & Gabbana is a vibrant and fruity fragrance, featuring notes of mango, jasmine, and blonde woods. It's a joyful and youthful scent.",
     category: "Fragrances",
-    price: {
-      productPrice: 69.99,
-      productDiscount: "15%",
-      productOff: "$10.50"
-    },
+    productPrice: 69.99,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Janet Perez" }, userName: "Janet Perez", date: "2025-08-10" },
@@ -1187,11 +1071,7 @@ export const fakeData: IProduct[] = [
     name: "Gucci Bloom Eau de Parfum",
     description: "Gucci Bloom by Gucci is a floral and captivating fragrance, with notes of tuberose, jasmine, and Rangoon creeper. It's a modern and romantic scent.",
     category: "Fragrances",
-    price: {
-      productPrice: 79.99,
-      productDiscount: "14.39%",
-      productOff: "$11.51"
-    },
+    productPrice: 79.99,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Addison Wright" }, userName: "Addison Wright", date: "2025-04-30" },
@@ -1231,11 +1111,7 @@ export const fakeData: IProduct[] = [
     name: "Annibale Colombo Bed",
     description: "The Annibale Colombo Bed is a luxurious and elegant bed frame, crafted with high-quality materials for a comfortable and stylish bedroom.",
     category: "Furniture",
-    price: {
-      productPrice: 1899.99,
-      productDiscount: "8.57%",
-      productOff: "$162.83"
-    },
+    productPrice: 1899.99,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Rachel Edwards" }, userName: "Rachel Edwards", date: "2025-08-14" },
@@ -1275,11 +1151,7 @@ export const fakeData: IProduct[] = [
     name: "Annibale Colombo Sofa",
     description: "The Annibale Colombo Sofa is a sophisticated and comfortable seating option, featuring exquisite design and premium upholstery for your living room.",
     category: "Furniture",
-    price: {
-      productPrice: 2499.99,
-      productDiscount: "18%",
-      productOff: "$450.00"
-    },
+    productPrice: 2499.99,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/1As8dlo.png", alt: "Lillian Bishop" }, userName: "Lillian Bishop", date: "2025-04-30" },
@@ -1319,11 +1191,7 @@ export const fakeData: IProduct[] = [
     name: "Bedside Table African Cherry",
     description: "The Bedside Table in African Cherry is a stylish and functional addition to your bedroom, providing convenient storage space and a touch of elegance.",
     category: "Furniture",
-    price: {
-      productPrice: 299.99,
-      productDiscount: "19.09%",
-      productOff: "$57.27"
-    },
+    productPrice: 299.99,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Judy Cooper" }, userName: "Judy Cooper", date: "2025-08-10" },
@@ -1363,11 +1231,7 @@ export const fakeData: IProduct[] = [
     name: "Knoll Saarinen Executive Conference Chair",
     description: "The Knoll Saarinen Executive Conference Chair is a modern and ergonomic chair, perfect for your office or conference room with its timeless design.",
     category: "Furniture",
-    price: {
-      productPrice: 499.99,
-      productDiscount: "2.01%",
-      productOff: "$10.05"
-    },
+    productPrice: 499.99,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/aC3z2fA.png", alt: "Elena Long" }, userName: "Elena Long", date: "2025-04-30" },
@@ -1407,11 +1271,7 @@ export const fakeData: IProduct[] = [
     name: "Wooden Bathroom Sink With Mirror",
     description: "The Wooden Bathroom Sink with Mirror is a unique and stylish addition to your bathroom, featuring a wooden sink countertop and a matching mirror.",
     category: "Furniture",
-    price: {
-      productPrice: 799.99,
-      productDiscount: "8.8%",
-      productOff: "$70.40"
-    },
+    productPrice: 799.99,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/3cO9c7d.png", alt: "Aria Parker" }, userName: "Aria Parker", date: "2025-04-30" },
@@ -1451,11 +1311,7 @@ export const fakeData: IProduct[] = [
     name: "Apple",
     description: "Fresh and crisp apples, perfect for snacking or incorporating into various recipes.",
     category: "Groceries",
-    price: {
-      productPrice: 1.99,
-      productDiscount: "12.62%",
-      productOff: "$0.25"
-    },
+    productPrice: 1.99,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Cheryl Patterson" }, userName: "Cheryl Patterson", date: "2025-08-15" },
@@ -1491,11 +1347,7 @@ export const fakeData: IProduct[] = [
     name: "Beef Steak",
     description: "High-quality beef steak, great for grilling or cooking to your preferred level of doneness.",
     category: "Groceries",
-    price: {
-      productPrice: 12.99,
-      productDiscount: "15%",
-      productOff: "$1.95"
-    },
+    productPrice: 12.99,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/6DERudP.png", alt: "Natalie Harris" }, userName: "Natalie Harris", date: "2025-04-30" },
@@ -1531,11 +1383,7 @@ export const fakeData: IProduct[] = [
     name: "Cat Food",
     description: "Nutritious cat food formulated to meet the dietary needs of your feline friend.",
     category: "Groceries",
-    price: {
-      productPrice: 8.99,
-      productDiscount: "9.58%",
-      productOff: "$0.86"
-    },
+    productPrice: 8.99,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Roger Griffin" }, userName: "Roger Griffin", date: "2025-08-12" },
@@ -1571,11 +1419,7 @@ export const fakeData: IProduct[] = [
     name: "Chicken Meat",
     description: "Fresh and tender chicken meat, suitable for various culinary preparations.",
     category: "Groceries",
-    price: {
-      productPrice: 9.99,
-      productDiscount: "13.7%",
-      productOff: "$1.37"
-    },
+    productPrice: 9.99,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Mateo Bennett" }, userName: "Mateo Bennett", date: "2025-04-30" },
@@ -1614,11 +1458,7 @@ export const fakeData: IProduct[] = [
     name: "Cooking Oil",
     description: "Versatile cooking oil suitable for frying, sautéing, and various culinary applications.",
     category: "Groceries",
-    price: {
-      productPrice: 4.99,
-      productDiscount: "9.33%",
-      productOff: "$0.47"
-    },
+    productPrice: 4.99,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Douglas Henderson" }, userName: "Douglas Henderson", date: "2025-08-12" },
@@ -1654,11 +1494,7 @@ export const fakeData: IProduct[] = [
     name: "Cucumber",
     description: "Crisp and hydrating cucumbers, ideal for salads, snacks, or as a refreshing side.",
     category: "Groceries",
-    price: {
-      productPrice: 1.49,
-      productDiscount: "5%",
-      productOff: "$0.07"
-    },
+    productPrice: 1.49,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Nathan Powell" }, userName: "Nathan Powell", date: "2025-08-15" },
@@ -1694,11 +1530,7 @@ export const fakeData: IProduct[] = [
     name: "Dog Food",
     description: "Specially formulated dog food designed to provide essential nutrients for your canine companion.",
     category: "Groceries",
-    price: {
-      productPrice: 10.99,
-      productDiscount: "10.27%",
-      productOff: "$1.13"
-    },
+    productPrice: 10.99,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/1As8dlo.png", alt: "Nova Cooper" }, userName: "Nova Cooper", date: "2025-04-30" },
@@ -1734,11 +1566,7 @@ export const fakeData: IProduct[] = [
     name: "Eggs",
     description: "Fresh eggs, a versatile ingredient for baking, cooking, or breakfast.",
     category: "Groceries",
-    price: {
-      productPrice: 2.99,
-      productDiscount: "13%",
-      productOff: "$0.39"
-    },
+    productPrice: 2.99,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Kevin Simmons" }, userName: "Kevin Simmons", date: "2025-08-14" },
@@ -1774,11 +1602,7 @@ export const fakeData: IProduct[] = [
     name: "Fish Steak",
     description: "Quality fish steak, suitable for grilling, baking, or pan-searing.",
     category: "Groceries",
-    price: {
-      productPrice: 14.99,
-      productDiscount: "4.23%",
-      productOff: "$0.63"
-    },
+    productPrice: 14.99,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Ethan Alexander" }, userName: "Ethan Alexander", date: "2025-08-13" },
@@ -1814,11 +1638,7 @@ export const fakeData: IProduct[] = [
     name: "Green Bell Pepper",
     description: "Fresh and vibrant green bell pepper, perfect for adding color and flavor to your dishes.",
     category: "Groceries",
-    price: {
-      productPrice: 1.29,
-      productDiscount: "5%",
-      productOff: "$0.06"
-    },
+    productPrice: 1.29,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Ryan Hayes" }, userName: "Ryan Hayes", date: "2025-08-15" },
@@ -1854,11 +1674,7 @@ export const fakeData: IProduct[] = [
     name: "Green Chili Pepper",
     description: "Spicy green chili pepper, ideal for adding heat to your favorite recipes.",
     category: "Groceries",
-    price: {
-      productPrice: 0.99,
-      productDiscount: "15%",
-      productOff: "$0.15"
-    },
+    productPrice: 0.99,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Henry Fisher" }, userName: "Henry Fisher", date: "2025-08-14" },
@@ -1894,11 +1710,7 @@ export const fakeData: IProduct[] = [
     name: "Honey Jar",
     description: "Pure and natural honey in a convenient jar, perfect for sweetening beverages or drizzling over food.",
     category: "Groceries",
-    price: {
-      productPrice: 6.99,
-      productDiscount: "14.4%",
-      productOff: "$1.01"
-    },
+    productPrice: 6.99,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Frank Perry" }, userName: "Frank Perry", date: "2025-08-13" },
@@ -1934,11 +1746,7 @@ export const fakeData: IProduct[] = [
     name: "Ice Cream",
     description: "Creamy and delicious ice cream, available in various flavors for a delightful treat.",
     category: "Groceries",
-    price: {
-      productPrice: 5.49,
-      productDiscount: "8.69%",
-      productOff: "$0.48"
-    },
+    productPrice: 5.49,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/aC3z2fA.png", alt: "Sadie Morales" }, userName: "Sadie Morales", date: "2025-04-30" },
@@ -1979,11 +1787,7 @@ export const fakeData: IProduct[] = [
     name: "Juice",
     description: "Refreshing fruit juice, packed with vitamins and great for staying hydrated.",
     category: "Groceries",
-    price: {
-      productPrice: 3.99,
-      productDiscount: "12.06%",
-      productOff: "$0.48"
-    },
+    productPrice: 3.99,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Jeffrey Patterson" }, userName: "Jeffrey Patterson", date: "2025-08-15" },
@@ -2019,11 +1823,7 @@ export const fakeData: IProduct[] = [
     name: "Kiwi",
     description: "Nutrient-rich kiwi, perfect for snacking or adding a tropical twist to your dishes.",
     category: "Groceries",
-    price: {
-      productPrice: 2.49,
-      productDiscount: "15.22%",
-      productOff: "$0.38"
-    },
+    productPrice: 2.49,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Eric Bryant" }, userName: "Eric Bryant", date: "2025-08-14" },
@@ -2059,11 +1859,7 @@ export const fakeData: IProduct[] = [
     name: "Classic Red Pullover Hoodie",
     description: "Elevate your casual wardrobe with our Classic Red Pullover Hoodie. Crafted with a soft cotton blend for ultimate comfort, this vibrant red hoodie features a kangaroo pocket, adjustable drawstring hood, and ribbed cuffs for a snug fit.",
     category: "Clothes",
-    price: {
-      productPrice: 9.99,
-      productDiscount: "22%",
-      productOff: "$2.20"
-    },
+    productPrice: 9.99,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Brian Diaz" }, userName: "Brian Diaz", date: "2025-08-15" },
@@ -2103,11 +1899,7 @@ export const fakeData: IProduct[] = [
     name: "Classic Heather Gray Hoodie",
     description: "Stay cozy and stylish with our Classic Heather Gray Hoodie. Crafted from soft, durable fabric, it features a kangaroo pocket, adjustable drawstring hood, and ribbed cuffs. Perfect for a casual day out or a relaxing evening in.",
     category: "Clothes",
-    price: {
-      productPrice: 69,
-      productDiscount: "5%",
-      productOff: "$3.45"
-    },
+    productPrice: 69,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/3cO9c7d.png", alt: "Michael Brown" }, userName: "Michael Brown", date: "2025-08-01" },
@@ -2147,11 +1939,7 @@ export const fakeData: IProduct[] = [
     name: "Classic Grey Hooded Sweatshirt",
     description: "Elevate your casual wear with our Classic Grey Hooded Sweatshirt. Made from a soft cotton blend, this hoodie features a front kangaroo pocket, an adjustable drawstring hood, and ribbed cuffs for a snug fit.",
     category: "Clothes",
-    price: {
-      productPrice: 90,
-      productDiscount: "10%",
-      productOff: "$9.00"
-    },
+    productPrice: 90,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Paul Jenkins" }, userName: "Paul Jenkins", date: "2025-08-12" },
@@ -2191,11 +1979,7 @@ export const fakeData: IProduct[] = [
     name: "Classic Black Hooded Sweatshirt",
     description: "Elevate your casual wardrobe with our Classic Black Hooded Sweatshirt. Made from high-quality, soft fabric that ensures comfort and durability, this hoodie features a spacious kangaroo pocket and an adjustable drawstring hood.",
     category: "Clothes",
-    price: {
-      productPrice: 79,
-      productDiscount: "30%",
-      productOff: "$23.70"
-    },
+    productPrice: 79,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Andrew Patterson" }, userName: "Andrew Patterson", date: "2025-08-15" },
@@ -2235,11 +2019,7 @@ export const fakeData: IProduct[] = [
     name: "Classic Comfort Fit Joggers",
     description: "Discover the perfect blend of style and comfort with our Classic Comfort Fit Joggers. These versatile black joggers feature a soft elastic waistband with an adjustable drawstring, two side pockets, and ribbed ankle cuffs for a secure fit.",
     category: "Clothes",
-    price: {
-      productPrice: 25,
-      productDiscount: "10%",
-      productOff: "$2.50"
-    },
+    productPrice: 25,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/aC3z2fA.png", alt: "Chris Johnson" }, userName: "Chris Johnson", date: "2025-07-28" },
@@ -2279,11 +2059,7 @@ export const fakeData: IProduct[] = [
     name: "Classic Comfort Drawstring Joggers",
     description: "Experience the perfect blend of comfort and style with our Classic Comfort Drawstring Joggers. Designed for a relaxed fit, these joggers feature a soft, stretchable fabric and convenient side pockets.",
     category: "Clothes",
-    price: {
-      productPrice: 79,
-      productDiscount: "15%",
-      productOff: "$11.85"
-    },
+    productPrice: 79,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Anthony Russell" }, userName: "Anthony Russell", date: "2025-08-12" },
@@ -2322,11 +2098,7 @@ export const fakeData: IProduct[] = [
     name: "Classic Red Jogger Sweatpants",
     description: "Experience ultimate comfort with our red jogger sweatpants, perfect for both workout sessions and lounging. Made with soft, durable fabric, these joggers feature a snug waistband and practical side pockets.",
     category: "Clothes",
-    price: {
-      productPrice: 98,
-      productDiscount: "20%",
-      productOff: "$19.60"
-    },
+    productPrice: 98,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "James Wallace" }, userName: "James Wallace", date: "2025-08-14" },
@@ -2366,11 +2138,7 @@ export const fakeData: IProduct[] = [
     name: "Classic Navy Blue Baseball Cap",
     description: "Step out in style with this sleek navy blue baseball cap. Crafted from durable material, it features a smooth, structured design and an adjustable strap for the perfect fit.",
     category: "Clothes",
-    price: {
-      productPrice: 61,
-      productDiscount: "25%",
-      productOff: "$15.25"
-    },
+    productPrice: 61,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/6DERudP.png", alt: "Jane Doe" }, userName: "Jane Doe", date: "2025-07-19" },
@@ -2410,11 +2178,7 @@ export const fakeData: IProduct[] = [
     name: "Classic Blue Baseball Cap",
     description: "Top off your casual look with our Classic Blue Baseball Cap, made from high-quality materials for lasting comfort. Featuring a timeless six-panel design with a pre-curved visor.",
     category: "Clothes",
-    price: {
-      productPrice: 86,
-      productDiscount: "10%",
-      productOff: "$8.60"
-    },
+    productPrice: 86,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Christopher Perry" }, userName: "Christopher Perry", date: "2025-08-15" },
@@ -2454,11 +2218,7 @@ export const fakeData: IProduct[] = [
     name: "Classic Red Baseball Cap",
     description: "Elevate your casual wardrobe with this timeless red baseball cap. Crafted from durable fabric, it features a comfortable fit with an adjustable strap at the back, ensuring one size fits all.",
     category: "Clothes",
-    price: {
-      productPrice: 35,
-      productDiscount: "25%",
-      productOff: "$8.75"
-    },
+    productPrice: 35,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Jason Hughes" }, userName: "Jason Hughes", date: "2025-08-13" },
@@ -2498,11 +2258,7 @@ export const fakeData: IProduct[] = [
     name: "Classic Black Baseball Cap",
     description: "Elevate your casual wear with this timeless black baseball cap. Made with high-quality, breathable fabric, it features an adjustable strap for the perfect fit.",
     category: "Clothes",
-    price: {
-      productPrice: 58,
-      productDiscount: "5%",
-      productOff: "$2.90"
-    },
+    productPrice: 58,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Kenneth Bryant" }, userName: "Kenneth Bryant", date: "2025-08-12" },
@@ -2542,11 +2298,7 @@ export const fakeData: IProduct[] = [
     name: "Classic Olive Chino Shorts",
     description: "Elevate your casual wardrobe with these classic olive chino shorts. Designed for comfort and versatility, they feature a smooth waistband, practical pockets, and a tailored fit.",
     category: "Clothes",
-    price: {
-      productPrice: 84,
-      productDiscount: "10%",
-      productOff: "$8.40"
-    },
+    productPrice: 84,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Kevin Diaz" }, userName: "Kevin Diaz", date: "2025-08-14" },
@@ -2585,11 +2337,7 @@ export const fakeData: IProduct[] = [
     name: "Classic High-Waisted Athletic Shorts",
     description: "Stay comfortable and stylish with our Classic High-Waisted Athletic Shorts. Designed for optimal movement and versatility, these shorts are a must-have for your workout wardrobe.",
     category: "Clothes",
-    price: {
-      productPrice: 43,
-      productDiscount: "20%",
-      productOff: "$8.60"
-    },
+    productPrice: 43,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Amanda Barnes" }, userName: "Amanda Barnes", date: "2025-08-13" },
@@ -2629,11 +2377,7 @@ export const fakeData: IProduct[] = [
     name: "Classic White Crew Neck T-Shirt",
     description: "Elevate your basics with this versatile white crew neck tee. Made from a soft, breathable cotton blend, it offers both comfort and durability. Its sleek, timeless design ensures it pairs well with virtually any outfit.",
     category: "Clothes",
-    price: {
-      productPrice: 39,
-      productDiscount: "5%",
-      productOff: "$1.95"
-    },
+    productPrice: 39,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Rebecca Jenkins" }, userName: "Rebecca Jenkins", date: "2025-08-11" },
@@ -2673,11 +2417,7 @@ export const fakeData: IProduct[] = [
     name: "Classic White Tee - Timeless Style and Comfort",
     description: "Elevate your everyday wardrobe with our Classic White Tee. Crafted from premium soft cotton material, this versatile t-shirt combines comfort with durability, perfect for daily wear.",
     category: "Clothes",
-    price: {
-      productPrice: 73,
-      productDiscount: "10%",
-      productOff: "$7.30"
-    },
+    productPrice: 73,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "David Black" }, userName: "David Black", date: "2025-05-20" },
@@ -2717,11 +2457,7 @@ export const fakeData: IProduct[] = [
     name: "Classic Black T-Shirt",
     description: "Elevate your everyday style with our Classic Black T-Shirt. This staple piece is crafted from soft, breathable cotton for all-day comfort. Its versatile design features a classic crew neck and short sleeves.",
     category: "Clothes",
-    price: {
-      productPrice: 35,
-      productDiscount: "20%",
-      productOff: "$7.00"
-    },
+    productPrice: 35,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Sarah Foster" }, userName: "Sarah Foster", date: "2025-08-13" },
@@ -2761,11 +2497,7 @@ export const fakeData: IProduct[] = [
     name: "Sleek White & Orange Wireless Gaming Controller",
     description: "Elevate your gaming experience with this state-of-the-art wireless controller, featuring a crisp white base with vibrant orange accents. Designed for precision play and maximum comfort.",
     category: "Electronics",
-    price: {
-      productPrice: 69,
-      productDiscount: "10%",
-      productOff: "$6.90"
-    },
+    productPrice: 69,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Daniel Russell" }, userName: "Daniel Russell", date: "2025-08-11" },
@@ -2805,11 +2537,7 @@ export const fakeData: IProduct[] = [
     name: "Sleek Wireless Headphone & Inked Earbud Set",
     description: "Experience the fusion of style and sound with this sophisticated audio set featuring a pair of sleek, white wireless headphones offering crystal-clear sound quality and over-ear comfort.",
     category: "Electronics",
-    price: {
-      productPrice: 44,
-      productDiscount: "5%",
-      productOff: "$2.20"
-    },
+    productPrice: 44,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/1As8dlo.png", alt: "Sarah Green" }, userName: "Sarah Green", date: "2025-08-10" },
@@ -2849,11 +2577,7 @@ export const fakeData: IProduct[] = [
     name: "Sleek Comfort-Fit Over-Ear Headphones",
     description: "Experience superior sound quality with our Sleek Comfort-Fit Over-Ear Headphones, designed for prolonged use with cushioned ear cups and an adjustable, padded headband.",
     category: "Electronics",
-    price: {
-      productPrice: 28,
-      productDiscount: "20%",
-      productOff: "$5.60"
-    },
+    productPrice: 28,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Kenneth Fisher" }, userName: "Kenneth Fisher", date: "2025-08-13" },
@@ -2893,11 +2617,7 @@ export const fakeData: IProduct[] = [
     name: "Efficient 2-Slice Toaster",
     description: "Enhance your morning routine with our sleek 2-slice toaster, featuring adjustable browning controls and a removable crumb tray for easy cleaning.",
     category: "Miscellaneous",
-    price: {
-      productPrice: 48,
-      productDiscount: "10%",
-      productOff: "$4.80"
-    },
+    productPrice: 48,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Betty Perry" }, userName: "Betty Perry", date: "2025-08-11" },
@@ -2937,11 +2657,7 @@ export const fakeData: IProduct[] = [
     name: "Sleek Wireless Computer Mouse",
     description: "Experience smooth and precise navigation with this modern wireless mouse, featuring a glossy finish and a comfortable ergonomic design.",
     category: "Electronics",
-    price: {
-      productPrice: 10,
-      productDiscount: "5%",
-      productOff: "$0.50"
-    },
+    productPrice: 10,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Carol Hughes" }, userName: "Carol Hughes", date: "2025-08-15" },
@@ -2981,11 +2697,7 @@ export const fakeData: IProduct[] = [
     name: "Sleek Modern Laptop with Ambient Lighting",
     description: "Experience next-level computing with our ultra-slim laptop, featuring a stunning display illuminated by ambient lighting. This high-performance machine is perfect for both work and play.",
     category: "Electronics",
-    price: {
-      productPrice: 43,
-      productDiscount: "10%",
-      productOff: "$4.30"
-    },
+    productPrice: 43,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Laura Bryant" }, userName: "Laura Bryant", date: "2025-08-14" },
@@ -3025,11 +2737,7 @@ export const fakeData: IProduct[] = [
     name: "Sleek Modern Laptop for Professionals",
     description: "Experience cutting-edge technology and elegant design with our latest laptop model. Perfect for professionals on-the-go, this high-performance laptop boasts a powerful processor, ample storage, and a long-lasting battery life.",
     category: "Electronics",
-    price: {
-      productPrice: 97,
-      productDiscount: "20%",
-      productOff: "$19.40"
-    },
+    productPrice: 97,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/aC3z2fA.png", alt: "Kevin Hall" }, userName: "Kevin Hall", date: "2025-08-05" },
@@ -3069,11 +2777,7 @@ export const fakeData: IProduct[] = [
     name: "Stylish Red & Silver Over-Ear Headphones",
     description: "Immerse yourself in superior sound quality with these sleek red and silver over-ear headphones. Designed for comfort and style, the headphones feature cushioned ear cups and an adjustable padded headband.",
     category: "Electronics",
-    price: {
-      productPrice: 39,
-      productDiscount: "10%",
-      productOff: "$3.90"
-    },
+    productPrice: 39,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Amanda Woods" }, userName: "Amanda Woods", date: "2025-08-13" },
@@ -3113,11 +2817,7 @@ export const fakeData: IProduct[] = [
     name: "Sleek Mirror Finish Phone Case",
     description: "Enhance your smartphone's look with this ultra-sleek mirror finish phone case. Designed to offer style with protection, the case features a reflective surface that adds a touch of elegance.",
     category: "Electronics",
-    price: {
-      productPrice: 27,
-      productDiscount: "5%",
-      productOff: "$1.35"
-    },
+    productPrice: 27,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Rebecca Coleman" }, userName: "Rebecca Coleman", date: "2025-08-11" },
@@ -3157,11 +2857,7 @@ export const fakeData: IProduct[] = [
     name: "Sleek Smartwatch with Vibrant Display",
     description: "Experience modern timekeeping with our high-tech smartwatch, featuring a vivid touch screen display, customizable watch faces, and a comfortable blue silicone strap.",
     category: "Electronics",
-    price: {
-      productPrice: 16,
-      productDiscount: "25%",
-      productOff: "$4.00"
-    },
+    productPrice: 16,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/3cO9c7d.png", alt: "Jessica King" }, userName: "Jessica King", date: "2025-07-30" },
@@ -3201,11 +2897,7 @@ export const fakeData: IProduct[] = [
     name: "Sleek Modern Leather Sofa",
     description: "Enhance the elegance of your living space with our Sleek Modern Leather Sofa. Designed with a minimalist aesthetic, it features clean lines and a luxurious leather finish.",
     category: "Furniture",
-    price: {
-      productPrice: 53,
-      productDiscount: "10%",
-      productOff: "$5.30"
-    },
+    productPrice: 53,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Jessica Simmons" }, userName: "Jessica Simmons", date: "2025-08-12" },
@@ -3245,11 +2937,7 @@ export const fakeData: IProduct[] = [
     name: "Mid-Century Modern Wooden Dining Table",
     description: "Elevate your dining room with this sleek Mid-Century Modern dining table, featuring an elegant walnut finish and tapered legs for a timeless aesthetic.",
     category: "Furniture",
-    price: {
-      productPrice: 24,
-      productDiscount: "5%",
-      productOff: "$1.20"
-    },
+    productPrice: 24,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Donna Alexander" }, userName: "Donna Alexander", date: "2025-08-15" },
@@ -3289,11 +2977,7 @@ export const fakeData: IProduct[] = [
     name: "Elegant Golden-Base Stone Top Dining Table",
     description: "Elevate your dining space with this luxurious table, featuring a sturdy golden metal base with an intricate rod design that provides both stability and chic elegance.",
     category: "Furniture",
-    price: {
-      productPrice: 66,
-      productDiscount: "20%",
-      productOff: "$13.20"
-    },
+    productPrice: 66,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/6DERudP.png", alt: "Olivia Martinez" }, userName: "Olivia Martinez", date: "2025-07-22" },
@@ -3333,11 +3017,7 @@ export const fakeData: IProduct[] = [
     name: "Modern Elegance Teal Armchair",
     description: "Elevate your living space with this beautifully crafted armchair, featuring a sleek wooden frame that complements its vibrant teal upholstery.",
     category: "Furniture",
-    price: {
-      productPrice: 25,
-      productDiscount: "5%",
-      productOff: "$1.25"
-    },
+    productPrice: 25,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Kimberly Barnes" }, userName: "Kimberly Barnes", date: "2025-08-12" },
@@ -3377,11 +3057,7 @@ export const fakeData: IProduct[] = [
     name: "Elegant Solid Wood Dining Table",
     description: "Enhance your dining space with this sleek, contemporary dining table, crafted from high-quality solid wood with a warm finish. Its sturdy construction and minimalist design make it a perfect addition for any home.",
     category: "Furniture",
-    price: {
-      productPrice: 67,
-      productDiscount: "10%",
-      productOff: "$6.70"
-    },
+    productPrice: 67,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Sharon Jenkins" }, userName: "Sharon Jenkins", date: "2025-08-14" },
@@ -3421,11 +3097,7 @@ export const fakeData: IProduct[] = [
     name: "Modern Minimalist Workstation Setup",
     description: "Elevate your home office with our Modern Minimalist Workstation Setup, featuring a sleek wooden desk topped with an elegant computer and stylish adjustable wooden desk lamp.",
     category: "Furniture",
-    price: {
-      productPrice: 49,
-      productDiscount: "5%",
-      productOff: "$2.45"
-    },
+    productPrice: 49,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Michelle Patterson" }, userName: "Michelle Patterson", date: "2025-08-13" },
@@ -3465,11 +3137,7 @@ export const fakeData: IProduct[] = [
     name: "Modern Ergonomic Office Chair",
     description: "Elevate your office space with this sleek and comfortable Modern Ergonomic Office Chair. Designed to provide optimal support throughout the workday, it features an adjustable height mechanism and smooth-rolling casters.",
     category: "Furniture",
-    price: {
-      productPrice: 71,
-      productDiscount: "20%",
-      productOff: "$14.20"
-    },
+    productPrice: 71,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Lisa Gonzales" }, userName: "Lisa Gonzales", date: "2025-08-11" },
@@ -3508,11 +3176,7 @@ export const fakeData: IProduct[] = [
     name: "Futuristic Holographic Soccer Cleats",
     description: "Step onto the field and stand out from the crowd with these eye-catching holographic soccer cleats. Designed for the modern player, these cleats feature a sleek silhouette and lightweight construction for maximum agility.",
     category: "Shoes",
-    price: {
-      productPrice: 39,
-      productDiscount: "10%",
-      productOff: "$3.90"
-    },
+    productPrice: 39,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Donna Griffin" }, userName: "Donna Griffin", date: "2025-08-15" },
@@ -3552,11 +3216,7 @@ export const fakeData: IProduct[] = [
     name: "Rainbow Glitter High Heels",
     description: "Step into the spotlight with these eye-catching rainbow glitter high heels. Designed to dazzle, each shoe boasts a kaleidoscope of shimmering colors that catch and reflect light with every step.",
     category: "Shoes",
-    price: {
-      productPrice: 39,
-      productDiscount: "20%",
-      productOff: "$7.80"
-    },
+    productPrice: 39,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Chloe Davis" }, userName: "Chloe Davis", date: "2025-06-11" },
@@ -3596,11 +3256,7 @@ export const fakeData: IProduct[] = [
     name: "Chic Summer Denim Espadrille Sandals",
     description: "Step into summer with style in our denim espadrille sandals. Featuring a braided jute sole for a classic touch and adjustable denim straps for a snug fit, these sandals offer both comfort and a fashionable edge.",
     category: "Shoes",
-    price: {
-      productPrice: 33,
-      productDiscount: "10%",
-      productOff: "$3.30"
-    },
+    productPrice: 33,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Kimberly Henderson" }, userName: "Kimberly Henderson", date: "2025-08-12" },
@@ -3640,11 +3296,7 @@ export const fakeData: IProduct[] = [
     name: "Vibrant Runners: Bold Orange & Blue Sneakers",
     description: "Step into style with these eye-catching sneakers featuring a striking combination of orange and blue hues. Designed for both comfort and fashion, these shoes come with flexible soles and cushioned insoles.",
     category: "Shoes",
-    price: {
-      productPrice: 27,
-      productDiscount: "5%",
-      productOff: "$1.35"
-    },
+    productPrice: 27,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Sharon Powell" }, userName: "Sharon Powell", date: "2025-08-14" },
@@ -3684,11 +3336,7 @@ export const fakeData: IProduct[] = [
     name: "Vibrant Pink Classic Sneakers",
     description: "Step into style with our Vibrant Pink Classic Sneakers! These eye-catching shoes feature a bold pink hue with iconic white detailing, offering a sleek, timeless design.",
     category: "Shoes",
-    price: {
-      productPrice: 84,
-      productDiscount: "25%",
-      productOff: "$21.00"
-    },
+    productPrice: 84,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Michelle Simmons" }, userName: "Michelle Simmons", date: "2025-08-13" },
@@ -3728,11 +3376,7 @@ export const fakeData: IProduct[] = [
     name: "Futuristic Silver and Gold High-Top Sneaker",
     description: "Step into the future with this eye-catching high-top sneaker, designed for those who dare to stand out. The sneaker features a sleek silver body with striking gold accents, offering a modern twist on classic footwear.",
     category: "Shoes",
-    price: {
-      productPrice: 68,
-      productDiscount: "10%",
-      productOff: "$6.80"
-    },
+    productPrice: 68,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Donna Alexander" }, userName: "Donna Alexander", date: "2025-08-11" },
@@ -3772,11 +3416,7 @@ export const fakeData: IProduct[] = [
     name: "Futuristic Chic High-Heel Boots",
     description: "Elevate your style with our cutting-edge high-heel boots that blend bold design with avant-garde aesthetics. These boots feature a unique color-block heel, a sleek silhouette, and a versatile light grey finish.",
     category: "Shoes",
-    price: {
-      productPrice: 36,
-      productDiscount: "5%",
-      productOff: "$1.80"
-    },
+    productPrice: 36,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Michelle Hayes" }, userName: "Michelle Hayes", date: "2025-08-15" },
@@ -3816,11 +3456,7 @@ export const fakeData: IProduct[] = [
     name: "Elegant Patent Leather Peep-Toe Pumps",
     description: "Step into sophistication with these chic peep-toe pumps, showcasing a lustrous patent leather finish and an eye-catching gold-tone block heel. The ornate buckle detail adds a touch of glamour.",
     category: "Shoes",
-    price: {
-      productPrice: 53,
-      productDiscount: "20%",
-      productOff: "$10.60"
-    },
+    productPrice: 53,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/1As8dlo.png", alt: "Mia Rodriguez" }, userName: "Mia Rodriguez", date: "2025-08-12" },
@@ -3860,11 +3496,7 @@ export const fakeData: IProduct[] = [
     name: "Elegant Purple Leather Loafers",
     description: "Step into sophistication with our Elegant Purple Leather Loafers, perfect for making a bold statement. Crafted from high-quality leather with a vibrant purple finish.",
     category: "Shoes",
-    price: {
-      productPrice: 17,
-      productDiscount: "10%",
-      productOff: "$1.70"
-    },
+    productPrice: 17,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Sharon Jenkins" }, userName: "Sharon Jenkins", date: "2025-08-13" },
@@ -3904,11 +3536,7 @@ export const fakeData: IProduct[] = [
     name: "Classic Blue Suede Casual Shoes",
     description: "Step into comfort with our Classic Blue Suede Casual Shoes, perfect for everyday wear. These shoes feature a stylish blue suede upper and durable rubber soles for superior traction.",
     category: "Shoes",
-    price: {
-      productPrice: 39,
-      productDiscount: "5%",
-      productOff: "$1.95"
-    },
+    productPrice: 39,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Michelle Patterson" }, userName: "Michelle Patterson", date: "2025-08-11" },
@@ -3948,11 +3576,7 @@ export const fakeData: IProduct[] = [
     name: "Sleek Futuristic Electric Bicycle",
     description: "This modern electric bicycle combines style and efficiency with its unique design and top-notch performance features. Equipped with a durable frame and enhanced battery life.",
     category: "Miscellaneous",
-    price: {
-      productPrice: 22,
-      productDiscount: "15%",
-      productOff: "$3.30"
-    },
+    productPrice: 22,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Lisa Gonzales" }, userName: "Lisa Gonzales", date: "2025-08-15" },
@@ -3992,11 +3616,7 @@ export const fakeData: IProduct[] = [
     name: "Sleek All-Terrain Go-Kart",
     description: "Experience the thrill of outdoor adventures with our Sleek All-Terrain Go-Kart, featuring a durable frame, comfortable racing seat, and robust, large-tread tires.",
     category: "Miscellaneous",
-    price: {
-      productPrice: 37,
-      productDiscount: "10%",
-      productOff: "$3.70"
-    },
+    productPrice: 37,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Donna Griffin" }, userName: "Donna Griffin", date: "2025-08-14" },
@@ -4036,11 +3656,7 @@ export const fakeData: IProduct[] = [
     name: "Radiant Citrus Eau de Parfum",
     description: "Indulge in the essence of summer with this vibrant citrus-scented Eau de Parfum. Encased in a sleek glass bottle with a bold orange cap, this fragrance embodies freshness and elegance.",
     category: "Miscellaneous",
-    price: {
-      productPrice: 73,
-      productDiscount: "15%",
-      productOff: "$10.95"
-    },
+    productPrice: 73,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Michelle Woods" }, userName: "Michelle Woods", date: "2025-08-13" },
@@ -4080,11 +3696,7 @@ export const fakeData: IProduct[] = [
     name: "Sleek Olive Green Hardshell Carry-On Luggage",
     description: "Travel in style with our durable hardshell carry-on, perfect for weekend getaways and business trips. This sleek olive green suitcase features smooth gliding wheels for easy airport navigation.",
     category: "Miscellaneous",
-    price: {
-      productPrice: 48,
-      productDiscount: "20%",
-      productOff: "$9.60"
-    },
+    productPrice: 48,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Deborah Coleman" }, userName: "Deborah Coleman", date: "2025-08-12" },
@@ -4124,11 +3736,7 @@ export const fakeData: IProduct[] = [
     name: "Chic Transparent Fashion Handbag",
     description: "Elevate your style with our Chic Transparent Fashion Handbag, perfect for showcasing your essentials with a clear, modern edge. This trendy accessory features durable acrylic construction and luxe gold-tone hardware.",
     category: "Miscellaneous",
-    price: {
-      productPrice: 61,
-      productDiscount: "10%",
-      productOff: "$6.10"
-    },
+    productPrice: 61,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Laura Long" }, userName: "Laura Long", date: "2025-08-15" },
@@ -4168,11 +3776,7 @@ export const fakeData: IProduct[] = [
     name: "Trendy Pink-Tinted Sunglasses",
     description: "Step up your style game with these fashionable black-framed, pink-tinted sunglasses. Perfect for making a statement while protecting your eyes from the glare.",
     category: "Miscellaneous",
-    price: {
-      productPrice: 38,
-      productDiscount: "5%",
-      productOff: "$1.90"
-    },
+    productPrice: 38,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/aC3z2fA.png", alt: "Ben Carter" }, userName: "Ben Carter", date: "2025-05-29" },
@@ -4212,11 +3816,7 @@ export const fakeData: IProduct[] = [
     name: "Elegant Glass Tumbler Set",
     description: "Enhance your drinkware collection with our sophisticated set of glass tumblers, perfect for serving your favorite beverages. This versatile set includes both clear and subtly tinted glasses.",
     category: "Miscellaneous",
-    price: {
-      productPrice: 50,
-      productDiscount: "10%",
-      productOff: "$5.00"
-    },
+    productPrice: 50,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Donna Alexander" }, userName: "Donna Alexander", date: "2025-08-12" },
@@ -4256,11 +3856,7 @@ export const fakeData: IProduct[] = [
     name: "Classic Heather Gray Hoodie v2",
     description: "Stay cozy and stylish with our Classic Heather Gray Hoodie. Crafted from soft, durable fabric, it features a kangaroo pocket, adjustable drawstring hood, and ribbed cuffs.",
     category: "Clothes",
-    price: {
-      productPrice: 69,
-      productDiscount: "10%",
-      productOff: "$6.90"
-    },
+    productPrice: 69,
     reviews: [
       {
         userData: { userPhoto: { src: "https://i.imgur.com/zvyVp1f.png", alt: "Michelle Hayes" }, userName: "Michelle Hayes", date: "2025-08-14" },
