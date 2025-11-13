@@ -9,7 +9,7 @@ interface ITextAreaInputElement{
     label: string;
     name: string;
     placeholder: string;
-    value: string | number;
+    value?: string | number;
     onChange: (e:React.ChangeEvent<HTMLTextAreaElement>)=> void
 }
 

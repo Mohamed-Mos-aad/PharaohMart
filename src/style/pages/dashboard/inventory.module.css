@@ -119,6 +119,11 @@
     color: #1C170D;
     cursor: pointer;
 }
+.inventory .inventory_filter button.active
+{
+    background-color: #1C170D;
+    color: #F2F0E8;
+}
 .inventory table 
 {
     border-collapse: collapse;
@@ -126,13 +131,13 @@
 }
 .inventory table tr td
 {
-    color: #99854D;
+    color: #62522D;
 }
 .inventory table tr td:nth-of-type(1)
 {
     color: #1C170D;
 }
-.inventory table tr td div
+.inventory table tr td:nth-of-type(5) div
 {
     width: 75%;
     background-color: #F2F0E8;
@@ -163,6 +168,20 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis; 
+}
+.inventory table tbody tr td .product_img
+{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 40px;
+    overflow: hidden;
+}
+.inventory table tbody tr td .product_img img
+{
+    height: 100%;
 }
 /* End Inventory Page */
 

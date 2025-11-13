@@ -11,7 +11,7 @@ interface IInputElement{
     name: string;
     placeholder: string;
     error:string;
-    value: string | number | string[]
+    value?: string | number | string[]
     onChange: (e:React.ChangeEvent<HTMLInputElement>)=> void
 }
 
