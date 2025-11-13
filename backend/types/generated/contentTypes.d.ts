@@ -504,6 +504,7 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     reviews: Schema.Attribute.Relation<'oneToMany', 'api::review.review'>;
     salePrice: Schema.Attribute.Decimal;
     stockQuantity: Schema.Attribute.Integer & Schema.Attribute.Required;
+    tags: Schema.Attribute.Relation<'manyToMany', 'api::tag.tag'>;
     unitDimension: Schema.Attribute.String;
     unitWeight: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
@@ -546,6 +547,32 @@ export interface ApiReviewReview extends Struct.CollectionTypeSchema {
     userPhoto: Schema.Attribute.Media<'images' | 'files'> &
       Schema.Attribute.Required;
     userRate: Schema.Attribute.Integer & Schema.Attribute.Required;
+  };
+}
+
+export interface ApiTagTag extends Struct.CollectionTypeSchema {
+  collectionName: 'tags';
+  info: {
+    displayName: 'tag';
+    pluralName: 'tags';
+    singularName: 'tag';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::tag.tag'> &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    products: Schema.Attribute.Relation<'manyToMany', 'api::product.product'>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -1067,6 +1094,7 @@ declare module '@strapi/strapi' {
       'api::category.category': ApiCategoryCategory;
       'api::product.product': ApiProductProduct;
       'api::review.review': ApiReviewReview;
+      'api::tag.tag': ApiTagTag;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

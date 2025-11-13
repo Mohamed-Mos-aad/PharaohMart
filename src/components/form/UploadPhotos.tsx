@@ -77,10 +77,9 @@ export default function UploadPhotos({quantity, title, description, onUpload}:IU
 
     // ** Renders
     const renderUploadedIamgesRender = files.map((file,index) =>{
-        const fileURL = `http://localhost:1337${file.url}`;
         return (
             <div className={style.product_photo} key={file.name + index}>
-                <img src={fileURL} alt="product photo"/>
+                <img src={file.url} alt="product photo"/>
                 <span onClick={()=>{removeUploadedPhotoHandler(file.id!)}}>
                     <img src={xIcon} alt="delete Icon"/>
                 </span>

@@ -72,14 +72,14 @@ export default function DashboardProducts() {
         <tr key={item.documentId}>
             <td>
             <div className={style.product_img}>
-                <img src={`http://localhost:1337${item.mainImage.url}`} loading="lazy" alt={item.name}/>
+                <img src={item.mainImage.url} loading="lazy" alt={item.name}/>
             </div>
             </td>
             <td>{item.name}</td>
             <td>${item.salePrice}</td>
             <td>{item.stockQuantity}</td>
             <td>{item.isPublished ? 'Live' : 'unLive'}</td>
-            <td>{item.categories[0].title}</td>
+            <td>{(item.categories[0]?.title || 'No Category') + (item.categories[1] ? " , " + item.categories[1].title : '')}</td>
             <td>
             <div className={style.product_options}>
                 <img src={editeIcon} alt="edit icon" />

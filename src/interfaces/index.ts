@@ -166,7 +166,7 @@ export interface INewProduct{
     description: string;  // ** Done
     categories: number[] | null;  // ** Done
     price: number;  // ** Done
-    salePrice?: number | null;  // ** Done
+    salePrice?: number;  // ** Done
     stockQuantity?: number;  // ** Done
     productSKU?: string;  // ** Done
     lowStockAlert?: number;  // ** Done

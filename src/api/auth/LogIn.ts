@@ -1,11 +1,12 @@
 // ** Interfaces
 import type { ISignInData } from "../../interfaces";
-
+// ** Constants
+const apiUrl = import.meta.env.VITE_API_URL;
 
 
 export const LogInAction = async (signUpData: ISignInData)=>{
     try{
-        const res = await fetch("http://localhost:1337/api/auth/local/", {
+        const res = await fetch(`${apiUrl}/api/auth/local/`, {
             method: "Post",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({

@@ -1,11 +1,12 @@
 // ** Interfaces
 import type { ISignUpData } from "../../interfaces";
-
+// ** Constants
+const apiUrl = import.meta.env.VITE_API_URL;
 
 
 export const signUpAction = async (signUpData: ISignUpData) => {
     try {
-        const registerRes = await fetch("http://localhost:1337/api/auth/local/register", {
+        const registerRes = await fetch(`${apiUrl}/api/auth/local/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -28,7 +29,7 @@ export const signUpAction = async (signUpData: ISignUpData) => {
 
         const roleId = signUpData.role === "seller" ? 4 : 3;
 
-        await fetch(`http://localhost:1337/api/users/${userId}`, {
+        await fetch(`${apiUrl}/api/users/${userId}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

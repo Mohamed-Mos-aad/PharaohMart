@@ -9,17 +9,18 @@ interface ITextAreaInputElement{
     label: string;
     name: string;
     placeholder: string;
+    value: string | number;
     onChange: (e:React.ChangeEvent<HTMLTextAreaElement>)=> void
 }
 
 
 
-export default function TextAreaInputElement({id,label,name,placeholder,onChange}:ITextAreaInputElement) {
+export default function TextAreaInputElement({id,label,name,placeholder, value,onChange}:ITextAreaInputElement) {
     return (
         <>
             <div className={style.text_area_input_element}>
                 <label htmlFor={id}>{label}</label>
-                <textarea name={name} id={id} placeholder={placeholder} onChange={(e)=>{onChange(e)}}></textarea>
+                <textarea name={name} id={id} placeholder={placeholder} value={value} onChange={(e)=>{onChange(e)}}></textarea>
             </div>
         </>
     )
