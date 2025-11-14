@@ -84,6 +84,37 @@
       "relation": "oneToMany",
       "target": "api::product.product",
       "mappedBy": "owner"
+    },
+    "address": {
+      "type": "string"
+    },
+    "serviceZones": {
+      "type": "string"
+    },
+    "returnPolicy": {
+      "type": "text"
+    },
+    "shippingPolicy": {
+      "type": "text"
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "banner": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "isOnline": {
+      "type": "boolean",
+      "default": true
     }
   }
 }

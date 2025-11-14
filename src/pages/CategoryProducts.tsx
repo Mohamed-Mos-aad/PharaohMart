@@ -6,37 +6,31 @@ import cardDisplayIcon from "../assets/icons/category/cardDisplayIcon.svg";
 import sortIcon from "../assets/icons/category/sortIcon.svg";
 import leftArrowIcon from "../assets/icons/category/leftArrowIcon.svg";
 import rightArrowIcon from "../assets/icons/category/rightArrowIcon.svg";
-import filterIcon from "../assets/icons/category/filterIcon.svg";
 // ** Components
 import ProductCard from "../components/product/ProductCard";
 // ** Hooks && Tools
-import { useLocation } from "react-router-dom";
-import { useState } from "react";
-// ** Data
-import { fakeData } from "../data/fakeData";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 // ** Interfaces
-import type { IFakeDataProduct } from "../interfaces";
+import type { ICategory, IProduct } from "../interfaces";
+import { getSpecificProductsAction } from "../api/data/productActions";
+import { getSpecificCategoryAction } from "../api/data/categoriesActions";
 
 
 
 export default function CategoryProducts() {
   // ** Defaults
-  const location = useLocation();
-  const { state } = location;
-  const categoryName = state.name as string;
-  const pathName = state.pathData as string;
+  const { id } = useParams();
   const itemsPerPage = 10;
 
   // ** States
+  const [category, setCategory] = useState<ICategory>({} as ICategory)
   const [displayList, setDisplayList] = useState<boolean>(false);
+  const [productsData, setProductsData] = useState<IProduct[]>([]);
+  const [displayedData, setDisplayedData] = useState<IProduct[]>(productsData);
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const currentData: IFakeDataProduct[] = fakeData;
-  const filteredData = currentData.filter(
-    (product) => product.category.toLowerCase() === categoryName.toLowerCase()
-  );
-  const totalItems = filteredData.length;
+  const totalItems = productsData.length;
   const totalPages = Math.ceil(totalItems / itemsPerPage);
-  const [filterOpened, setFilterOpened] = useState<boolean>(false);
 
   // ** Handlers
   const displayToggleHandler = (isList: boolean) => {
@@ -49,23 +43,18 @@ export default function CategoryProducts() {
       setCurrentPage(currentPage + 1);
     }
   };
-  const changeFilterStateHandler = () => {
-    setFilterOpened(!filterOpened);
-  };
-  const paginatedData = filteredData.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  );
+
+  
 
   // ** Renders
-  const productsCardsRender = paginatedData?.map((product) => (
+  const productsCardsRender = displayedData?.map((product) => (
     <ProductCard
-      id={product.id!}
+      id={product.documentId!}
       name={product.name}
-      price={product.price.productPrice}
+      price={product.salePrice}
       listDisplay={displayList}
       key={product.id}
-      thumbnailImg={{ src: product.mainImage, alt: product.name }}
+      thumbnailImg={product.mainImage.url}
     />
   ));
   const paginationButtonsRender = () => {
@@ -115,6 +104,34 @@ export default function CategoryProducts() {
     });
   };
 
+
+
+  // ** UseEffect
+  useEffect(()=>{
+    if(!id) return
+    const getProducts = async ()=>{
+      try{
+        const result= await getSpecificProductsAction(id)
+        setProductsData(result);
+        setDisplayedData(result);
+      }catch(error){
+        console.log(error)
+      }
+    }
+    const getCategoryHandler = async ()=>{
+      try{
+        const result= await getSpecificCategoryAction(id)
+        setCategory(result);
+      }catch(error){
+        console.log(error)
+      }
+    }
+    getCategoryHandler();
+    getProducts()
+  },[id])
+
+
+
   return (
     <>
       <div className="global_container">
@@ -122,9 +139,9 @@ export default function CategoryProducts() {
           <div className={style.category_data}>
             <h3>
               Home <span>/</span>
-              <div>{pathName}</div>
+              <div>{category.title}</div>
             </h3>
-            <h2>{categoryName}</h2>
+            <h2>{category.title}</h2>
           </div>
           <div className={style.category_options}>
             <div className={style.display_btns}>
@@ -171,59 +188,6 @@ export default function CategoryProducts() {
             >
               <img src={rightArrowIcon} alt="right aArrow icon" />
             </button>
-          </div>
-          <div className={style.filter}>
-            <button onClick={changeFilterStateHandler}>
-              <img src={filterIcon} alt="filter icon" />
-            </button>
-            {filterOpened && (
-              <ul>
-                <li>
-                  <h3>Price</h3>
-                  <ul>
-                    <li>Up to 25 EGP</li>
-                    <li>25 to 50 EGP</li>
-                    <li>50 to 100 EGP</li>
-                    <li>100 to 200 EGP</li>
-                    <li>200 to 300 EGP</li>
-                    <li>300 to 400 EGP</li>
-                  </ul>
-                </li>
-                <li>
-                  <h3>Price</h3>
-                  <ul>
-                    <li>Up to 25 EGP</li>
-                    <li>25 to 50 EGP</li>
-                    <li>50 to 100 EGP</li>
-                    <li>100 to 200 EGP</li>
-                    <li>200 to 300 EGP</li>
-                    <li>300 to 400 EGP</li>
-                  </ul>
-                </li>
-                <li>
-                  <h3>Price</h3>
-                  <ul>
-                    <li>Up to 25 EGP</li>
-                    <li>25 to 50 EGP</li>
-                    <li>50 to 100 EGP</li>
-                    <li>100 to 200 EGP</li>
-                    <li>200 to 300 EGP</li>
-                    <li>300 to 400 EGP</li>
-                  </ul>
-                </li>
-                <li>
-                  <h3>Price</h3>
-                  <ul>
-                    <li>Up to 25 EGP</li>
-                    <li>25 to 50 EGP</li>
-                    <li>50 to 100 EGP</li>
-                    <li>100 to 200 EGP</li>
-                    <li>200 to 300 EGP</li>
-                    <li>300 to 400 EGP</li>
-                  </ul>
-                </li>
-              </ul>
-            )}
           </div>
         </div>
       </div>

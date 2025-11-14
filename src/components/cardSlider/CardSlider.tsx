@@ -4,23 +4,24 @@ import style from '../../style/components/cardSlider.module.css'
 import rightArrowIcon from '../../assets/icons/slider/rightArrowIcon.svg'
 import leftArrowIcon from '../../assets/icons/slider/leftArrowIcon.svg'
 // ** Hooks && Tools
-import { useRef, useState } from 'react';
-import { fakeData } from '../../data/fakeData';
+import { useEffect, useRef, useState } from 'react';
 import ProductCard from '../product/ProductCard';
+import type { IProduct } from '../../interfaces';
+import { getSpecificProductsAction } from '../../api/data/productActions';
 
 
 
 // ** Interfaces
 interface ICardSlider{
-    category: string;
+    categoryId: string;
 }
 
 
 
-export default function CardSlider({category}:ICardSlider) {
+export default function CardSlider({categoryId}:ICardSlider) {
     // ** States
     const [sliderSteps,setSliderSteps] = useState<number>(0);
-    const filteredData = fakeData.filter(product => product.category.toLowerCase() === category.toLowerCase());
+    const [displayedData, setDisplayedData] = useState<IProduct[]>([]);
 
 
     // ** Ref
@@ -30,7 +31,7 @@ export default function CardSlider({category}:ICardSlider) {
 
     // ** Handlers
     const sliderMoveHandler = (dir:string)=>{
-        const totalCards = filteredData.length;
+        const totalCards = displayedData.length;
         const sliderBar = sldierRef.current?.parentElement;
         if (!sldierRef.current || !sliderBar) return;
         if (totalCards <= 0) return;
@@ -63,12 +64,24 @@ export default function CardSlider({category}:ICardSlider) {
 
 
     // ** Renders
-    const cardsRender = filteredData.map(product =>
-        <ProductCard id={product.id!} name={product.name} price={product.price.productPrice} key={product.id} thumbnailImg={{src: product.mainImage, alt: product.name}}/>
+    const cardsRender = displayedData.map(product =>
+        <ProductCard id={product.documentId!} name={product.name} price={product.salePrice} key={product.id} thumbnailImg={product.mainImage.url}/>
     )
 
 
-
+  // ** UseEffect
+    useEffect(()=>{
+        if(!categoryId) return
+        const getProducts = async ()=>{
+        try{
+            const result= await getSpecificProductsAction(categoryId)
+            setDisplayedData(result);
+        }catch(error){
+            console.log(error)
+        }
+        }
+        getProducts()
+    },[categoryId])
     return (
         <>
             <div className={style.cards_slider}>

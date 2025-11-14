@@ -6,12 +6,13 @@ import { useEffect, useState } from 'react'
 
 
 // ** Interfaces
+import type { IImage } from '../../interfaces';
 interface IProductItem{
     productThumbnail: {
         src: string;
         alt: string
     };
-    productPhotos: string[];
+    productPhotos: IImage[];
     productDescription: string;
     productPrice: number;
     productDiscount: string;
@@ -35,8 +36,8 @@ export default function ProductItem({productThumbnail, productPhotos, productDes
 
 
     // ** Handlers
-    const selectPreviewPhotoHandler = (photo:string)=>{
-        setPreviewPhoto(photo);
+    const selectPreviewPhotoHandler = (photo:IImage)=>{
+        setPreviewPhoto(photo.url);
     }
     const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
         const rect = e.currentTarget.getBoundingClientRect();
@@ -49,8 +50,8 @@ export default function ProductItem({productThumbnail, productPhotos, productDes
 
     // ** Render
     const productPhotosRender = productPhotos.map(photo => 
-        <span onClick={()=>{selectPreviewPhotoHandler(photo)}} key={`${photo}`}>
-            <img src={photo} alt={photo} />
+        <span onClick={()=>{selectPreviewPhotoHandler(photo)}} key={`${photo.name}`}>
+            <img src={photo.url} alt={productDescription} />
         </span>
     )
 

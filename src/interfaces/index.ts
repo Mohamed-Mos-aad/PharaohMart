@@ -89,7 +89,7 @@ export interface ISeller {
     documentId: string;
     username: string;
     email: string;
-    phone: number;
+    phone: string;
     storeName: string;
     roleType: string;
     provider: string;
@@ -98,6 +98,13 @@ export interface ISeller {
     createdAt: string;
     updatedAt: string;
     publishedAt: string;
+    address?: string;
+    serviceZones?: string;
+    returnPolicy?: string;
+    shippingPolicy?: string;
+    logo?: number | IImage;
+    banner?: number | IImage;
+    isOnline?: boolean;
 }
 
 // ** Image

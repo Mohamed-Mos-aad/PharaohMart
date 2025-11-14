@@ -20,7 +20,7 @@ export default function HomeSection({sectionTitle,category}:IHomeSection) {
                 <div className={style.title}>
                     <h2>{sectionTitle}</h2>
                 </div>
-                <CardSlider category={category}/>
+                <CardSlider categoryId={category}/>
             </section>
         </>
     )

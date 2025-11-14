@@ -7,16 +7,15 @@ import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { addProductToCart, removeProductFromCart } from "../app/features/cart/cartSlice";
 import { getPharaohMartData } from "../utils/localStorage";
 // ** Components
-import HomeSection from "../components/HomeSection";
 import ProductData from "../components/product/ProductData";
 import ProductItem from "../components/product/ProductItem";
 import UserReview from "../components/product/UserReview";
 import OverRate from "../components/product/OverRate";
 // ** Interfaces
-import type { IFakeDataProduct } from "../interfaces";
+import type { IProduct } from "../interfaces";
 // ** Data
-import { fakeData } from "../data/fakeData";
 import { addProductToFavourite, removeProductFromFavourite } from "../app/features/favourite/favouriteSlice";
+import { getSpecificProductAction } from "../api/data/productActions";
 
 // ** Interfaces
 interface IFavouriteProduct {
@@ -37,25 +36,25 @@ export default function Product() {
   const favouriteProducts = getPharaohMartData();
 
   // ** States
-  const [productData, setProductData] = useState<IFakeDataProduct>();
+  const [productData, setProductData] = useState<IProduct>();
 
   // ** Handlers
   const addToCartHandler = () => {
     if (!productData) return;
 
     const exists = cart.products.some(
-      (product) => product.productId === productData.id
+      (product) => product.productId === productData.documentId
     );
 
     if (!exists) {
       dispatch(
         addProductToCart({
-          productId: productData.id!,
+          productId: productData.documentId!,
           name: productData.name,
           sellerName: productData.name,
           quantity: 1,
-          price: productData.price.productPrice,
-          imageUrl: productData.mainImage,
+          price: productData.price,
+          imageUrl: productData.mainImage.url,
         })
       );
     }
@@ -64,18 +63,18 @@ export default function Product() {
     if (!productData) return;
 
     const exists = cart.products.some(
-      (product) => product.productId === productData.id
+      (product) => product.productId === productData.documentId
     );
 
     if (exists) {
       dispatch(
         removeProductFromCart({
-          productId: productData.id!,
+          productId: productData.documentId!,
           name: productData.name,
           sellerName: productData.name,
           quantity: 1,
-          price: productData.price.productPrice,
-          imageUrl: productData.mainImage,
+          price: productData.price,
+          imageUrl: productData.mainImage.url,
         })
       );
     }
@@ -84,7 +83,7 @@ export default function Product() {
     if (!productData) return false;
 
     const found = cart.products.some(
-      (product: IFavouriteProduct) => product.productId === productData.id
+      (product: IFavouriteProduct) => product.productId === productData.documentId
     );
     return found;
   };
@@ -92,18 +91,18 @@ export default function Product() {
     if (!productData) return;
 
     const exists = favourite.products.some(
-      (product) => product.productId === productData.id
+      (product) => product.productId === productData.documentId
     );
 
     if (!exists) {
       dispatch(
         addProductToFavourite({
-          productId: productData.id!,
+          productId: productData.documentId!,
           name: productData.name,
           sellerName: productData.name,
           quantity: 1,
-          price: productData.price.productPrice,
-          imageUrl: productData.mainImage,
+          price: productData.price,
+          imageUrl: productData.mainImage.url,
         })
       );
     }
@@ -112,18 +111,18 @@ export default function Product() {
     if (!productData) return;
 
     const exists = favourite.products.some(
-      (product) => product.productId === productData.id
+      (product) => product.productId === productData.documentId
     );
 
     if (exists) {
       dispatch(
         removeProductFromFavourite({
-          productId: productData.id!,
+          productId: productData.documentId,
           name: productData.name,
           sellerName: productData.name,
           quantity: 1,
-          price: productData.price.productPrice,
-          imageUrl: productData.mainImage,
+          price: productData.price,
+          imageUrl: productData.mainImage.url,
         })
       );
     }
@@ -132,7 +131,7 @@ export default function Product() {
     if (!productData) return false;
 
     const found = favouriteProducts.favourite.products.some(
-      (product: IFavouriteProduct) => product.productId === productData.id
+      (product: IFavouriteProduct) => product.productId === productData.documentId
     );
     return found;
   };
@@ -160,12 +159,23 @@ export default function Product() {
     />
   ));
 
+
+
   // ** UseEffect
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    const getProduct = fakeData.find((product) => product.id === id);
-    setProductData(getProduct);
-  }, [productData, id]);
+  useEffect(()=>{
+    const getProductDataHandler = async ()=>{
+      try{
+        if(id)
+        {
+          const result = await getSpecificProductAction(id)
+          setProductData(result)
+        }
+      }catch(error){
+        console.log(error)
+      }
+    }
+    getProductDataHandler()
+  },[id])
 
   if (!productData) return;
 
@@ -175,15 +185,15 @@ export default function Product() {
     <>
       <div className="global_container">
         <div className={style.product}>
-          <ProductData name={productData?.name} seller={"by Fashionista"} />
+          <ProductData name={productData?.name} category={productData.categories[0].title} seller={productData.owner.storeName} />
           <ProductItem
             productThumbnail={{
-              src: productData.mainImage,
+              src: productData.mainImage.url,
               alt: productData.name,
             }}
             productPhotos={productData.images}
             productDescription={productData.description}
-            productPrice={productData?.price.productPrice || 0}
+            productPrice={productData?.price || 0}
             productDiscount={""}
             productOff={""}
             addToCartHandler={addToCartHandler}
@@ -197,20 +207,10 @@ export default function Product() {
             <div className={style.customers_reviews}>{reviewRender}</div>
             <div className={style.customers_rates}>
               <OverRate
-                overRate={{
-                  oneStar: productData?.overRate?.oneStar || 0,
-                  twoStars: productData?.overRate?.twoStars || 0,
-                  threeStars: productData?.overRate?.threeStars || 0,
-                  fourStars: productData?.overRate?.fourStars || 0,
-                  fiveStars: productData?.overRate?.fiveStars || 0,
-                }}
+                reviews={productData?.reviews}
               />
             </div>
           </div>
-          <HomeSection
-            sectionTitle="Related Products"
-            category={productData.category}
-          />
         </div>
       </div>
     </>

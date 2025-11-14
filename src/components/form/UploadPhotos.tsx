@@ -5,7 +5,7 @@ import style from '../../style/components/form/uploadPhotosElement.module.css'
 // ** Hooks && Tools
 import { useEffect, useState, type DragEvent } from 'react';
 // ** Actions
-import { deletePhotoAction, uploadPhotoAction } from '../../api/data/uploadPhotosAction';
+import { deletePhotoAction, uploadPhotoAction } from '../../api/data/photosAction';
 
 
 
@@ -30,7 +30,7 @@ export default function UploadPhotos({quantity, title, description, onUpload}:IU
     const [quantityCompleted,setQuantityCompleted] = useState<boolean>(false);
 
 
-
+    
     // ** Handlers
     const handleDrop = async (e: DragEvent<HTMLDivElement>) => {
         e.preventDefault();
@@ -63,7 +63,15 @@ export default function UploadPhotos({quantity, title, description, onUpload}:IU
             for (const file of validImages) {
                 if (files.length < quantity) {
                     const uploaded = await uploadPhotoAction(file);
-                    setFiles(prev => [...prev, uploaded]);
+                    setFiles(prev => {
+                        const newFiles = [...prev, uploaded];
+                        if(onUpload)
+                        {
+                            const uploadedIds = newFiles.map(f => f.id).filter((id): id is number => id !== undefined);
+                            onUpload(uploadedIds);
+                        }
+                        return newFiles;
+                    });
                 }
             }
         }
@@ -77,6 +85,7 @@ export default function UploadPhotos({quantity, title, description, onUpload}:IU
 
     // ** Renders
     const renderUploadedIamgesRender = files.map((file,index) =>{
+
         return (
             <div className={style.product_photo} key={file.name + index}>
                 <img src={file.url} alt="product photo"/>
@@ -100,12 +109,6 @@ export default function UploadPhotos({quantity, title, description, onUpload}:IU
             setQuantityCompleted(false);
         }
     },[files,quantity])
-    useEffect(() => {
-        if (onUpload) {
-            const uploadedIds = files.map(f => f.id).filter((id): id is number => id !== undefined);
-            onUpload(uploadedIds);
-        }
-    }, [files]);
 
 
 
@@ -119,7 +122,7 @@ export default function UploadPhotos({quantity, title, description, onUpload}:IU
             >
                 {files.length < 1 ?
                     <>
-                        <h3>{title}</h3>
+                        <p className={style.title}>{title}</p>
                         <p>{description}</p>
                     </>
                     :

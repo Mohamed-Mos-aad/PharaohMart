@@ -30,7 +30,7 @@ export const getCategoriesAction = async () => {
 export const getSpecificCategoryAction = async (id:string) => {
     try {
         const response = await api.get(`/categories/${id}`);
-        return response.data;
+        return response.data.data;
     }
     catch (error) {
         console.error(`Error fetching category with id ${id}:`, error);

@@ -1,13 +1,55 @@
-// ** Assets
-import testImg from '../../assets/images/test/Product imgs/productImg1.png'
 // ** Style
 import style from '../../style/pages/dashboard/dashboard.module.css'
 // ** Components
 import DashboardHeader from '../../components/dashboard/DashboardHeader'
-
+// ** Hooks && Tools
+import { useEffect, useMemo, useState } from 'react'
+// ** Actions
+import { getSellerProductsAction } from '../../api/data/productActions'
+// ** Interfaces
+import type { IProduct } from '../../interfaces'
 
 
 export default function Dashboard() {
+    // **  States
+    const [productsData, setProductsData] = useState<IProduct[]>([]);
+    const [displayedData, setDisplayedData] = useState<IProduct[]>(productsData);
+
+
+
+    // ** Handlers
+    const getProductsHandler = async ()=>{
+        const result = await getSellerProductsAction();
+        setProductsData(result);
+        setDisplayedData(result);
+    }
+
+
+
+    // ** Render
+    const productsRender = useMemo(()=>
+        displayedData.map(item => 
+        <tr key={item.documentId}>
+            <td>
+                <div className={style.product_img}>
+                    <img src={item.mainImage.url} alt={item.name} />
+                </div>
+            </td>
+            <td>{item.name}</td>
+            <td>0</td>
+            <td>{item.stockQuantity}</td>
+        </tr>
+    ),[displayedData])
+
+
+
+    // ** UseEffect
+    useEffect(()=>{
+        getProductsHandler()
+    },[])
+
+
+
     return (
         <>
             <div className="dashboard_container">
@@ -15,27 +57,27 @@ export default function Dashboard() {
                     <DashboardHeader title='Dashboard' description="Welcome back, Amelia! Here's an overview of your seller performance."/>
                     <div className={style.dashboard_cards}>
                         <div className={style.card}>
-                            <h3>Total Sales (Today)</h3>
-                            <h4>$2,500</h4>
+                            <h2>Total Sales (Today)</h2>
+                            <h3>$2,500</h3>
                             <span>+15%</span>
                         </div>
                         <div className={style.card}>
-                            <h3>Monthly Revenue</h3>
-                            <h4>$12,500</h4>
+                            <h2>Monthly Revenue</h2>
+                            <h3>$12,500</h3>
                             <span>-5%</span>
                         </div>
                         <div className={style.card}>
-                            <h3>Total Orders</h3>
-                            <h4>350</h4>
+                            <h2>Total Orders</h2>
+                            <h3>350</h3>
                             <span>+10%</span>
                         </div>
                         <div className={style.card}>
-                            <h3>Live Products</h3>
-                            <h4>150</h4>
+                            <h2>Live Products</h2>
+                            <h3>150</h3>
                             <span>+8%</span>
                         </div>
                     </div>
-                    <h2>Top Selling Products</h2>
+                    <h4>Top Selling Products</h4>
                     <table>
                         <thead>
                             <tr>
@@ -46,56 +88,7 @@ export default function Dashboard() {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>
-                                    <div className={style.product_img}>
-                                        <img src={testImg} alt="test Img" />
-                                    </div>
-                                </td>
-                                <td>Product U</td>
-                                <td>70</td>
-                                <td>25</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div className={style.product_img}>
-                                        <img src={testImg} alt="test Img" />
-                                    </div>
-                                </td>
-                                <td>Product T</td>
-                                <td>160</td>
-                                <td>70</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div className={style.product_img}>
-                                        <img src={testImg} alt="test Img" />
-                                    </div>
-                                </td>
-                                <td>Product S</td>
-                                <td>110</td>
-                                <td>45</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div className={style.product_img}>
-                                        <img src={testImg} alt="test Img" />
-                                    </div>
-                                </td>
-                                <td>Product R</td>
-                                <td>130</td>
-                                <td>65</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div className={style.product_img}>
-                                        <img src={testImg} alt="test Img" />
-                                    </div>
-                                </td>
-                                <td>Product Q</td>
-                                <td>140</td>
-                                <td>75</td>
-                            </tr>
+                            {productsRender}
                         </tbody>
                     </table>
                     <h2>Recent Orders</h2>

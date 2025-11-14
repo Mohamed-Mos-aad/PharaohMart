@@ -30,7 +30,7 @@ export default function Favourite() {
     const productsCardsRender = favouriteProducts.products.map(product =>{
         if(!favouriteProducts) return;
         
-        return <ProductCard id={product.productId} name={product.name} thumbnailImg={{src: product.imageUrl, alt: product.name}} price={product.price} listDisplay={displayList} key={product.productId}/>
+        return <ProductCard id={product.productId} name={product.name} thumbnailImg={product.imageUrl} price={product.price} listDisplay={displayList} key={product.productId}/>
     })
 
 

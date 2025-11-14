@@ -11,10 +11,10 @@ import NavBarSearchElement from '../search/NavBarSearchElement'
 import { memo, useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { useAppSelector } from '../../app/hooks'
-// ** Data
-import { productCategories } from '../../data/fakeData'
-// ** Api
-import { getCategories } from '../../services/CategoriesService'
+// ** ACtions
+import { getCategoriesAction } from '../../api/data/categoriesActions'
+// ** Interfaces
+import type { ICategory } from '../../interfaces'
 
 
 
@@ -27,7 +27,7 @@ export default function NavBar() {
 
 
     // ** States
-    const [categories,setCategories] = useState([]);
+    const [categories, setCategories] = useState<ICategory[]>([]);
     const [isMainMenuOpen,setIsMainMenuOpen] = useState<boolean>(true);
     const [isDropdownOpen,setIsDropdownOpen] = useState<boolean>(false);
     const cart = useAppSelector(state => state.cart);
@@ -64,13 +64,12 @@ export default function NavBar() {
 
 
     // ** Render
-    const categoriesRender = productCategories.map(category => 
-        <li onClick={dropDownMenuStateToggleHandler} key={category.name}>
+    const categoriesRender = categories.map(category => 
+        <li onClick={dropDownMenuStateToggleHandler} key={category.title}>
             <Link 
-                to={category.path}
-                state={{ id: category.name, name: category.name, pathData: category.name }}
+                to={`categories/${category.documentId}`}
             >
-                {category.name}
+                {category.title}
             </Link>
         </li>
     )
@@ -111,17 +110,12 @@ export default function NavBar() {
 
 
 
-        const fetchCategories = async () => {
-            try {
-                const categoriesData = await getCategories();
-                setCategories(categoriesData);
-            } catch (error) {
-                console.error('فشل في جلب الأقسام:', error);
-            }
-        };
-
-        fetchCategories();
-    },[categories])
+        const getCategories = async ()=>{
+            const result = await getCategoriesAction();
+            setCategories(result);
+        }
+        getCategories();
+    },[])
 
 
 

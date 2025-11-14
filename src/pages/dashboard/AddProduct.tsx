@@ -219,7 +219,8 @@ export default function AddProduct() {
                         <h2>Visibility & Publication</h2>
                         <ToggleElement 
                             title='Publish Now' 
-                            onChange={(value)=>{
+                            value={productData.isPublished!}
+                            onToggle={(value)=>{
                                 setProductData((prev) => ({
                                     ...prev,
                                     isPublished: value

@@ -15,6 +15,19 @@ const api = axios.create({
 
 
 
+// ** Get Photo
+export const getPhotoAction = async (id: number) => {
+    try {
+        const response = await api.get(`/upload/files/${id}`);
+
+        return response.data.url;
+    } catch (error) {
+        console.error("Error uploading photo:", error);
+        throw error;
+    }
+}
+
+
 // ** Upload Photo
 export const uploadPhotoAction = async (photo: File) => {
     try {
@@ -31,6 +44,8 @@ export const uploadPhotoAction = async (photo: File) => {
         throw error;
     }
 }
+
+
 
 // ** Delete Photo
 export const deletePhotoAction = async (id: number) => {

@@ -23,7 +23,7 @@ export default function InputElement({id, label, type, name, placeholder, value,
             <div className={style.input_element}>
                 <label htmlFor={id}>{label}</label>
                 <input type={type} name={name} id={id} placeholder={placeholder} value={value} onChange={(e)=>{onChange(e)}}/>
-                <h3>{error}</h3>
+                <p>{error}</p>
             </div>
         </>
     )

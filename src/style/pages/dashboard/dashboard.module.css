@@ -20,7 +20,7 @@
     border-radius: 12px;
     padding: 24px;
 }
-.dashboard_cards .card h3
+.dashboard_cards .card h2
 {
     font-size: 16px;
     font-weight: 500;
@@ -32,13 +32,13 @@
     font-size: 16px;
     font-weight: 500;
     line-height: 24px;
-    color: #088712;
+    color: #085E09;
 }
 .dashboard_cards .card:nth-child(2) span
 {
-    color: #E81408;
+    color: #A00F08;
 }
-.dashboard h2
+.dashboard h4
 {
     font-size: 22px;
     font-weight: 700;
@@ -53,7 +53,7 @@
 .dashboard table:first-of-type tr td:nth-of-type(3),
 .dashboard table:first-of-type tr td:last-of-type
 {
-    color: #99854D;
+    color: #62522D;
 }
 .dashboard table th,
 .dashboard table td 
@@ -84,7 +84,7 @@
 }
 .dashboard table:last-of-type tr td
 {
-    color: #99854D;
+    color: #62522D;
 }
 .dashboard table:last-of-type tr td:last-of-type div
 {

@@ -7,55 +7,34 @@ import unStarIcon from '../../assets/icons/product/unStarIcon.svg'
 
 
 // ** Interfaces
+import type { IReview } from '../../interfaces';
 interface IOverRate{
-    overRate: {
-        oneStar: number,
-        twoStars: number,
-        threeStars: number,
-        fourStars: number,
-        fiveStars: number
-    }
+    reviews: IReview[]
 }
 
 
 
-export default function OverRate({overRate}:IOverRate) {
+export default function OverRate({reviews}:IOverRate) {
     // ** States
-    const totalReviews = overRate.oneStar + overRate.twoStars + overRate.threeStars + overRate.fourStars + overRate.fiveStars;
-
-
-    if (totalReviews === 0) {
-        return (
-            <div className={style.over_rate}>
-                <h2>0.0</h2>
-                <div className={style.over_rate_stars}>
-                    {Array.from({ length: 5 }, (_, i) => (
-                        <img key={i} src={unStarIcon} alt="unStar icon" />
-                    ))}
-                </div>
-                <h3>0 reviews</h3>
-            </div>
-        );
-    }
+    const totalReviews = reviews.length;
 
 
 
     // ** Calculating
-    const totalRating = (
-        overRate.oneStar * 1 +
-        overRate.twoStars * 2 +
-        overRate.threeStars * 3 +
-        overRate.fourStars * 4 +
-        overRate.fiveStars * 5
-    );
+    const oneStar = reviews.filter(r => r.userRate === 1).length;
+    const twoStars = reviews.filter(r => r.userRate === 2).length;
+    const threeStars = reviews.filter(r => r.userRate === 3).length;
+    const fourStars = reviews.filter(r => r.userRate === 4).length;
+    const fiveStars = reviews.filter(r => r.userRate === 5).length;
+    const totalRating = ( oneStar * 1 + twoStars * 2 + threeStars * 3 + fourStars * 4 + fiveStars * 5 );
     const percent = {
-        one: (overRate.oneStar / totalReviews) * 100,
-        two: (overRate.twoStars / totalReviews) * 100,
-        three: (overRate.threeStars / totalReviews) * 100,
-        four: (overRate.fourStars / totalReviews) * 100,
-        five: (overRate.fiveStars / totalReviews) * 100,
+        one: totalReviews > 0 ? (oneStar / totalReviews) * 100 : 0,
+        two: totalReviews > 0 ? (twoStars / totalReviews) * 100 : 0,
+        three: totalReviews > 0 ? (threeStars / totalReviews) * 100 : 0,
+        four: totalReviews > 0 ? (fourStars / totalReviews) * 100 : 0,
+        five: totalReviews > 0 ? (fiveStars / totalReviews) * 100 : 0,
     };
-    const averageRating = totalRating / totalReviews;
+    const averageRating = totalReviews > 0 ? totalRating / totalReviews : 0;
 
 
     

@@ -92,6 +92,33 @@ export const getSellerProductsAction = async () => {
 }
 
 
+// ** Get Specific Products
+export const getSpecificProductsAction = async (id:string) => {
+    try {
+        const response = await api.get(`/products?filters[categories][documentId][$eq]=${id}&populate=*`);
+        return response.data.data;
+    }
+    catch (error) {
+        console.error(`Error fetching products with id ${id}:`, error);
+        throw error;
+    }
+}
+
+
+
+// ** Get Specific Products
+export const getSpecificProductAction = async (id:string) => {
+    try {
+        const response = await api.get(`/products/${id}?populate=*`);
+        return response.data.data;
+    }
+    catch (error) {
+        console.error(`Error fetching product with id ${id}:`, error);
+        throw error;
+    }
+}
+
+
 // ** Edite Product
 export const updateProductAction = async (id:string, productData: Partial<INewProduct>) => {
     try {
