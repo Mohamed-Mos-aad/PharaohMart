@@ -11,19 +11,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "userPhoto": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
-      "allowedTypes": [
-        "images",
-        "files"
-      ]
-    },
-    "userName": {
-      "type": "string",
-      "required": true
-    },
     "userRate": {
       "type": "integer",
       "required": true
@@ -44,6 +31,12 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::product.product",
+      "inversedBy": "reviews"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
       "inversedBy": "reviews"
     }
   }

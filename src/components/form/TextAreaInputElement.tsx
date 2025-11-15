@@ -20,7 +20,7 @@ export default function TextAreaInputElement({id,label,name,placeholder, value,o
         <>
             <div className={style.text_area_input_element}>
                 <label htmlFor={id}>{label}</label>
-                <textarea name={name} id={id} placeholder={placeholder} value={value} onChange={(e)=>{onChange(e)}}></textarea>
+                <textarea name={name} id={id} placeholder={placeholder} value={value} onChange={onChange}></textarea>
             </div>
         </>
     )

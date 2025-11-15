@@ -1,10 +1,8 @@
 // ** Style
 import style from '../../style/pages/cart.module.css'
-// ** Assets
-import testImg from '../../assets/images/test/Product imgs/productImg1.png'
 // ** Hooks && Tools
 import { useAppDispatch } from '../../app/hooks';
-import { updateQuantity } from '../../app/features/cart/cartSlice';
+import { removeProductFromCart, updateQuantity } from '../../app/features/cart/cartSlice';
 
 
 
@@ -15,11 +13,12 @@ interface ICartItem{
     productSeller: string;
     productPrice: number;
     productQuantity: number;
+    productImage: string;
 }
 
 
 
-export default function CartItem({productId,productName,productSeller,productPrice,productQuantity}:ICartItem) {
+export default function CartItem({productId,productName,productSeller,productPrice,productQuantity,productImage}:ICartItem) {
     // ** Defaults
     const dispatch = useAppDispatch();
 
@@ -42,7 +41,18 @@ export default function CartItem({productId,productName,productSeller,productPri
 
         dispatch(updateQuantity({ productId, quantity: newQuantity }));
     } 
-
+    const removeProductFromCartHandler = ()=>{
+        dispatch(
+            removeProductFromCart({
+            productId: productId,
+            name: productName,
+            sellerName: productSeller,
+            quantity: 1,
+            price: productPrice,
+            imageUrl: productImage,
+            })
+        );
+    }
 
 
 
@@ -51,7 +61,7 @@ export default function CartItem({productId,productName,productSeller,productPri
             <div className={style.cart_item}>
                 <div className={style.product}>
                     <div className={style.product_img}>
-                        <img src={testImg} alt="test img" />
+                        <img src={productImage} alt={productName} />
                     </div>
                     <div className={style.product_data}>
                         <h2>{productName}</h2>
@@ -60,7 +70,12 @@ export default function CartItem({productId,productName,productSeller,productPri
                     </div>
                 </div>
                 <div className={style.product_count}>
-                    <button onClick={()=>{changeProductCountHandler('-')}}>-</button>
+                    {
+                        productQuantity === 1 ? 
+                        <button onClick={removeProductFromCartHandler}>x</button>
+                        :
+                        <button onClick={()=>{changeProductCountHandler('-')}}>-</button>
+                    }
                     <span>{productQuantity}</span>
                     <button onClick={()=>{changeProductCountHandler('+')}}>+</button>
                 </div>

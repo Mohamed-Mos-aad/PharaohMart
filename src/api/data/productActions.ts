@@ -11,9 +11,9 @@ const apiUrl = import.meta.env.VITE_API_URL;
 const token = localStorage.getItem("token");
 const api = axios.create({
     baseURL: `${apiUrl}/api/`,
-    headers: {
-        'Authorization': `Bearer ${token}`
-    }
+    headers: token
+    ? { Authorization: `Bearer ${token}` }
+    : {}
 });
 
 
@@ -92,8 +92,8 @@ export const getSellerProductsAction = async () => {
 }
 
 
-// ** Get Specific Products
-export const getSpecificProductsAction = async (id:string) => {
+// ** Get Specific Category Products
+export const getSpecificCategoryProductsAction = async (id:string) => {
     try {
         const response = await api.get(`/products?filters[categories][documentId][$eq]=${id}&populate=*`);
         return response.data.data;
@@ -104,9 +104,26 @@ export const getSpecificProductsAction = async (id:string) => {
     }
 }
 
-
-
 // ** Get Specific Products
+export const getSpecificSearchProductsAction = async (search:string) => {
+    try {
+        const response = await api.get(`/products?populate=*&filters[$or][0][name][$containsi]=${search}
+            &filters[$or][1][description][$containsi]=${search}
+            &filters[$or][2][productSKU][$containsi]=${search}
+            &filters[$or][3][tags][name][$containsi]=${search}
+            &filters[$or][4][categories][title][$containsi]=${search}
+            &filters[$or][5][owner][username][$containsi]=${search}`);
+        return response.data.data;
+    }
+    catch (error) {
+        console.error(`Error fetching products with ${search}:`, error);
+        throw error;
+    }
+}
+
+
+
+// ** Get Specific Product
 export const getSpecificProductAction = async (id:string) => {
     try {
         const response = await api.get(`/products/${id}?populate=*`);

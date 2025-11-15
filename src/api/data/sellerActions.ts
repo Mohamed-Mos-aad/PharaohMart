@@ -1,7 +1,7 @@
 // ** Hooks && Tools
 import axios from "axios";
 // ** Interfaces
-import type { ISeller } from "../../interfaces";
+import type { IUser } from "../../interfaces";
 // ** Constants
 const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -27,7 +27,7 @@ const highApi = axios.create({
 
 
 // ** Update Seller Data
-export const updateSellerDataAction = async (id:number, sellerData: Partial<ISeller>) => {
+export const updateSellerDataAction = async (id:number, sellerData: Partial<IUser>) => {
     try {
         const response = await highApi.put(`/users/${id}`,sellerData);
         

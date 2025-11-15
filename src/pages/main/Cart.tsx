@@ -29,7 +29,7 @@ export default function Cart() {
 
     // ** Renders
     const cartItemsRender = cart.products.map(product => 
-        <CartItem key={product.productId} productId={product.productId} productName={product.name} productSeller={product.sellerName} productPrice={product.price} productQuantity={product.quantity}/>
+        <CartItem key={product.productId} productImage={product.imageUrl} productId={product.productId} productName={product.name} productSeller={product.sellerName} productPrice={product.price} productQuantity={product.quantity}/>
     )
 
 

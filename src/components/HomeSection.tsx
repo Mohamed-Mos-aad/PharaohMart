@@ -14,6 +14,9 @@ interface IHomeSection{
 
 
 export default function HomeSection({sectionTitle,category}:IHomeSection) {
+    if(!category) return
+
+    
     return (
         <>
             <section className={style.home_section}>

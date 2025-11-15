@@ -43,7 +43,7 @@ export interface IProduct {
 
     // 🏷️ العلاقات
     categories: ICategory[];
-    owner: ISeller;
+    owner: IUser;
 
     // 💰 الأسعار
     price: number;
@@ -83,8 +83,8 @@ export interface ICategory {
     publishedAt: string;
 }
 
-// ** Seller
-export interface ISeller {
+// ** User
+export interface IUser {
     id: number;
     documentId: string;
     username: string;
@@ -150,20 +150,22 @@ export interface IImageFormat {
 
 // ** Review
 export interface IReview {
-    userData: {
-        userPhoto: {
-        src: string;
-        alt: string;
-        };
-        userName: string;
-        date: string;
-    };
+    user: IUser;
     userRate: number;
     userComment: string;
-    UserSupport: {
-        like: number;
-        unLike: number;
-    };
+    like: number;
+    unLike: number;
+    product: IProduct;
+    publishedAt: string;
+    documentId: string;
+}
+export interface INewReview {
+    user: string,
+    userRate: number;
+    userComment: string;
+    like: number;
+    unLike: number;
+    product: string;
 }
 
 

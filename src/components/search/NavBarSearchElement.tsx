@@ -26,11 +26,9 @@ function NavBarSearchElement() {
         setSearchValue(value);
     }
     const searchHandler = (e: React.KeyboardEvent<HTMLInputElement>)=>{
-        if(e.key === 'Enter')
+        if(e.key === 'Enter' && searchValue != '')
         {
-            navigate(`categories/${searchValue}`, {
-                state: { id: 'Search', name: searchValue, pathData: 'Search' }
-            });
+            navigate(`search/${searchValue}`);
         }
     }
 

@@ -5,16 +5,15 @@ import starIcon from '../../assets/icons/product/starIcon.svg'
 import unStarIcon from '../../assets/icons/product/unStarIcon.svg'
 import likeIcon from '../../assets/icons/product/likeIcon.svg'
 import unLikeIcon from '../../assets/icons/product/unLikeIcon.svg'
+// ** Interfaces
+import type { IImage } from '../../interfaces'
 
 
 
 // ** Interfaces
 interface IUserReview{
     userData: {
-        userPhoto: {
-            src: string,
-            alt: string
-        },
+        userPhoto: IImage,
         userName: string,
         date: string
     };
@@ -45,7 +44,12 @@ export default function UserReview({userData,userRate,userComment,UserSupport}:I
             <div className={style.review}>
                 <div className={style.user_review}>
                     <div className={style.userPhoto}>
-                        <img src={userData.userPhoto.src} alt={userData.userPhoto.alt} />
+                        {
+                            userData.userPhoto.url ?
+                            <img src={userData.userPhoto.url} alt={userData.userPhoto.name} />
+                            :
+                            <div>{userData.userName[0]}</div>
+                        }
                     </div>
                     <div className={style.user_review_data}>
                         <h3>{userData.userName}</h3>

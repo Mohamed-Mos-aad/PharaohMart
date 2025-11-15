@@ -542,10 +542,11 @@ export interface ApiReviewReview extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    user: Schema.Attribute.Relation<
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
     userComment: Schema.Attribute.Text & Schema.Attribute.Required;
-    userName: Schema.Attribute.String & Schema.Attribute.Required;
-    userPhoto: Schema.Attribute.Media<'images' | 'files'> &
-      Schema.Attribute.Required;
     userRate: Schema.Attribute.Integer & Schema.Attribute.Required;
   };
 }
@@ -1065,6 +1066,7 @@ export interface PluginUsersPermissionsUser
     publishedAt: Schema.Attribute.DateTime;
     resetPasswordToken: Schema.Attribute.String & Schema.Attribute.Private;
     returnPolicy: Schema.Attribute.Text;
+    reviews: Schema.Attribute.Relation<'oneToMany', 'api::review.review'>;
     role: Schema.Attribute.Relation<
       'manyToOne',
       'plugin::users-permissions.role'

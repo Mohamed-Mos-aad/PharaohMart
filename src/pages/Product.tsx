@@ -1,5 +1,7 @@
 // ** Style
 import style from "../style/pages/product.module.css";
+// ** Assets
+import sendIcon from '../assets/icons/form/sendIcon.svg'
 // ** Hooks && Tools
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
@@ -11,13 +13,16 @@ import ProductData from "../components/product/ProductData";
 import ProductItem from "../components/product/ProductItem";
 import UserReview from "../components/product/UserReview";
 import OverRate from "../components/product/OverRate";
-// ** Interfaces
-import type { IProduct } from "../interfaces";
+import TextAreaInputElement from "../components/form/TextAreaInputElement";
 // ** Data
 import { addProductToFavourite, removeProductFromFavourite } from "../app/features/favourite/favouriteSlice";
+// ** Actions
 import { getSpecificProductAction } from "../api/data/productActions";
-
+import { addProductReviewAction, getSpecificProductReviewsAction } from "../api/data/reviewsActions";
+// ** Utils
+import { formatDate } from './../utils/date';
 // ** Interfaces
+import type { IProduct, INewReview, IReview, IImage } from "../interfaces";
 interface IFavouriteProduct {
   productId: string;
   name: string;
@@ -27,6 +32,8 @@ interface IFavouriteProduct {
   imageUrl: string;
 }
 
+
+
 export default function Product() {
   // ** Defaults
   const { id } = useParams();
@@ -34,9 +41,24 @@ export default function Product() {
   const cart = useAppSelector((state) => state.cart);
   const favourite = useAppSelector((state) => state.favourite);
   const favouriteProducts = getPharaohMartData();
+  const data = JSON.parse(localStorage.getItem("userData") || "null");
+
+
 
   // ** States
   const [productData, setProductData] = useState<IProduct>();
+  const isLogin:boolean = data? true: false;
+  const [review, setReview] = useState<INewReview>({
+    user: isLogin ? data.id : '',
+    product: productData?.documentId?? '',
+    userComment: '',
+    like: 0,
+    unLike: 0,
+    userRate: 0
+  });
+  const [reviews, setReviews] = useState<IReview[]>([])
+
+
 
   // ** Handlers
   const addToCartHandler = () => {
@@ -135,26 +157,41 @@ export default function Product() {
     );
     return found;
   };
+  const inputValueChangeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const { value } = e.currentTarget;
+      setReview((prev) => ({
+      ...prev,
+      userComment: value,
+      }));
+  };
+  const sentReview = async ()=>{
+    try{
+      if (!productData && !isLogin) return;
+      console.log('notwork')
+      await addProductReviewAction(review);
+      setReview(prev => ({ ...prev, userComment: '' }));
+    }catch(error)
+    {
+      console.log(error);
+    }
+  }
 
 
 
   // ** Renders
-  const reviewRender = productData?.reviews?.map((review) => (
+  const reviewRender = reviews.map((review) => (
     <UserReview
-      key={review.userData.userName}
+      key={review.documentId}
       userData={{
-        userPhoto: {
-          src: "https://randomuser.me/api/portraits/women/45.jpg",
-          alt: "User Photo",
-        },
-        userName: review.userData.userName,
-        date: review.userData.date,
+        userPhoto: review.user.logo as IImage ?? '',
+        userName: review.user.username,
+        date: formatDate(review.publishedAt),
       }}
       userRate={review.userRate}
       userComment={review.userComment}
       UserSupport={{
-        like: review.UserSupport.like,
-        unLike: review.UserSupport.unLike,
+        like: review.like,
+        unLike: review.unLike,
       }}
     />
   ));
@@ -176,8 +213,30 @@ export default function Product() {
     }
     getProductDataHandler()
   },[id])
+  useEffect(() => {
+    if (productData) {
+      const getProductReviewsDataHandler = async ()=>{
+        try{
+          if(id)
+          {
+            const result = await getSpecificProductReviewsAction(id)
+            setReviews(result);
+          }
+        }catch(error){
+          console.log(error)
+        }
+      }
+      getProductReviewsDataHandler()
+      setReview((prev) => ({
+        ...prev,
+        product: productData.documentId,
+      }));
+    }    
+  }, [productData,id]);
 
-  if (!productData) return;
+
+  
+  if (!productData) return <></>
 
 
 
@@ -204,7 +263,15 @@ export default function Product() {
             addedToCart={checkProductInCartHandler()}
           />
           <div className={style.product_review}>
-            <div className={style.customers_reviews}>{reviewRender}</div>
+            <div className={style.customers_reviews}>
+              <div className={style.add_review}>
+                <TextAreaInputElement id="review" label="Review" name="review" placeholder="Enter Your Review" value={review.userComment || ""} onChange={inputValueChangeHandler}/>
+                <button onClick={sentReview}>
+                  <img src={sendIcon} alt="send button" />
+                </button>
+              </div>
+              {reviewRender}
+            </div>
             <div className={style.customers_rates}>
               <OverRate
                 reviews={productData?.reviews}

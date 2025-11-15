@@ -8,9 +8,11 @@ const MainLayout = lazy(()=> import('../layouts/MainLayout'))
 const Product = lazy(()=> import('../pages/Product')) 
 const Home = lazy(()=> import('../pages/Home'))
 const CategoryProducts = lazy(()=> import('../pages/CategoryProducts')) 
+const SearchProducts = lazy(()=> import('../pages/SearchProducts')) 
 const Cart = lazy(()=> import('../pages/main/Cart'))
 const Favourite = lazy(()=> import('../pages/main/Favourite')) 
 const Checkout = lazy(()=> import('../pages/main/Checkout')) 
+
 // Auth Pages
 const AuthLayout = lazy(()=> import('../layouts/AuthLayout')) 
 const Welcome = lazy(()=> import('../pages/auth/Welcome')) 
@@ -41,6 +43,7 @@ export const Routers = ()=>(
                 <Route index element={<Home />} />
                 <Route path="product/:id" element={<Product />} />
                 <Route path="categories/:id" element={<CategoryProducts />} />
+                <Route path="search/:id" element={<SearchProducts />} />
                 <Route path="cart" element={<Cart />} />
                 <Route path="checkout" element={<Checkout />} />
                 <Route path="favourite" element={<Favourite />} />

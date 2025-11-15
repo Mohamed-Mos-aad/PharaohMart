@@ -12,19 +12,17 @@ import ProductCard from "../components/product/ProductCard";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 // ** Interfaces
-import type { ICategory, IProduct } from "../interfaces";
-import { getSpecificCategoryProductsAction } from "../api/data/productActions";
-import { getSpecificCategoryAction } from "../api/data/categoriesActions";
+import type { IProduct } from "../interfaces";
+import { getSpecificSearchProductsAction } from "../api/data/productActions";
 
 
 
-export default function CategoryProducts() {
+export default function SearchProducts() {
   // ** Defaults
   const { id } = useParams();
   const itemsPerPage = 10;
 
   // ** States
-  const [category, setCategory] = useState<ICategory>({} as ICategory)
   const [displayList, setDisplayList] = useState<boolean>(false);
   const [productsData, setProductsData] = useState<IProduct[]>([]);
   const [displayedData, setDisplayedData] = useState<IProduct[]>(productsData);
@@ -111,22 +109,13 @@ export default function CategoryProducts() {
     if(!id) return
     const getProducts = async ()=>{
       try{
-        const result= await getSpecificCategoryProductsAction(id)
+        const result= await getSpecificSearchProductsAction(id)
         setProductsData(result);
         setDisplayedData(result);
       }catch(error){
         console.log(error)
       }
     }
-    const getCategoryHandler = async ()=>{
-      try{
-        const result= await getSpecificCategoryAction(id)
-        setCategory(result);
-      }catch(error){
-        console.log(error)
-      }
-    }
-    getCategoryHandler();
     getProducts()
   },[id])
 
@@ -139,9 +128,9 @@ export default function CategoryProducts() {
           <div className={style.category_data}>
             <h3>
               Home <span>/</span>
-              <div>{category.title}</div>
+              <div>Search</div>
             </h3>
-            <h2>{category.title}</h2>
+            <h2>Search</h2>
           </div>
           <div className={style.category_options}>
             <div className={style.display_btns}>

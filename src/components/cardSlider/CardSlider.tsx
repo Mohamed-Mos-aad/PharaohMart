@@ -7,7 +7,7 @@ import leftArrowIcon from '../../assets/icons/slider/leftArrowIcon.svg'
 import { useEffect, useRef, useState } from 'react';
 import ProductCard from '../product/ProductCard';
 import type { IProduct } from '../../interfaces';
-import { getSpecificProductsAction } from '../../api/data/productActions';
+import { getSpecificCategoryProductsAction } from '../../api/data/productActions';
 
 
 
@@ -74,7 +74,7 @@ export default function CardSlider({categoryId}:ICardSlider) {
         if(!categoryId) return
         const getProducts = async ()=>{
         try{
-            const result= await getSpecificProductsAction(categoryId)
+            const result= await getSpecificCategoryProductsAction(categoryId)
             setDisplayedData(result);
         }catch(error){
             console.log(error)
@@ -82,6 +82,9 @@ export default function CardSlider({categoryId}:ICardSlider) {
         }
         getProducts()
     },[categoryId])
+
+    
+    
     return (
         <>
             <div className={style.cards_slider}>

@@ -115,6 +115,12 @@
     "isOnline": {
       "type": "boolean",
       "default": true
+    },
+    "reviews": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::review.review",
+      "mappedBy": "user"
     }
   }
 }

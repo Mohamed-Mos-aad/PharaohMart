@@ -9,7 +9,7 @@ import UploadPhotos from '../../components/form/UploadPhotos';
 import ToggleElement from '../../components/form/ToggleElement';
 import TextAreaInputElement from '../../components/form/TextAreaInputElement';
 // ** Interfaces
-import type { ISeller } from '../../interfaces';
+import type { IUser } from '../../interfaces';
 // ** Actions
 import { updateSellerDataAction } from '../../api/data/sellerActions';
 
@@ -17,8 +17,8 @@ import { updateSellerDataAction } from '../../api/data/sellerActions';
 
 export default function Setting() {
     // ** States
-    const data:ISeller = JSON.parse(localStorage.getItem("userData") || "null");    
-    const [sellerData, setSellerData] = useState<ISeller>(data || {} as ISeller);
+    const data:IUser = JSON.parse(localStorage.getItem("userData") || "null");    
+    const [sellerData, setSellerData] = useState<IUser>(data || {} as IUser);
 
 
     // ** Handlers

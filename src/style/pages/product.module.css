@@ -177,6 +177,30 @@
     flex-direction: column;
     gap: 36px;
 }
+.product_review .customers_reviews .add_review
+{
+    width: 95%;
+    display: flex;
+    align-items: end;
+    gap: 24px;
+}
+.product_review .customers_reviews .add_review textarea
+{
+    height: 80px;
+}
+.product_review .customers_reviews .add_review button
+{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F5F0E5;
+    border: none;
+    border-radius: 8px;
+    padding: 8px;
+    cursor: pointer;
+}
 .product_review .customers_reviews .review
 {
     display: flex;
@@ -198,7 +222,7 @@
     align-items: center;
     border-radius: 40px;
     overflow: hidden;
-    background-color: red;
+    background-color: #F2F0E8;
 }
 .product_review .customers_reviews .review .user_review .userPhoto img
 {
