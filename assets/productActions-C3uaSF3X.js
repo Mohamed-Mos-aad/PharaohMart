@@ -1,0 +1,6 @@
+import{a as o}from"./axios.config-DecBwDMt.js";const a=async r=>{try{return(await o.post("/products",{data:r})).data.data}catch(t){throw console.error(t),t}},c=async()=>{const r=JSON.parse(localStorage.getItem("userData")||"null");try{return(await o.get(`/products?filters[owner][id][$eq]=${r.id}&populate=*`)).data.data}catch(t){throw console.error(t),t}},n=async r=>{try{return(await o.get(`/products?filters[categories][title][$eq]=${r}&populate=*`)).data.data}catch(t){throw console.error(`Error fetching products with id ${r}:`,t),t}},i=async r=>{try{return(await o.get(`/products?populate=*&filters[$or][0][name][$containsi]=${r}
+            &filters[$or][1][description][$containsi]=${r}
+            &filters[$or][2][productSKU][$containsi]=${r}
+            &filters[$or][3][tags][name][$containsi]=${r}
+            &filters[$or][4][categories][title][$containsi]=${r}
+            &filters[$or][5][owner][username][$containsi]=${r}`)).data.data}catch(t){throw console.error(`Error fetching products with ${r}:`,t),t}},p=async r=>{try{return(await o.get(`/products/${r}?populate=*`)).data.data}catch(t){throw console.error(`Error fetching product with id ${r}:`,t),t}},d=async(r,t)=>{try{return(await o.put(`/products/${r}`,{data:t})).data}catch(e){throw console.error(`Error updating product with id ${r}:`,e),e}};export{n as a,i as b,c,a as d,p as g,d as u};

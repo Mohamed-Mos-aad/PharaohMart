@@ -1,0 +1,1 @@
+import{j as t,O as n}from"./index-Bm52MoZb.js";import{N as s,F as o}from"./NavBar-CLSAZ7uz.js";import"./hooks-D0qbmfb6.js";import"./index-DD7Rslxi.js";const a="_main_content_dynwc_3",e={main_content:a};function x(){return t.jsxs(t.Fragment,{children:[t.jsxs("div",{className:e.main_content,children:[t.jsx(s,{}),t.jsx(n,{})]}),t.jsx(o,{})]})}export{x as default};
