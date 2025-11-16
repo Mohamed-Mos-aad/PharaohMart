@@ -11,10 +11,8 @@ import NavBarSearchElement from '../search/NavBarSearchElement'
 import { memo, useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { useAppSelector } from '../../app/hooks'
-// ** ACtions
-import { getCategoriesAction } from '../../api/data/categoriesActions'
-// ** Interfaces
-import type { ICategory } from '../../interfaces'
+// ** Constants
+import { NAVBAR_CATEGORIES } from '../../constant'
 
 
 
@@ -27,7 +25,6 @@ export default function NavBar() {
 
 
     // ** States
-    const [categories, setCategories] = useState<ICategory[]>([]);
     const [isMainMenuOpen,setIsMainMenuOpen] = useState<boolean>(true);
     const [isDropdownOpen,setIsDropdownOpen] = useState<boolean>(false);
     const cart = useAppSelector(state => state.cart);
@@ -64,10 +61,10 @@ export default function NavBar() {
 
 
     // ** Render
-    const categoriesRender = categories.map(category => 
+    const categoriesRender = NAVBAR_CATEGORIES.map(category => 
         <li onClick={dropDownMenuStateToggleHandler} key={category.title}>
             <Link 
-                to={`categories/${category.documentId}`}
+                to={`/categories/${category.title}`}
             >
                 {category.title}
             </Link>
@@ -107,14 +104,6 @@ export default function NavBar() {
         {
             setIsMainMenuOpen(false);
         }
-
-
-
-        const getCategories = async ()=>{
-            const result = await getCategoriesAction();
-            setCategories(result);
-        }
-        getCategories();
     },[])
 
 

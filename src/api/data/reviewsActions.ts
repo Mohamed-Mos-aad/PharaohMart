@@ -1,20 +1,14 @@
-// ** Hooks && Tools
-import axios from "axios";
+// ** Interfaces
 import type { INewReview } from "../../interfaces";
-// ** Constants
-const apiUrl = import.meta.env.VITE_API_URL;
+// ** Config
+import { api } from "../config/axios.config";
 
 
 
-// ** Apis
-const token = localStorage.getItem("token");
-const api = axios.create({
-    baseURL: `${apiUrl}/api/`,
-    headers: token
-    ? { Authorization: `Bearer ${token}` }
-    : {}
-});
 
+// ============================================
+// Main Functions
+// ============================================
 
 
 // ** Add Product Review
@@ -29,8 +23,6 @@ export const addProductReviewAction = async (review:INewReview) => {
         throw error;
     }
 }
-
-
 
 // ** Get Specific Product Reviews
 export const getSpecificProductReviewsAction = async (id:string) => {

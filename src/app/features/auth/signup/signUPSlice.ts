@@ -7,7 +7,7 @@ import type { ISignUpData } from "../../../../interfaces";
 
 // ** Interfaces
 interface ISignUpState{
-    userType: 'seller' | 'buyer';
+    userType: 'seller' | 'customer';
     userData: ISignUpData | null;
 }
 
@@ -15,7 +15,7 @@ interface ISignUpState{
 
 // ** Default
 const initialState : ISignUpState = {
-    userType: "buyer",
+    userType: "customer",
     userData: null
 }
 
@@ -26,7 +26,7 @@ export const SignUPSlice = createSlice({
     name: 'signUp',
     initialState,
     reducers: {
-        changeSignUpUserType: (state, action:PayloadAction<'seller' | 'buyer'>)=>{
+        changeSignUpUserType: (state, action:PayloadAction<'seller' | 'customer'>)=>{
             state.userType = action.payload
         },
         pushUserData: (state, action:PayloadAction<ISignUpData>)=>{

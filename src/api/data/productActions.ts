@@ -1,67 +1,16 @@
-// ** Hooks && Tools
-import axios from "axios";
 // ** Interfaces
 import type { INewProduct } from "../../interfaces";
-// ** Constants
-const apiUrl = import.meta.env.VITE_API_URL;
+// ** Config
+import { api } from "../config/axios.config";
 
 
 
-// ** Apis
-const token = localStorage.getItem("token");
-const api = axios.create({
-    baseURL: `${apiUrl}/api/`,
-    headers: token
-    ? { Authorization: `Bearer ${token}` }
-    : {}
-});
 
 
+// ============================================
+// Main Functions
+// ============================================
 
-// ===============================
-// ** Tags Actions
-// ===============================
-
-// ** Add Tags
-export const addTagAction = async (tagName: string) => {
-    try {
-        const response = await api.post(`/tags`, {
-            data: { name: tagName }
-        });
-        return response.data;
-    } catch (error) {
-        console.error('Error adding tag:', error);
-        throw error;
-    }
-};
-
-
-// ** Get Tags
-export const getTagsAction = async () => {
-    try {
-        const response = await api.get(`/tags`);
-        return response.data.data;
-    } catch (error) {
-        console.error('Error fetching tags:', error);
-        throw error;
-    }
-};
-
-
-// ** Get Tag By name
-export const findTagByName = async (tagName: string) => {
-    try {
-        const response = await api.get(`/tags?filters[name][$eq]=${tagName}`);
-        return response.data.data[0] || null;
-    } catch (error) {
-        console.error('Error finding tag:', error);
-        return null;
-    }
-};
-
-// ===============================
-// ** Products Actions
-// ===============================
 
 // ** Add Product
 export const addProductAction = async (productData:INewProduct) => {
@@ -75,7 +24,6 @@ export const addProductAction = async (productData:INewProduct) => {
         throw error;
     }
 }
-
 
 // ** Get Seller Products
 export const getSellerProductsAction = async () => {
@@ -91,11 +39,10 @@ export const getSellerProductsAction = async () => {
     }
 }
 
-
 // ** Get Specific Category Products
 export const getSpecificCategoryProductsAction = async (id:string) => {
     try {
-        const response = await api.get(`/products?filters[categories][documentId][$eq]=${id}&populate=*`);
+        const response = await api.get(`/products?filters[categories][title][$eq]=${id}&populate=*`);
         return response.data.data;
     }
     catch (error) {
@@ -121,8 +68,6 @@ export const getSpecificSearchProductsAction = async (search:string) => {
     }
 }
 
-
-
 // ** Get Specific Product
 export const getSpecificProductAction = async (id:string) => {
     try {
@@ -134,7 +79,6 @@ export const getSpecificProductAction = async (id:string) => {
         throw error;
     }
 }
-
 
 // ** Edite Product
 export const updateProductAction = async (id:string, productData: Partial<INewProduct>) => {

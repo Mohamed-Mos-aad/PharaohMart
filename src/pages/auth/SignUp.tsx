@@ -1,7 +1,7 @@
 // ** Style
 import style from "../../style/pages/auth/signUp.module.css";
 // ** Components
-import InputElement from "../../components/form/InputElement";
+import InputElement from "../../components/ui/InputElement";
 // ** Hooks && Tools
 import { useNavigate } from "react-router";
 import { useState } from "react";
@@ -13,19 +13,13 @@ import { useAppSelector } from "../../app/hooks";
 import { checkSignUpValidation } from "../../validation";
 import { pushUserData } from "../../app/features/auth/signup/signUPSlice";
 
-
-
 export default function SignUp() {
   // ** App
   const { userType } = useAppSelector((state) => state.signUp);
 
-
-
   // ** Default
   const navigate = useNavigate();
-  const dispatch = useDispatch()
-
-
+  const dispatch = useDispatch();
 
   // ** States
   const [userData, setUserData] = useState<ISignUpData>({
@@ -47,8 +41,6 @@ export default function SignUp() {
     ...(userType === "seller" ? { userStoreName: "" } : {}),
   });
 
-
-
   // ** Handlers
   const inputValueChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.currentTarget;
@@ -56,27 +48,24 @@ export default function SignUp() {
       ...prev,
       [id]: value,
     }));
-    setErrors(prev =>({
+    setErrors((prev) => ({
       ...prev,
-      [id]: ''
-    }))
+      [id]: "",
+    }));
   };
-  const submitForm = ()=>{
+  const submitForm = () => {
     const updateErrors = checkSignUpValidation(userData);
     setErrors(updateErrors);
-    const success = Object.values(updateErrors).every(value => value === '');
-    if(success) {
-      dispatch(pushUserData({...userData}))
-      otpPageHandler()
-    };
-  }
-
+    const success = Object.values(updateErrors).every((value) => value === "");
+    if (success) {
+      dispatch(pushUserData({ ...userData }));
+      otpPageHandler();
+    }
+  };
 
   const otpPageHandler = () => {
     navigate("/u/otp");
   };
-
-
 
   return (
     <>
@@ -128,19 +117,18 @@ export default function SignUp() {
             error={errors.userConfirmPassword}
             onChange={inputValueChangeHandler}
           />
-          {
-            userType === 'seller' &&
+          {userType === "seller" && (
             <InputElement
               id="userStoreName"
               label="Store/Business Name"
               type="text"
               name="userStoreName"
               placeholder="Store/Business Name"
-              error={errors.userStoreName ?? ''}
+              error={errors.userStoreName ?? ""}
               onChange={inputValueChangeHandler}
             />
-          }
-          
+          )}
+
           <button onClick={submitForm}>Continue</button>
         </div>
       </div>

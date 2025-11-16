@@ -25,7 +25,7 @@ export function ProtectedDashboardRoutes({ children }: ProtectedRouteProps) {
     const token = localStorage.getItem("token");
     const data = JSON.parse(localStorage.getItem("userData") || "null");
 
-    if (!data || data?.userType === 'buyer' || !token) {
+    if (!data || data?.userType === 'customer' || !token) {
         return <Navigate to="/" replace/>;
     }
 

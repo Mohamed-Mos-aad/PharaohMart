@@ -1,17 +1,13 @@
-// ** Hooks && Tools
-import axios from "axios";
-// ** Constants
-const apiUrl = import.meta.env.VITE_API_URL;
+// ** Config
+import { api } from "../config/axios.config";
 
 
-// ** Apis
-const token = localStorage.getItem("token");
-const api = axios.create({
-    baseURL: `${apiUrl}/api/`,
-    headers: {
-        'Authorization': `Bearer ${token}`
-    }
-});
+
+
+
+// ============================================
+// Main Functions
+// ============================================
 
 
 
@@ -26,7 +22,6 @@ export const getPhotoAction = async (id: number) => {
         throw error;
     }
 }
-
 
 // ** Upload Photo
 export const uploadPhotoAction = async (photo: File) => {
@@ -44,8 +39,6 @@ export const uploadPhotoAction = async (photo: File) => {
         throw error;
     }
 }
-
-
 
 // ** Delete Photo
 export const deletePhotoAction = async (id: number) => {

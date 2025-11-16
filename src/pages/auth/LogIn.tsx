@@ -2,7 +2,7 @@
 import style from "../../style/pages/auth/logIn.module.css";
 // ** Components
 import SwitchAuth from "../../components/auth/SwitchAuth";
-import InputElement from "../../components/form/InputElement";
+import InputElement from "../../components/ui/InputElement";
 // ** Hooks && Tools
 import { useState } from "react";
 import { useNavigate } from "react-router";
@@ -15,13 +15,10 @@ import { checkLogInValidation } from "../../validation";
 import { LogInAction } from "../../api/auth/LogIn";
 import { changeLogInUserType } from "../../app/features/auth/logIn/logInSlice";
 
-
 export default function LogIn() {
   // ** Defaults
   const navigate = useNavigate();
-  const dispatch = useDispatch()
-
-
+  const dispatch = useDispatch();
 
   // ** States
   const [userData, setUserData] = useState<ISignInData>({
@@ -33,8 +30,6 @@ export default function LogIn() {
     userPassword: "",
   });
 
-
-
   // ** Handlers
   const inputValueChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.currentTarget;
@@ -43,36 +38,33 @@ export default function LogIn() {
       [id]: value,
     }));
   };
-  const logInHandler = async ()=>{
+  const logInHandler = async () => {
     const updateErrors = checkLogInValidation(userData);
     setErrors(updateErrors);
-    const success = Object.values(updateErrors).every(value => value === '');
-    if(success) {
-        try{
-          const result = await LogInAction(userData);
-          if (result === "Invalid identifier or password" ) {
-            setErrors(prev => ({
-              ...prev,
-              userEmail: "Invalid Emai or password",
-            }));
-            return
-          }
-
-          dispatch(changeLogInUserType(result.user.roleType));
-
-          if(result.user.roleType === "seller"){
-            navigate('/dashboard')
-          }
-          else if(result.user.roleType === "buyer"){
-            navigate('/')
-          }
-        }catch(error){
-          console.log(error);
+    const success = Object.values(updateErrors).every((value) => value === "");
+    if (success) {
+      try {
+        const result = await LogInAction(userData);
+        if (result.error?.message === "Invalid identifier or password") {
+          setErrors((prev) => ({
+            ...prev,
+            userEmail: "Invalid Emai or password",
+          }));
+          return;
         }
-    };
-  }
 
+        dispatch(changeLogInUserType(result.data?.user.roleType));
 
+        if (result.data?.user.roleType === "seller") {
+          navigate("/dashboard");
+        } else if (result.data?.user.roleType === "customer") {
+          navigate("/");
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
 
   return (
     <>

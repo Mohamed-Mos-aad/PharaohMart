@@ -17,3 +17,8 @@ export const LENGHT_UNIT = [
     { id: 3, title: 'Meter (m)' },
     { id: 4, title: 'Inch (in)' },
 ];
+// ** NavBar Categoris
+export const NAVBAR_CATEGORIES = [
+    { id: 1, title: "Men's Clothing" },
+    { id: 2, title: 'Sportswear' }
+];

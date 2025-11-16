@@ -1,33 +1,71 @@
+// ** Hooks && Tools
+import axios from "axios";
 // ** Interfaces
 import type { ISignInData } from "../../interfaces";
-// ** Constants
-const apiUrl = import.meta.env.VITE_API_URL;
+// ** Config
+import { api } from "../config/axios.config";
 
 
-export const LogInAction = async (signUpData: ISignInData)=>{
+
+
+// ============================================
+// Main Function
+// ============================================
+export const LogInAction = async (loginData: ISignInData) =>{
     try{
-        const res = await fetch(`${apiUrl}/api/auth/local/`, {
-            method: "Post",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                identifier: signUpData?.userEmail,
-                password: signUpData?.userPassword,
-            }),
-        })
+        const responseData = await authenticateUser(loginData);
+        localStorage.setItem("token",responseData.jwt);
+        localStorage.setItem("userData",JSON.stringify(responseData.user));
+        return {
+            success: true,
+            data: {
+                user: responseData.user,
+                jwt: responseData.jwt,
+            },
+        };
+    } catch (error) {
+        console.error("[Login Error]:", error);
 
-        const data = await res.json();
-        if (res.ok && data.jwt) {
-            localStorage.setItem("token", data.jwt);
-            localStorage.setItem("userData", JSON.stringify(data.user));
-            return data;
-        } else {
-            console.error(data.error?.message || data.message);
-            return data.error?.message;
+        if (axios.isAxiosError(error)) {
+        return {
+            success: false,
+            error: {
+            message: error.response?.data?.message || error.message,
+            details: error.response?.data,
+            },
+        };
         }
-    } catch (err) {
-        if (err instanceof Error) {
-            return { error: err.message };
-        }
-        return { error: "Login failed" };
+
+        return {
+        success: false,
+        error: {
+            message: error instanceof Error ? error.message : "Unknown error occurred",
+            details: error,
+        },
+        };
+    }
+};
+
+
+
+
+
+// ============================================
+// Helper Functions
+// ============================================
+
+
+// ** Login user
+const authenticateUser = async (logInData: ISignInData) => {
+    try{
+        const response = await api.post('/auth/local',{
+            identifier: logInData.userEmail,
+            password: logInData.userPassword,
+        })
+        
+        return response.data;
+    }catch (error) {
+        console.error("[Login Error]:", error);
+        throw error;
     }
 }
