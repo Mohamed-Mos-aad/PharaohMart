@@ -1,215 +1,178 @@
 /* Start Inventory Page */
-.inventory
-{
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
+.inventory {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
-.inventory section
-{
-    display: grid;
-    grid-template-columns: 2fr 1fr;
+.inventory section {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
 }
-.inventory section .product_details
-{
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    gap: 16px;
+.inventory section .product_details {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 16px;
 }
-.inventory section .product_details h5
-{
-    margin-bottom: 12px;
-    font-size: 22px;
-    font-weight: 700;
-    line-height: 28px;
-    color: #1C170D;
+.inventory section .product_details h5 {
+  margin-bottom: 12px;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 28px;
+  color: #1c170d;
 }
-.inventory section .product_details h6
-{
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 21px;
-    color: #1C170D;
+.inventory section .product_details h6 {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 21px;
+  color: #1c170d;
 }
-.inventory section .product_details span
-{
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 21px;
-    color: #99854D;
+.inventory section .product_details span {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  color: #99854d;
 }
-.inventory section .product_details button
-{
-    width: fit-content;
-    background-color: #F2F0E8;
-    border: none;
-    border-radius: 20px;
-    padding: 10px 16px;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 21px;
-    color: #1C170D;
-    cursor: pointer;
+.inventory section .product_details button {
+  width: fit-content;
+  background-color: #f2f0e8;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: #1c170d;
+  cursor: pointer;
 }
-.inventory section .product_image
-{
-    width: 100%;
-    height: 160px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    border-radius: 12px;
+.inventory section .product_image {
+  width: 100%;
+  height: 160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 12px;
 }
-.inventory section .product_image img
-{
-    width: 100%;
+.inventory section .product_image img {
+  width: 100%;
 }
-.inventory .search_element
-{
-    position: relative;
+.inventory .search_element {
+  position: relative;
 }
-.inventory .search_element
-{
-    display: flex;
-    position: relative;
+.inventory .search_element {
+  display: flex;
+  position: relative;
 }
-.inventory .search_element input
-{
-    width: 100%;
-    background-color: #F5F0E5;
-    border: none;
-    border-radius: 8px;
-    padding: 16px 16px 16px 56px;
-    font-size: 16px;
-    font-weight: 500;
-    transition: 0.5s;
+.inventory .search_element input {
+  width: 100%;
+  background-color: #f5f0e5;
+  border: none;
+  border-radius: 8px;
+  padding: 16px 16px 16px 56px;
+  font-size: 16px;
+  font-weight: 500;
+  transition: 0.5s;
 }
-.inventory .search_element input:focus
-{
-    outline: none;
+.inventory .search_element input:focus {
+  outline: none;
 }
-.inventory .search_element input::placeholder
-{
-    color: #A18745;
+.inventory .search_element input::placeholder {
+  color: #62522d;
 }
-.inventory .search_element img
-{
-    position: absolute;
-    top: 50%;
-    left: 16px;
-    transform: translateY(-50%);
+.inventory .search_element img {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  transform: translateY(-50%);
 }
-.inventory .inventory_filter
-{
-    display: flex;
-    gap: 16px;
+.inventory .inventory_filter {
+  display: flex;
+  gap: 16px;
 }
-.inventory .inventory_filter button
-{
-    width: fit-content;
-    background-color: #F2F0E8;
-    border: none;
-    border-radius: 20px;
-    padding: 10px 16px;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 21px;
-    color: #1C170D;
-    cursor: pointer;
+.inventory .inventory_filter button {
+  width: fit-content;
+  background-color: #f2f0e8;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: #1c170d;
+  cursor: pointer;
 }
-.inventory .inventory_filter button.active
-{
-    background-color: #1C170D;
-    color: #F2F0E8;
+.inventory .inventory_filter button.active {
+  background-color: #1c170d;
+  color: #f2f0e8;
 }
-.inventory table 
-{
-    border-collapse: collapse;
-    width: 100%;
+.inventory table {
+  border-collapse: collapse;
+  width: 100%;
 }
-.inventory table tr td
-{
-    color: #62522D;
+.inventory table tr td {
+  color: #62522d;
 }
-.inventory table tr td:nth-of-type(1)
-{
-    color: #1C170D;
+.inventory table tr td:nth-of-type(1) {
+  color: #1c170d;
 }
-.inventory table tr td:nth-of-type(5) div
-{
-    width: 75%;
-    background-color: #F2F0E8;
-    border-radius: 20px;
-    padding: 10px 16px;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 21px;
-    color: #1C170D;
-    text-align: center;
+.inventory table tr td:nth-of-type(5) div {
+  width: 75%;
+  background-color: #f2f0e8;
+  border-radius: 20px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: #1c170d;
+  text-align: center;
 }
-.inventory table tr td:last-of-type
-{
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 21px;
-    cursor: pointer;
+.inventory table tr td:last-of-type {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  cursor: pointer;
 }
 .inventory table th,
-.inventory table td 
-{
-    max-width: 150px;
-    border: 1px solid #E8E0CF;
-    border-left: none;
-    border-right: none;
-    padding: 16px;
-    text-align: start;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis; 
+.inventory table td {
+  max-width: 150px;
+  border: 1px solid #e8e0cf;
+  border-left: none;
+  border-right: none;
+  padding: 16px;
+  text-align: start;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
-.inventory table tbody tr td .product_img
-{
-    width: 50px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 40px;
-    overflow: hidden;
+.inventory table tbody tr td .product_img {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 40px;
+  overflow: hidden;
 }
-.inventory table tbody tr td .product_img img
-{
-    height: 100%;
+.inventory table tbody tr td .product_img img {
+  height: 100%;
 }
 /* End Inventory Page */
 
-
-
 /* Start Media Query */
 /* Extra small devices (phones, portrait) */
-@media (max-width: 575.98px) 
-{
+@media (max-width: 575.98px) {
 }
 /* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) and (max-width: 767.98px) 
-{
-    
+@media (min-width: 576px) and (max-width: 767.98px) {
 }
 /* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) and (max-width: 991.98px) 
-{
-
+@media (min-width: 768px) and (max-width: 991.98px) {
 }
 /* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) and (max-width: 1199.98px) 
-{
-
+@media (min-width: 992px) and (max-width: 1199.98px) {
 }
 /* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) 
-{
-
+@media (min-width: 1200px) {
 }
 /* End Media Query */

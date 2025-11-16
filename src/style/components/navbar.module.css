@@ -54,7 +54,7 @@ nav .menu_btns span
 {
     width: 24px;
     height: 4px;
-    background-color: #A18745;
+    background-color: #62522D;
     border-radius: 8px;
 }
 nav .menu li
@@ -95,11 +95,11 @@ nav li a
 }
 nav li:hover
 {
-    color: #A18745;
+    color: #62522D;
 }
 nav li a:hover
 {
-    color: #A18745;
+    color: #62522D;
 }
 nav .search
 {
@@ -125,7 +125,7 @@ nav .search input:focus
 }
 nav .search input::placeholder
 {
-    color: #A18745;
+    color: #62522D;
 }
 nav .search img
 {

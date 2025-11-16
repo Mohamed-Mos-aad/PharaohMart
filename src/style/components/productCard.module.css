@@ -1,65 +1,55 @@
 /* Start Product Card Component */
-.card_item
-{
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    cursor: pointer;
+.card_item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  cursor: pointer;
 }
-.card_item.list_card_item
-{
-    display: grid;
-    grid-template-columns: 40px 1fr 1fr;
-    align-items: center;
-    gap: 16px;
-    cursor: pointer;
+.card_item.list_card_item {
+  display: grid;
+  grid-template-columns: 40px 1fr 1fr;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
 }
-.card_item .card_img
-{
-    width: 160px;
-    height: 160px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 16px;
-    overflow: hidden;
+.card_item .card_img {
+  width: 160px;
+  height: 160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  overflow: hidden;
 }
-.card_item.list_card_item .card_img
-{
-    width: 40px;
-    height: 40px;
+.card_item.list_card_item .card_img {
+  width: 40px;
+  height: 40px;
 }
-.card_item .card_img img
-{
-    height: 160px;
+.card_item .card_img img {
+  height: 160px;
 }
-.card_item.list_card_item .card_img img
-{
-    height: 40px;
+.card_item.list_card_item .card_img img {
+  height: 40px;
 }
-.card_item h3
-{
-    width: 160px;
-    font-size: 16px;
-    font-weight: 500;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis; 
+.card_item h3 {
+  width: 160px;
+  font-size: 16px;
+  font-weight: 500;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
-.card_item.list_card_item h3
-{
-    width: 100%;
-    font-size: 16px;
-    font-weight: 500;
+.card_item.list_card_item h3 {
+  width: 100%;
+  font-size: 16px;
+  font-weight: 500;
 }
-.card_item h4
-{
-    color: #A18745;
+.card_item h4 {
+  color: #62522d;
 }
-.card_item.list_card_item h4
-{
-    text-align: end;
-    font-size: 16px;
-    font-weight: 500;
+.card_item.list_card_item h4 {
+  text-align: end;
+  font-size: 16px;
+  font-weight: 500;
 }
 /* End Product Card Component */

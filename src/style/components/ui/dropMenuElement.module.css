@@ -45,16 +45,32 @@
     width: 100%;
     list-style-type: none;
     background-color: #F5F0E5;
-    border-radius: 0 0 16px 16px;
     cursor: pointer;
 }
 .drop_menu.opened ul
 {
     display: flex;
     flex-direction: column;
+    max-height: 400px;
+    overflow-y: scroll;
+}
+.drop_menu.opened ul::-webkit-scrollbar
+{
+    width: 4px;
+}
+.drop_menu.opened ul::-webkit-scrollbar-track
+{
+    background: transparent;
+    border-radius: 4px;
+}
+.drop_menu.opened ul::-webkit-scrollbar-thumb
+{
+    background-color: #1A170F;
+    border-radius: 4px;
 }
 .drop_menu ul li
 {
+    min-height: fit-content;
     border: solid 1px #FAFAFA;
     padding: 8px 16px;
     font-size: 14px;

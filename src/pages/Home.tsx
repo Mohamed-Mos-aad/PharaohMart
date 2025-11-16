@@ -12,11 +12,13 @@ export default function Home() {
             <div className="global_container">
                 <main className={style.home}>
                     <Slider />
-                    <HomeSection category='' sectionTitle='Featured Categories'/>
+                    {/* <HomeSection category='' sectionTitle='Featured Categories'/>
                     <HomeSection category='' sectionTitle='Best Sellers'/>
                     <HomeSection category='' sectionTitle='Deals of the Day'/>
                     <HomeSection category='' sectionTitle='New Arrivals'/>
-                    <HomeSection category='' sectionTitle='Recommended for You'/>
+                    <HomeSection category='' sectionTitle='Recommended for You'/> */}
+                    <HomeSection category="Men's Clothing" sectionTitle="Men's Clothing"/>
+                    <HomeSection category="Sportswear" sectionTitle="Sportswear"/>
                 </main>
             </div>
         </>
