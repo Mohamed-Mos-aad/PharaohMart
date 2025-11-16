@@ -114,7 +114,7 @@ export default function DashboardProducts() {
   useEffect(() => {
     const getCategories = async () => {
       const result = await getCategoriesAction();
-      setCategories(result);
+      setCategories(result.data);
     };
     getCategories();
   }, []);

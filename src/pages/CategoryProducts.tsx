@@ -12,9 +12,8 @@ import ProductCard from "../components/product/ProductCard";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 // ** Interfaces
-import type { ICategory, IProduct } from "../interfaces";
+import type { IProduct } from "../interfaces";
 import { getSpecificCategoryProductsAction } from "../api/data/productActions";
-import { getSpecificCategoryAction } from "../api/data/categoriesActions";
 
 
 
@@ -24,7 +23,6 @@ export default function CategoryProducts() {
   const itemsPerPage = 10;
 
   // ** States
-  const [category, setCategory] = useState<ICategory>({} as ICategory)
   const [displayList, setDisplayList] = useState<boolean>(false);
   const [productsData, setProductsData] = useState<IProduct[]>([]);
   const [displayedData, setDisplayedData] = useState<IProduct[]>(productsData);
@@ -118,15 +116,6 @@ export default function CategoryProducts() {
         console.log(error)
       }
     }
-    const getCategoryHandler = async ()=>{
-      try{
-        const result= await getSpecificCategoryAction(id)
-        setCategory(result);
-      }catch(error){
-        console.log(error)
-      }
-    }
-    getCategoryHandler();
     getProducts()
   },[id])
 
@@ -139,9 +128,9 @@ export default function CategoryProducts() {
           <div className={style.category_data}>
             <h3>
               Home <span>/</span>
-              <div>{category.title}</div>
+              <div>{id}</div>
             </h3>
-            <h2>{category.title}</h2>
+            <h2>{id}</h2>
           </div>
           <div className={style.category_options}>
             <div className={style.display_btns}>

@@ -11,14 +11,14 @@ import TextAreaInputElement from "../../components/ui/TextAreaInputElement";
 import { useEffect, useState } from "react";
 // ** Actions
 import { getCategoriesAction } from "../../api/data/categoriesActions";
+import { addTagAction, findTagByName } from "../../api/data/tagsActions";
+import { addProductAction } from "../../api/data/productActions";
 // ** Interfaces
 import type { ICategory, INewProduct } from "../../interfaces";
-import {
-  addProductAction,
-  addTagAction,
-  findTagByName,
-} from "../../api/data/productActions";
+// ** Constants
 import { LENGHT_UNIT, WEIGHT_UNIT } from "../../constant";
+
+
 
 export default function AddProduct() {
   // ** Defaults
@@ -104,7 +104,7 @@ export default function AddProduct() {
   useEffect(() => {
     const getdata = async () => {
       const result = await getCategoriesAction();
-      setCategories(result);
+      setCategories(result.data);
     };
 
     getdata();
