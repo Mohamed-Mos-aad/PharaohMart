@@ -2,23 +2,29 @@
 import style from '../../style/pages/dashboard/setting.module.css'
 // ** Hooks && Tools
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 // ** components
 import DashboardHeader from "../../components/dashboard/DashboardHeader";
-import InputElement from './../../components/form/InputElement';
-import UploadPhotos from '../../components/form/UploadPhotos';
-import ToggleElement from '../../components/form/ToggleElement';
-import TextAreaInputElement from '../../components/form/TextAreaInputElement';
+import InputElement from './../../components/ui/InputElement';
+import UploadPhotos from '../../components/ui/UploadPhotos';
+import ToggleElement from '../../components/ui/ToggleElement';
+import TextAreaInputElement from '../../components/ui/TextAreaInputElement';
 // ** Interfaces
 import type { IUser } from '../../interfaces';
 // ** Actions
 import { updateSellerDataAction } from '../../api/data/sellerActions';
+import { usePharaohMartData } from '../../hooks/usePharaoMartData';
+import { successMsg } from '../../app/features/messagePop/messagePopSlice';
+// ** Utils
+import { setPharaohMartData } from '../../utils/localStorage';
 
 
 
 export default function Setting() {
     // ** States
-    const data:IUser = JSON.parse(localStorage.getItem("userData") || "null");    
-    const [sellerData, setSellerData] = useState<IUser>(data || {} as IUser);
+    const { userData } = usePharaohMartData();
+    const dispatch = useDispatch();
+    const [sellerData, setSellerData] = useState<IUser>(userData || {} as IUser);
 
 
     // ** Handlers
@@ -30,10 +36,11 @@ export default function Setting() {
         }));
     };
     const saveChangesHandler = async ()=>{
+        if(!userData) return
         try{
-            await updateSellerDataAction(data.id,sellerData);
-            localStorage.setItem("userData", JSON.stringify(sellerData));
-            alert("تم حفظ التغييرات بنجاح!");
+            await updateSellerDataAction(userData.id,sellerData);
+            setPharaohMartData("userData", sellerData);
+            dispatch(successMsg({message: "Changed Saved successfully!"}))
         }catch(error){
             console.log(error)
         }

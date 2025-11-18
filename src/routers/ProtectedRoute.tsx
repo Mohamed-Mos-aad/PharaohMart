@@ -1,6 +1,7 @@
 // ** Hooks & Tools
 import type { JSX } from "react";
 import { Navigate } from "react-router-dom";
+import { usePharaohMartData } from "../hooks/usePharaoMartData";
 // ** Interfaces
 interface ProtectedRouteProps {
     children: JSX.Element;
@@ -8,8 +9,10 @@ interface ProtectedRouteProps {
 }
 
 
+
+// ** Auth Protect
 export function ProtectedAuthRoutes({ children }: ProtectedRouteProps) {
-    const token = localStorage.getItem("token");
+    const { token } = usePharaohMartData();
 
     if (token) {
         return <Navigate to="/" replace/>;
@@ -21,11 +24,11 @@ export function ProtectedAuthRoutes({ children }: ProtectedRouteProps) {
 }
 
 
-export function ProtectedDashboardRoutes({ children }: ProtectedRouteProps) {
-    const token = localStorage.getItem("token");
-    const data = JSON.parse(localStorage.getItem("userData") || "null");
 
-    if (!data || data?.userType === 'customer' || !token) {
+// ** Dashboard Protect
+export function ProtectedDashboardRoutes({ children }: ProtectedRouteProps) {
+    const {token, userData} = usePharaohMartData();
+    if (!userData || userData?.roleType?.toLowerCase() === 'customer' || !token) {
         return <Navigate to="/" replace/>;
     }
 

@@ -3,6 +3,8 @@
 // ============================================
 
 import axios, { AxiosError, type AxiosInstance } from "axios";
+// ** Utils
+import { deletePharaohMartKey, getPharaohMartData } from "../../utils/localStorage";
 
 // ============================================
 // Validation
@@ -37,9 +39,12 @@ export const api: AxiosInstance = axios.create({
 // ============================================
 api.interceptors.request.use(
     (config) => {
-        const token = localStorage.getItem("token");
+        const { token } = getPharaohMartData();
         if (token && config.headers) {
-        config.headers.Authorization = `Bearer ${token}`;
+            config.headers.Authorization = `Bearer ${token}`;
+        }
+        if (config.data instanceof FormData) {
+            delete config.headers["Content-Type"];
         }
         return config;
     },
@@ -60,7 +65,7 @@ api.interceptors.response.use(
         // Handle common errors
         if (error.response?.status === 401) {
             // Clear invalid token
-            localStorage.removeItem("token");
+            deletePharaohMartKey("token");
             // Redirect to login (optional)
             window.location.href = "/login";
         }

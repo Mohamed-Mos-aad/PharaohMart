@@ -10,9 +10,30 @@ export default function Slider() {
         <>
             <div className={style.slider}>
                 <div className={style.slide_bar}>
-                    <div className={style.slide} style={{backgroundImage : `url(${testImg})`}}></div>
-                    <div className={style.slide} style={{backgroundImage : `url(${testImg})`}}></div>
-                    <div className={style.slide} style={{backgroundImage : `url(${testImg})`}}></div>
+                    <div className={style.slide}>
+                        <img 
+                            src={testImg} 
+                            alt="Slider image 1"
+                            loading="lazy"
+                            decoding="async"
+                        />
+                    </div>
+                    <div className={style.slide}>
+                        <img 
+                            src={testImg} 
+                            alt="Slider image 1"
+                            loading="lazy"
+                            decoding="async"
+                        />
+                    </div>
+                    <div className={style.slide}>
+                        <img 
+                            src={testImg} 
+                            alt="Slider image 1"
+                            loading="lazy"
+                            decoding="async"
+                        />
+                    </div>
                 </div>
             </div>
         </>

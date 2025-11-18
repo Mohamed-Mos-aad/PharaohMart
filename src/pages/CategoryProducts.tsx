@@ -52,7 +52,7 @@ export default function CategoryProducts() {
       price={product.salePrice}
       listDisplay={displayList}
       key={product.id}
-      thumbnailImg={product.mainImage.url}
+      thumbnailImg={product.mainImage?.url}
     />
   ));
   const paginationButtonsRender = () => {

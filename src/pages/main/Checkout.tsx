@@ -19,6 +19,7 @@ export default function Checkout() {
     setCheckedMethod(paymentMethodSelected);
   };
 
+  
   return (
     <>
       <div className="global_container">

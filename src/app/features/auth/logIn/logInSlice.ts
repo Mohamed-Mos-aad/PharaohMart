@@ -7,7 +7,7 @@ import type { ISignUpData } from "../../../../interfaces";
 
 // ** Interfaces
 interface ISignUpState{
-    userType: 'seller' | 'customer';
+    roleType: 'seller' | 'customer';
     userData: ISignUpData | null;
 }
 
@@ -15,7 +15,7 @@ interface ISignUpState{
 
 // ** Default
 const initialState : ISignUpState = {
-    userType: "customer",
+    roleType: "customer",
     userData: null
 }
 
@@ -27,7 +27,7 @@ export const LogInSlice = createSlice({
     initialState,
     reducers: {
         changeLogInUserType: (state, action:PayloadAction<'seller' | 'customer'>)=>{
-            state.userType = action.payload
+            state.roleType = action.payload
         }
     }
 })

@@ -9,10 +9,13 @@ import userIcon from '../../assets/icons/navbar/userIcon.svg'
 import NavBarSearchElement from '../search/NavBarSearchElement'
 // ** Hooks && Tools
 import { memo, useEffect, useRef, useState } from 'react'
+import { usePharaohMartData } from '../../hooks/usePharaoMartData'
 import { Link, useNavigate } from 'react-router-dom';
 import { useAppSelector } from '../../app/hooks'
 // ** Constants
 import { NAVBAR_CATEGORIES } from '../../constant'
+// ** Utils
+import { deletePharaohMartKey } from '../../utils/localStorage'
 
 
 
@@ -20,7 +23,7 @@ export default function NavBar() {
     // ** Defaults
     const MemoLink = memo(Link);
     const navigate = useNavigate();
-    const authState = localStorage.getItem("token");
+    const { token } = usePharaohMartData();
 
 
 
@@ -53,8 +56,8 @@ export default function NavBar() {
         }
     }
     const logOutHandler = ()=>{
-        localStorage.removeItem("token");
-        localStorage.removeItem("userData");
+        deletePharaohMartKey("token");
+        deletePharaohMartKey("userData");
         navigate("/u/login");
     }
 
@@ -75,28 +78,28 @@ export default function NavBar() {
 
     // ** UseEffect
     useEffect(()=>{
-        const handleClickOutside = (event: MouseEvent) => {
-            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-                setIsDropdownOpen(false);
-            }
-        };
+        // const handleClickOutside = (event: MouseEvent) => {
+        //     if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        //         setIsDropdownOpen(false);
+        //     }
+        // };
 
-        const handleScroll = () => {
-            setIsDropdownOpen(false);
-        };
+        // const handleScroll = () => {
+        //     setIsDropdownOpen(false);
+        // };
 
-        if (isDropdownOpen) {
-            document.addEventListener("mousedown", handleClickOutside);
-            window.addEventListener("scroll", handleScroll);
-        } else {
-            document.removeEventListener("mousedown", handleClickOutside);
-            window.removeEventListener("scroll", handleScroll);
-        }
+        // if (isDropdownOpen) {
+        //     document.addEventListener("mousedown", handleClickOutside);
+        //     window.addEventListener("scroll", handleScroll);
+        // } else {
+        //     document.removeEventListener("mousedown", handleClickOutside);
+        //     window.removeEventListener("scroll", handleScroll);
+        // }
 
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-            window.removeEventListener("scroll", handleScroll);
-        };
+        // return () => {
+        //     document.removeEventListener("mousedown", handleClickOutside);
+        //     window.removeEventListener("scroll", handleScroll);
+        // };
     },[isDropdownOpen])
 
     useEffect(()=>{
@@ -158,7 +161,7 @@ export default function NavBar() {
                                     {cart.products.length > 0 && <span>{cart.products.length}</span>}
                                 </MemoLink>
                                 <div className={style.icon} onClick={()=>{setAuthPopOpened(prev => !prev)}}>
-                                    { authState ?
+                                    { token ?
                                         <img src={userIcon} alt="user icon" />
                                         :
                                         <img src={addAuthIcon} alt="addAuth icon" />
@@ -167,7 +170,7 @@ export default function NavBar() {
                                 {
                                     authPopOpened && 
                                     <div className={style.auth_options}>
-                                        { authState ?
+                                        { token ?
                                             <>
                                                 <MemoLink to={'/u/login'} 
                                                 onClick={()=>{

@@ -10,6 +10,15 @@
     width: 100%;
     min-height: 100vh;
     background-color: #FCFAF7;
+    position: relative;
+}
+.messages_pop{
+    position: fixed;
+    top: 16%;
+    left: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 .global_container
 {

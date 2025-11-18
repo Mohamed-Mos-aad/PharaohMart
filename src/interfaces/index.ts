@@ -205,7 +205,47 @@ export interface ISignUpData{
     userStoreName?: string,
     role: string
 }
+
 export interface ISignInData{
     userEmail: string,
     userPassword: string,
+}
+
+
+
+// ** Message Pop
+export interface IMessagePop{
+    id: number,
+    success: boolean,
+    message: string,
+    show: boolean
+}
+
+
+// ** Local Storage
+export interface IPharaohMartData {
+    token?: string;
+    userData?: IUser;
+    cart?: {
+        products: Array<{
+            productId: string;
+            name: string;
+            sellerName: string;
+            quantity: number;
+            price: number;
+            imageUrl: string;
+        }>;
+        totalAmount: number;
+        itemCount: number;
+    };
+    favourite?: {
+        products: Array<{
+            productId: string;
+            name: string;
+            sellerName: string;
+            quantity: number;
+            price: number;
+            imageUrl: string;
+        }>;
+    };
 }

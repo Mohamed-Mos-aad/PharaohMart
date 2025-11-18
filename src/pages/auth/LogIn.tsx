@@ -15,10 +15,14 @@ import { checkLogInValidation } from "../../validation";
 import { LogInAction } from "../../api/auth/LogIn";
 import { changeLogInUserType } from "../../app/features/auth/logIn/logInSlice";
 
+
+
 export default function LogIn() {
   // ** Defaults
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+
 
   // ** States
   const [userData, setUserData] = useState<ISignInData>({
@@ -29,6 +33,9 @@ export default function LogIn() {
     userEmail: "",
     userPassword: "",
   });
+  
+
+
 
   // ** Handlers
   const inputValueChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -45,7 +52,7 @@ export default function LogIn() {
     if (success) {
       try {
         const result = await LogInAction(userData);
-        if (result.error?.message === "Invalid identifier or password") {
+        if (result.error?.message === "Request failed with status code 400") {
           setErrors((prev) => ({
             ...prev,
             userEmail: "Invalid Emai or password",
@@ -54,8 +61,7 @@ export default function LogIn() {
         }
 
         dispatch(changeLogInUserType(result.data?.user.roleType));
-
-        if (result.data?.user.roleType === "seller") {
+        if (result.data?.user.roleType?.toLowerCase() === "seller"){
           navigate("/dashboard");
         } else if (result.data?.user.roleType === "customer") {
           navigate("/");
@@ -65,6 +71,8 @@ export default function LogIn() {
       }
     }
   };
+
+  
 
   return (
     <>

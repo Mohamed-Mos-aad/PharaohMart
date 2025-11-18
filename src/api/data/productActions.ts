@@ -1,5 +1,7 @@
 // ** Interfaces
 import type { INewProduct } from "../../interfaces";
+// ** Utils
+import { getPharaohMartData } from "../../utils/localStorage";
 // ** Config
 import { api } from "../config/axios.config";
 
@@ -27,10 +29,11 @@ export const addProductAction = async (productData:INewProduct) => {
 
 // ** Get Seller Products
 export const getSellerProductsAction = async () => {
-    const data = JSON.parse(localStorage.getItem("userData") || "null");
+    const { userData } = getPharaohMartData();
+    if(!userData) return
     try {
         const response = await api.get(
-            `/products?filters[owner][id][$eq]=${data.id}&populate=*`
+            `/products?filters[owner][id][$eq]=${userData.id}&populate=*`
         );
         return response.data.data;
     } catch (error) {

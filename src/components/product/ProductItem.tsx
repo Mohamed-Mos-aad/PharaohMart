@@ -15,8 +15,6 @@ interface IProductItem{
     productPhotos: IImage[];
     productDescription: string;
     productPrice: number;
-    productDiscount: string;
-    productOff: string;
     addToCartHandler: ()=> void;
     addToFavouriteHandler: ()=> void;
     removeFromFavouriteHandler: ()=> void;
@@ -27,7 +25,7 @@ interface IProductItem{
 
 
 
-export default function ProductItem({productThumbnail, productPhotos, productDescription, productPrice, productDiscount, productOff, addToCartHandler, removeProductFromCartHandler, addToFavouriteHandler, removeFromFavouriteHandler, addedToWishList, addedToCart }:IProductItem) {
+export default function ProductItem({productThumbnail, productPhotos, productDescription, productPrice, addToCartHandler, removeProductFromCartHandler, addToFavouriteHandler, removeFromFavouriteHandler, addedToWishList, addedToCart }:IProductItem) {
     // ** States
     const [previewPhoto,setPreviewPhoto] = useState<string>(productThumbnail.src);
     const [zooming,setZooming] = useState<boolean>(false);
@@ -89,7 +87,7 @@ export default function ProductItem({productThumbnail, productPhotos, productDes
                 <div className={style.product_details}>
                     <h2>Product Details</h2>
                     <p>{productDescription}</p>
-                    <h3>${productPrice}<span>{productOff}</span><span>{productDiscount}Off</span></h3>
+                    <h3>${productPrice}</h3>
                     <div className={style.product_btns}>
                         {
                             addedToCart ?

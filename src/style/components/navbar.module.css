@@ -54,7 +54,7 @@ nav .menu_btns span
 {
     width: 24px;
     height: 4px;
-    background-color: #62522D;
+    background-color: #A18745;
     border-radius: 8px;
 }
 nav .menu li
@@ -81,6 +81,7 @@ nav .dropdown_menu ul
     justify-items: start;
     gap: 32px;
     padding: 24px 0;
+    background-color: #FCFAF7;
 }
 nav li
 {
@@ -95,11 +96,11 @@ nav li a
 }
 nav li:hover
 {
-    color: #62522D;
+    color: #A18745;
 }
 nav li a:hover
 {
-    color: #62522D;
+    color: #A18745;
 }
 nav .search
 {
@@ -125,7 +126,7 @@ nav .search input:focus
 }
 nav .search input::placeholder
 {
-    color: #62522D;
+    color: #A18745;
 }
 nav .search img
 {

@@ -9,6 +9,7 @@ import ToggleElement from "../../components/ui/ToggleElement";
 import TextAreaInputElement from "../../components/ui/TextAreaInputElement";
 // ** Hooks && Tools
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 // ** Actions
 import { getCategoriesAction } from "../../api/data/categoriesActions";
 import { addTagAction, findTagByName } from "../../api/data/tagsActions";
@@ -17,15 +18,19 @@ import { addProductAction } from "../../api/data/productActions";
 import type { ICategory, INewProduct } from "../../interfaces";
 // ** Constants
 import { LENGHT_UNIT, WEIGHT_UNIT } from "../../constant";
+// ** Utils
+import { usePharaohMartData } from "../../hooks/usePharaoMartData";
+import { successMsg } from "../../app/features/messagePop/messagePopSlice";
 
 
 
 export default function AddProduct() {
   // ** Defaults
-  const data = JSON.parse(localStorage.getItem("userData") || "null");
+  const { userData } = usePharaohMartData();
+  const dispatch = useDispatch();
   const now = new Date();
   const defaultData = {
-    owner: data.id,
+    owner: userData?.id?? 0,
     name: "",
     description: "",
     categories: [],
@@ -94,7 +99,7 @@ export default function AddProduct() {
       };
       await addProductAction(productPayload);
       setProductData(defaultData);
-      alert("Product added successfully!");
+      dispatch(successMsg({message: "Product added successfully!"}))
     } catch (error) {
       console.log(error);
     }

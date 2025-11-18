@@ -6,6 +6,7 @@ import { CartSlice } from './features/cart/cartSlice'
 import { FavouriteSlice } from './features/favourite/favouriteSlice'
 import { SignUPSlice } from './features/auth/signup/signUPSlice';
 import { LogInSlice } from './features/auth/logIn/logInSlice';
+import { MessagePopSlice } from './features/messagePop/messagePopSlice';
 
 
 
@@ -14,7 +15,8 @@ export const store = configureStore({
         cart: CartSlice.reducer,
         favourite: FavouriteSlice.reducer,
         signUp: SignUPSlice.reducer,
-        logIn: LogInSlice.reducer
+        logIn: LogInSlice.reducer,
+        messagePop: MessagePopSlice.reducer
     },
 })
 

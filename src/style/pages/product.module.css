@@ -111,7 +111,6 @@
 .product .product_item .product_details .product_btns {
   display: flex;
   gap: 16px;
-  margin-top: 32px;
 }
 .product .product_item .product_details .product_btns button {
   border: none;
@@ -155,6 +154,21 @@
   display: flex;
   align-items: end;
   gap: 24px;
+}
+.product_review .customers_reviews .add_review .review
+{
+  width: 100%;
+  display: flex;
+  gap: 8px;
+}
+.product_review .customers_reviews .add_review .stars_rate{
+  display: flex;
+  gap: 8px;
+  position: relative;
+}
+.product_review .customers_reviews .add_review .stars_rate img{
+  width: 20px;
+  cursor: pointer;
 }
 .product_review .customers_reviews .add_review textarea {
   height: 80px;

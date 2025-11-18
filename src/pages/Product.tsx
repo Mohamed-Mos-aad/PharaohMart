@@ -2,6 +2,8 @@
 import style from "../style/pages/product.module.css";
 // ** Assets
 import sendIcon from "../assets/icons/form/sendIcon.svg";
+import starIcon from '../assets/icons/product/starIcon.svg'
+import unStarIcon from '../assets/icons/product/unStarIcon.svg'
 // ** Hooks && Tools
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
@@ -10,7 +12,6 @@ import {
   addProductToCart,
   removeProductFromCart,
 } from "../app/features/cart/cartSlice";
-import { getPharaohMartData } from "../utils/localStorage";
 // ** Components
 import ProductData from "../components/product/ProductData";
 import ProductItem from "../components/product/ProductItem";
@@ -30,6 +31,7 @@ import {
 } from "../api/data/reviewsActions";
 // ** Utils
 import { formatDate } from "./../utils/date";
+import { usePharaohMartData } from "../hooks/usePharaoMartData";
 // ** Interfaces
 import type { IProduct, INewReview, IReview, IImage } from "../interfaces";
 interface IFavouriteProduct {
@@ -41,20 +43,22 @@ interface IFavouriteProduct {
   imageUrl: string;
 }
 
+
+
 export default function Product() {
   // ** Defaults
   const { id } = useParams();
   const dispatch = useAppDispatch();
   const cart = useAppSelector((state) => state.cart);
-  const favourite = useAppSelector((state) => state.favourite);
-  const favouriteProducts = getPharaohMartData();
-  const data = JSON.parse(localStorage.getItem("userData") || "null");
+  const favouriteProducts = useAppSelector((state) => state.favourite);
+  const { userData } = usePharaohMartData();
 
   // ** States
   const [productData, setProductData] = useState<IProduct>();
-  const isLogin: boolean = data ? true : false;
+  const isLogin: boolean = userData ? true : false;
+  const userId = userData?.id.toString()?? '';
   const [review, setReview] = useState<INewReview>({
-    user: isLogin ? data.id : "",
+    user: isLogin ? userId : "",
     product: productData?.documentId ?? "",
     userComment: "",
     like: 0,
@@ -62,6 +66,8 @@ export default function Product() {
     userRate: 0,
   });
   const [reviews, setReviews] = useState<IReview[]>([]);
+  const [userStarsRate, setUserStartRate] = useState<number>(0);
+
 
   // ** Handlers
   const addToCartHandler = () => {
@@ -116,7 +122,7 @@ export default function Product() {
   const addToFavouriteHandler = () => {
     if (!productData) return;
 
-    const exists = favourite.products.some(
+    const exists = favouriteProducts.products.some(
       (product) => product.productId === productData.documentId
     );
 
@@ -136,7 +142,7 @@ export default function Product() {
   const removeFromFavouriteHandler = () => {
     if (!productData) return;
 
-    const exists = favourite.products.some(
+    const exists = favouriteProducts.products.some(
       (product) => product.productId === productData.documentId
     );
 
@@ -156,7 +162,7 @@ export default function Product() {
   const checkProductInFavouriteHandler = () => {
     if (!productData) return false;
 
-    const found = favouriteProducts.favourite.products.some(
+    const found = favouriteProducts.products.some(
       (product: IFavouriteProduct) =>
         product.productId === productData.documentId
     );
@@ -173,8 +179,7 @@ export default function Product() {
   };
   const sentReview = async () => {
     try {
-      if (!productData && !isLogin) return;
-      console.log(review);
+      if (!productData && !isLogin && !userData) return;
       await addProductReviewAction(review);
       setReview((prev) => ({ ...prev, userComment: "" }));
     } catch (error) {
@@ -182,7 +187,25 @@ export default function Product() {
     }
   };
 
+
+
   // ** Renders
+  const userStarsRateRender = Array.from({ length: 5 }, (_, idx) => (
+    <img 
+      src={idx < userStarsRate ? starIcon : unStarIcon}
+      alt="star" 
+      key={idx} 
+      onClick={()=>{
+        let rate = idx + 1;
+        if(rate === userStarsRate)
+        {
+          rate = 0
+        }
+        setUserStartRate(rate)
+        setReview(prev => ({...prev,userRate: rate}))
+      }}
+    />
+  ));
   const reviewRender = reviews.map((review) => (
     <UserReview
       key={review.documentId}
@@ -199,6 +222,8 @@ export default function Product() {
       }}
     />
   ));
+
+
 
   // ** UseEffect
   useEffect(() => {
@@ -252,9 +277,7 @@ export default function Product() {
             }}
             productPhotos={productData.images}
             productDescription={productData.description}
-            productPrice={productData?.price || 0}
-            productDiscount={""}
-            productOff={""}
+            productPrice={productData?.salePrice || 0}
             addToCartHandler={addToCartHandler}
             addToFavouriteHandler={addToFavouriteHandler}
             removeFromFavouriteHandler={removeFromFavouriteHandler}
@@ -265,14 +288,19 @@ export default function Product() {
           <div className={style.product_review}>
             <div className={style.customers_reviews}>
               <div className={style.add_review}>
-                <TextAreaInputElement
-                  id="review"
-                  label="Review"
-                  name="review"
-                  placeholder="Enter Your Review"
-                  value={review.userComment || ""}
-                  onChange={inputValueChangeHandler}
-                />
+                <div className={style.review}>
+                  <div className={style.stars_rate}>
+                    {userStarsRateRender}
+                  </div>
+                  <TextAreaInputElement
+                    id="review"
+                    label="Review"
+                    name="review"
+                    placeholder="Enter Your Review"
+                    value={review.userComment || ""}
+                    onChange={inputValueChangeHandler}
+                  />
+                </div>
                 <button onClick={sentReview}>
                   <img src={sendIcon} alt="send button" />
                 </button>

@@ -4,6 +4,7 @@ import axios from "axios";
 import type { ISignInData } from "../../interfaces";
 // ** Config
 import { api } from "../config/axios.config";
+import { setPharaohMartData } from "../../utils/localStorage";
 
 
 
@@ -14,8 +15,8 @@ import { api } from "../config/axios.config";
 export const LogInAction = async (loginData: ISignInData) =>{
     try{
         const responseData = await authenticateUser(loginData);
-        localStorage.setItem("token",responseData.jwt);
-        localStorage.setItem("userData",JSON.stringify(responseData.user));
+        setPharaohMartData("token",responseData.jwt);
+        setPharaohMartData("userData",responseData.user);
         return {
             success: true,
             data: {
@@ -24,24 +25,23 @@ export const LogInAction = async (loginData: ISignInData) =>{
             },
         };
     } catch (error) {
-        console.error("[Login Error]:", error);
 
         if (axios.isAxiosError(error)) {
         return {
             success: false,
             error: {
-            message: error.response?.data?.message || error.message,
-            details: error.response?.data,
+                message: error.response?.data?.message || error.message,
+                details: error.response?.data,
             },
         };
         }
 
         return {
-        success: false,
-        error: {
-            message: error instanceof Error ? error.message : "Unknown error occurred",
-            details: error,
-        },
+            success: false,
+            error: {
+                message: error instanceof Error ? error.message : "Unknown error occurred",
+                details: error,
+            },
         };
     }
 };

@@ -14,6 +14,8 @@ import style from '../../style/components/navbar/dashboardNavBar.module.css'
 // ** Hooks && Tools
 import { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router'
+// ** Utils
+import { deletePharaohMartKey } from '../../utils/localStorage'
 
 
 
@@ -44,8 +46,8 @@ export default function DashboardNavBar() {
         navigate(`/messages`)
     }
     const logOutHandler = ()=>{
-        localStorage.removeItem("token");
-        localStorage.removeItem("userData");
+        deletePharaohMartKey("token");
+        deletePharaohMartKey("userData");
         navigate("/u/login");
     }
 

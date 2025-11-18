@@ -29,10 +29,10 @@ export default function Dashboard() {
     // ** Render
     const productsRender = useMemo(()=>
         displayedData.map(item => 
-        <tr key={item.documentId}>
+            <tr key={item.documentId}>
             <td>
                 <div className={style.product_img}>
-                    <img src={item.mainImage.url} alt={item.name} />
+                    <img src={item.mainImage?.url?? ''} alt={item.name} />
                 </div>
             </td>
             <td>{item.name}</td>
