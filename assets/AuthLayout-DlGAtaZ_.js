@@ -1,1 +1,0 @@
-import{j as t,O as a}from"./index-Bm52MoZb.js";import{N as s,F as o}from"./NavBar-CLSAZ7uz.js";import"./hooks-D0qbmfb6.js";import"./index-DD7Rslxi.js";const r="_auth_layout_14er9_3",u={auth_layout:r};function n(){return t.jsxs(t.Fragment,{children:[t.jsxs("div",{className:u.auth_layout,children:[t.jsx(s,{}),t.jsx(a,{})]}),t.jsx(o,{})]})}export{n as default};
