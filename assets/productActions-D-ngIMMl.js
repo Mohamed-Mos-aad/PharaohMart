@@ -1,6 +1,0 @@
-import{t as a}from"./index-O59s0r6e.js";import{a as o}from"./axios.config-DClue4Qq.js";const n=async t=>{try{return(await o.post("/products",{data:t})).data.data}catch(r){throw console.error(r),r}},i=async()=>{const{userData:t}=a();if(t)try{return(await o.get(`/products?filters[owner][id][$eq]=${t.id}&populate=*`)).data.data}catch(r){throw console.error(r),r}},p=async t=>{try{return(await o.get(`/products?filters[categories][title][$eq]=${t}&populate=*`)).data.data}catch(r){throw console.error(`Error fetching products with id ${t}:`,r),r}},d=async t=>{try{return(await o.get(`/products?populate=*&filters[$or][0][name][$containsi]=${t}
-            &filters[$or][1][description][$containsi]=${t}
-            &filters[$or][2][productSKU][$containsi]=${t}
-            &filters[$or][3][tags][name][$containsi]=${t}
-            &filters[$or][4][categories][title][$containsi]=${t}
-            &filters[$or][5][owner][username][$containsi]=${t}`)).data.data}catch(r){throw console.error(`Error fetching products with ${t}:`,r),r}},u=async t=>{try{return(await o.get(`/products/${t}?populate=*`)).data.data}catch(r){throw console.error(`Error fetching product with id ${t}:`,r),r}},$=async(t,r)=>{try{return(await o.put(`/products/${t}`,{data:r})).data}catch(e){throw console.error(`Error updating product with id ${t}:`,e),e}};export{p as a,d as b,i as c,n as d,u as g,$ as u};
