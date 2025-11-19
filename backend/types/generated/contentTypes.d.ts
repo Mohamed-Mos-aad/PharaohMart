@@ -530,6 +530,10 @@ export interface ApiReviewReview extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     like: Schema.Attribute.Integer & Schema.Attribute.Required;
+    likes: Schema.Attribute.Relation<
+      'manyToMany',
+      'plugin::users-permissions.user'
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -539,6 +543,10 @@ export interface ApiReviewReview extends Struct.CollectionTypeSchema {
     product: Schema.Attribute.Relation<'manyToOne', 'api::product.product'>;
     publishedAt: Schema.Attribute.DateTime;
     unLike: Schema.Attribute.Integer & Schema.Attribute.Required;
+    unLikes: Schema.Attribute.Relation<
+      'manyToMany',
+      'plugin::users-permissions.user'
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1048,6 +1056,7 @@ export interface PluginUsersPermissionsUser
         minLength: 6;
       }>;
     isOnline: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    likedReviews: Schema.Attribute.Relation<'manyToMany', 'api::review.review'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -1077,6 +1086,10 @@ export interface PluginUsersPermissionsUser
     serviceZones: Schema.Attribute.String;
     shippingPolicy: Schema.Attribute.Text;
     storeName: Schema.Attribute.String;
+    unlikedReviews: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::review.review'
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

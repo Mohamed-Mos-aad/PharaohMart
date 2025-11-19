@@ -15,8 +15,10 @@ import { setPharaohMartData } from "../../utils/localStorage";
 export const LogInAction = async (loginData: ISignInData) =>{
     try{
         const responseData = await authenticateUser(loginData);
-        setPharaohMartData("token",responseData.jwt);
-        setPharaohMartData("userData",responseData.user);
+        const token = responseData.jwt;
+        setPharaohMartData("token", token);
+        const userResponse = await api.get(`/users/${responseData.user.id}?populate=*`);
+        setPharaohMartData("userData",userResponse.data);
         return {
             success: true,
             data: {

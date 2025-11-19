@@ -1,9 +1,5 @@
 // ** Style
 import style from "../style/pages/product.module.css";
-// ** Assets
-import sendIcon from "../assets/icons/form/sendIcon.svg";
-import starIcon from '../assets/icons/product/starIcon.svg'
-import unStarIcon from '../assets/icons/product/unStarIcon.svg'
 // ** Hooks && Tools
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
@@ -17,7 +13,6 @@ import ProductData from "../components/product/ProductData";
 import ProductItem from "../components/product/ProductItem";
 import UserReview from "../components/product/UserReview";
 import OverRate from "../components/product/OverRate";
-import TextAreaInputElement from "../components/ui/TextAreaInputElement";
 // ** Data
 import {
   addProductToFavourite,
@@ -25,15 +20,11 @@ import {
 } from "../app/features/favourite/favouriteSlice";
 // ** Actions
 import { getSpecificProductAction } from "../api/data/productActions";
-import {
-  addProductReviewAction,
-  getSpecificProductReviewsAction,
-} from "../api/data/reviewsActions";
-// ** Utils
-import { formatDate } from "./../utils/date";
-import { usePharaohMartData } from "../hooks/usePharaoMartData";
+import { getSpecificProductReviewsAction } from "../api/data/reviewsActions";
 // ** Interfaces
-import type { IProduct, INewReview, IReview, IImage } from "../interfaces";
+import type { IProduct, IReview } from "../interfaces";
+import ReviewAdding from "../components/reviews/ReviewAdding";
+import { usePharaohMartData } from "../hooks/usePharaoMartData";
 interface IFavouriteProduct {
   productId: string;
   name: string;
@@ -51,22 +42,12 @@ export default function Product() {
   const dispatch = useAppDispatch();
   const cart = useAppSelector((state) => state.cart);
   const favouriteProducts = useAppSelector((state) => state.favourite);
-  const { userData } = usePharaohMartData();
+  const { userData } = usePharaohMartData()
+
 
   // ** States
   const [productData, setProductData] = useState<IProduct>();
-  const isLogin: boolean = userData ? true : false;
-  const userId = userData?.id.toString()?? '';
-  const [review, setReview] = useState<INewReview>({
-    user: isLogin ? userId : "",
-    product: productData?.documentId ?? "",
-    userComment: "",
-    like: 0,
-    unLike: 0,
-    userRate: 0,
-  });
   const [reviews, setReviews] = useState<IReview[]>([]);
-  const [userStarsRate, setUserStartRate] = useState<number>(0);
 
 
   // ** Handlers
@@ -168,20 +149,24 @@ export default function Product() {
     );
     return found;
   };
-  const inputValueChangeHandler = (
-    e: React.ChangeEvent<HTMLTextAreaElement>
-  ) => {
-    const { value } = e.currentTarget;
-    setReview((prev) => ({
-      ...prev,
-      userComment: value,
-    }));
-  };
-  const sentReview = async () => {
+  const checkReviewLikedHandler = (review: IReview)=>{
+      if (!userData || !review.likes) return false;
+      return review.likes.some(u => u.documentId === userData.documentId);
+  }
+  const checkReviewUnLikedHandler = (review: IReview)=>{
+      if (!userData || !review.unLikes) return false;
+      return review.unLikes.some(u => u.documentId === userData.documentId);
+  }
+  const getProductReviewsDataHandler = async () => {
     try {
-      if (!productData && !isLogin && !userData) return;
-      await addProductReviewAction(review);
-      setReview((prev) => ({ ...prev, userComment: "" }));
+      if (id) {
+        const result = await getSpecificProductReviewsAction(id);
+
+        const sorted = [...result].sort(
+          (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+        );
+        setReviews(sorted);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -190,36 +175,13 @@ export default function Product() {
 
 
   // ** Renders
-  const userStarsRateRender = Array.from({ length: 5 }, (_, idx) => (
-    <img 
-      src={idx < userStarsRate ? starIcon : unStarIcon}
-      alt="star" 
-      key={idx} 
-      onClick={()=>{
-        let rate = idx + 1;
-        if(rate === userStarsRate)
-        {
-          rate = 0
-        }
-        setUserStartRate(rate)
-        setReview(prev => ({...prev,userRate: rate}))
-      }}
-    />
-  ));
-  const reviewRender = reviews.map((review) => (
+  const reviewsRender = reviews.map((review) => (
     <UserReview
       key={review.documentId}
-      userData={{
-        userPhoto: (review.user.logo as IImage) ?? "",
-        userName: review.user.username,
-        date: formatDate(review.publishedAt),
-      }}
-      userRate={review.userRate}
-      userComment={review.userComment}
-      UserSupport={{
-        like: review.like,
-        unLike: review.unLike,
-      }}
+      reviewsUpdated={getProductReviewsDataHandler}
+      review={review}
+      userLiked={checkReviewLikedHandler(review)}
+      userUnLiked={checkReviewUnLikedHandler(review)}
     />
   ));
 
@@ -241,26 +203,14 @@ export default function Product() {
   }, [id]);
   useEffect(() => {
     if (productData) {
-      const getProductReviewsDataHandler = async () => {
-        try {
-          if (id) {
-            const result = await getSpecificProductReviewsAction(id);
-            setReviews(result);
-          }
-        } catch (error) {
-          console.log(error);
-        }
-      };
       getProductReviewsDataHandler();
-      setReview((prev) => ({
-        ...prev,
-        product: productData.documentId,
-      }));
     }
   }, [productData, id]);
 
   if (!productData) return <></>;
 
+
+  
   return (
     <>
       <div className="global_container">
@@ -287,25 +237,8 @@ export default function Product() {
           />
           <div className={style.product_review}>
             <div className={style.customers_reviews}>
-              <div className={style.add_review}>
-                <div className={style.review}>
-                  <div className={style.stars_rate}>
-                    {userStarsRateRender}
-                  </div>
-                  <TextAreaInputElement
-                    id="review"
-                    label="Review"
-                    name="review"
-                    placeholder="Enter Your Review"
-                    value={review.userComment || ""}
-                    onChange={inputValueChangeHandler}
-                  />
-                </div>
-                <button onClick={sentReview}>
-                  <img src={sendIcon} alt="send button" />
-                </button>
-              </div>
-              {reviewRender}
+              <ReviewAdding productData={productData} onSent={getProductReviewsDataHandler}/>
+              {reviewsRender}
             </div>
             <div className={style.customers_rates}>
               <OverRate reviews={productData?.reviews} />

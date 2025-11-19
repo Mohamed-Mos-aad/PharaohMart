@@ -105,6 +105,7 @@ export interface IUser {
     logo?: number | IImage;
     banner?: number | IImage;
     isOnline?: boolean;
+    reviews? : IReview[]
 }
 
 // ** Image
@@ -158,6 +159,9 @@ export interface IReview {
     product: IProduct;
     publishedAt: string;
     documentId: string;
+    likes?: IUser[];
+    unLikes?: IUser[];
+    createdAt?: string;
 }
 export interface INewReview {
     user: string,
@@ -166,6 +170,8 @@ export interface INewReview {
     like: number;
     unLike: number;
     product: string;
+    likes?: string[];
+    unLikes?: string[];
 }
 
 

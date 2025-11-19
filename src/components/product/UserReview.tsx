@@ -4,33 +4,85 @@ import style from '../../style/pages/product.module.css'
 import starIcon from '../../assets/icons/product/starIcon.svg'
 import unStarIcon from '../../assets/icons/product/unStarIcon.svg'
 import likeIcon from '../../assets/icons/product/likeIcon.svg'
+import likedIcon from '../../assets/icons/reviews/likedIcon.svg'
 import unLikeIcon from '../../assets/icons/product/unLikeIcon.svg'
+import unLikedIcon from '../../assets/icons/reviews/unLikedIcon.svg'
+// ** Utils
+import { formatDate } from "../../utils/date";
+// ** Actions
+import { updateSpecificProductReviewAction } from '../../api/data/reviewsActions'
+// ** Hooks && Tools
+import { usePharaohMartData } from '../../hooks/usePharaoMartData'
 // ** Interfaces
-import type { IImage } from '../../interfaces'
-
-
-
-// ** Interfaces
+import type { IReview } from '../../interfaces'
 interface IUserReview{
-    userData: {
-        userPhoto: IImage,
-        userName: string,
-        date: string
-    };
-    userRate: number;
-    userComment: string;
-    UserSupport: {
-        like: number,
-        unLike: number
-    }
+    review: IReview,
+    reviewsUpdated: ()=> void,
+    userLiked: boolean,
+    userUnLiked: boolean
 }
 
 
 
-export default function UserReview({userData,userRate,userComment,UserSupport}:IUserReview) {
+export default function UserReview({review,reviewsUpdated, userLiked, userUnLiked}:IUserReview) {
+    // ** States
+    const { userData } = usePharaohMartData();
+
+
+
+    // ** Handlers
+    const likeReviewHandler = async ()=>{
+        if (!userData) return;
+        let updatedLikes = []
+        if (!userLiked && !userUnLiked) {
+            updatedLikes = [
+                ...(review.likes?.map(u => typeof u === "string" ? u : u.documentId) ?? []),
+                userData.documentId
+            ];
+        } else {
+            updatedLikes = (
+                review.likes?.map(u => typeof u === "string" ? u : u.documentId) ?? []
+            ).filter(id => id !== userData.documentId);
+        }
+
+        try {
+            await updateSpecificProductReviewAction(review.documentId, {
+                like: updatedLikes.length,
+                likes: updatedLikes
+            });
+            reviewsUpdated();
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const unlikeReviewHandler = async ()=>{
+        if (!userData) return;
+        let updatedUnLikes = []
+        if (!userUnLiked && !userLiked) {
+            updatedUnLikes = [
+                ...(review.unLikes?.map(u => typeof u === "string" ? u : u.documentId) ?? []),
+                userData.documentId
+            ];
+        } else {
+            updatedUnLikes = (
+                review.likes?.map(u => typeof u === "string" ? u : u.documentId) ?? []
+            ).filter(id => id !== userData.documentId);
+        }
+
+        try{
+            await updateSpecificProductReviewAction(review.documentId,{unLike: updatedUnLikes.length, unLikes: updatedUnLikes});
+            reviewsUpdated();
+        }catch(error){
+            console.log(error)
+        }
+    }
+
+
+
     // ** Render
     const rateStarsRender = Array.from({ length: 5 }, (_, index) => {
-        if (index < userRate) {
+        if (index < review.userRate) {
         return <img key={index} src={starIcon} alt="star icon" />;
         } else {
         return <img key={index} src={unStarIcon} alt="unStar icon" />;
@@ -45,29 +97,40 @@ export default function UserReview({userData,userRate,userComment,UserSupport}:I
                 <div className={style.user_review}>
                     <div className={style.userPhoto}>
                         {
-                            userData.userPhoto.url ?
-                            <img src={userData.userPhoto.url} alt={userData.userPhoto.name} />
-                            :
-                            <div>{userData.userName[0]}</div>
+                            typeof review.user.logo === "object" && review.user.logo?.url ? (
+                                <img src={review.user.logo.url} alt={review.user.username} />
+                            ) : (
+                                <div>{review.user.username[0]}</div>
+                            )
                         }
                     </div>
                     <div className={style.user_review_data}>
-                        <h3>{userData.userName}</h3>
-                        <h5>{userData.date}</h5>
+                        <h3>{review.user.username}</h3>
+                        <h5>{formatDate(review.publishedAt)}</h5>
                     </div>
                 </div>
                 <div className={style.user_star_rate}>
                     {rateStarsRender}
                 </div>
-                <p>{userComment}</p>
+                <p>{review.userComment}</p>
                 <div className={style.review_btns}>
-                    <button>
-                        <img src={likeIcon} alt="like icon" />
-                        <span>{UserSupport.like}</span>
+                    <button onClick={likeReviewHandler}>
+                        {
+                            userLiked ? 
+                            <img src={likedIcon} alt="liked icon" />
+                            :
+                            <img src={likeIcon} alt="like icon" />
+                        }
+                        <span>{review.like}</span>
                     </button>
-                    <button>
-                        <img src={unLikeIcon} alt="unLike icon" />
-                        <span>{UserSupport.like}</span>
+                    <button onClick={unlikeReviewHandler}>
+                        {
+                            userUnLiked ? 
+                            <img src={unLikedIcon} alt="unLiked icon" />
+                            :
+                            <img src={unLikeIcon} alt="unLike icon" />
+                        }
+                        <span>{review.unLike}</span>
                     </button>
                 </div>
             </div>
