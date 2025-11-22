@@ -13,8 +13,10 @@ import { formatDate } from "../../utils/date";
 import { updateSpecificProductReviewAction } from '../../api/data/reviewsActions'
 // ** Hooks && Tools
 import { usePharaohMartData } from '../../hooks/usePharaoMartData'
+import { useDispatch } from 'react-redux'
 // ** Interfaces
 import type { IReview } from '../../interfaces'
+import { errorMsg } from '../../app/features/messagePop/messagePopSlice'
 interface IUserReview{
     review: IReview,
     reviewsUpdated: ()=> void,
@@ -25,6 +27,11 @@ interface IUserReview{
 
 
 export default function UserReview({review,reviewsUpdated, userLiked, userUnLiked}:IUserReview) {
+    // ** Defaults
+    const dispatch = useDispatch();
+
+
+
     // ** States
     const { userData } = usePharaohMartData();
 
@@ -32,7 +39,10 @@ export default function UserReview({review,reviewsUpdated, userLiked, userUnLike
 
     // ** Handlers
     const likeReviewHandler = async ()=>{
-        if (!userData) return;
+        if (!userData) {
+            dispatch(errorMsg({message: "Please Log in First"}))
+            return
+        };
         let updatedLikes = []
         if (!userLiked && !userUnLiked) {
             updatedLikes = [
@@ -57,7 +67,10 @@ export default function UserReview({review,reviewsUpdated, userLiked, userUnLike
     }
 
     const unlikeReviewHandler = async ()=>{
-        if (!userData) return;
+        if (!userData) {
+            dispatch(errorMsg({message: "Please Log in First"}))
+            return
+        };
         let updatedUnLikes = []
         if (!userUnLiked && !userLiked) {
             updatedUnLikes = [
@@ -106,7 +119,7 @@ export default function UserReview({review,reviewsUpdated, userLiked, userUnLike
                     </div>
                     <div className={style.user_review_data}>
                         <h3>{review.user.username}</h3>
-                        <h5>{formatDate(review.publishedAt)}</h5>
+                        <h4>{formatDate(review.publishedAt)}</h4>
                     </div>
                 </div>
                 <div className={style.user_star_rate}>

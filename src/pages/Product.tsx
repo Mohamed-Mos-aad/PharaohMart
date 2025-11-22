@@ -2,28 +2,21 @@
 import style from "../style/pages/product.module.css";
 // ** Hooks && Tools
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
-import {
-  addProductToCart,
-  removeProductFromCart,
-} from "../app/features/cart/cartSlice";
+import { addProductToCart, removeProductFromCart } from "../app/features/cart/cartSlice";
+import { addProductToFavourite, removeProductFromFavourite } from "../app/features/favourite/favouriteSlice";
 // ** Components
 import ProductData from "../components/product/ProductData";
 import ProductItem from "../components/product/ProductItem";
-import UserReview from "../components/product/UserReview";
-import OverRate from "../components/product/OverRate";
-// ** Data
-import {
-  addProductToFavourite,
-  removeProductFromFavourite,
-} from "../app/features/favourite/favouriteSlice";
+import UserReview from "../components/reviews/UserReview";
+import OverRate from "../components/reviews/OverRate";
+import ReviewAdding from "../components/reviews/ReviewAdding";
 // ** Actions
 import { getSpecificProductAction } from "../api/data/productActions";
 import { getSpecificProductReviewsAction } from "../api/data/reviewsActions";
 // ** Interfaces
 import type { IProduct, IReview } from "../interfaces";
-import ReviewAdding from "../components/reviews/ReviewAdding";
 import { usePharaohMartData } from "../hooks/usePharaoMartData";
 interface IFavouriteProduct {
   productId: string;
@@ -43,6 +36,7 @@ export default function Product() {
   const cart = useAppSelector((state) => state.cart);
   const favouriteProducts = useAppSelector((state) => state.favourite);
   const { userData } = usePharaohMartData()
+  const navigate = useNavigate();
 
 
   // ** States
@@ -208,6 +202,7 @@ export default function Product() {
   }, [productData, id]);
 
   if (!productData) return <></>;
+  if (!productData.isPublished) navigate('/');
 
 
   

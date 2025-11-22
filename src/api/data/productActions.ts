@@ -14,6 +14,7 @@ import { api } from "../config/axios.config";
 // ============================================
 
 
+
 // ** Add Product
 export const addProductAction = async (productData:INewProduct) => {
     try {
@@ -45,7 +46,7 @@ export const getSellerProductsAction = async () => {
 // ** Get Specific Category Products
 export const getSpecificCategoryProductsAction = async (id:string) => {
     try {
-        const response = await api.get(`/products?filters[categories][title][$eq]=${id}&populate=*`);
+        const response = await api.get(`/products?filters[categories][title][$eq]=${id}&filters[isPublished][$eq]=true&populate=*`);
         return response.data.data;
     }
     catch (error) {
@@ -57,12 +58,7 @@ export const getSpecificCategoryProductsAction = async (id:string) => {
 // ** Get Specific Products
 export const getSpecificSearchProductsAction = async (search:string) => {
     try {
-        const response = await api.get(`/products?populate=*&filters[$or][0][name][$containsi]=${search}
-            &filters[$or][1][description][$containsi]=${search}
-            &filters[$or][2][productSKU][$containsi]=${search}
-            &filters[$or][3][tags][name][$containsi]=${search}
-            &filters[$or][4][categories][title][$containsi]=${search}
-            &filters[$or][5][owner][username][$containsi]=${search}`);
+        const response = await api.get(`/products?populate=*&filters[$and][0][isPublished][$eq]=true&filters[$and][1][$or][0][name][$containsi]=${search}&filters[$and][1][$or][1][description][$containsi]=${search}&filters[$and][1][$or][2][productSKU][$containsi]=${search}&filters[$and][1][$or][3][tags][name][$containsi]=${search}&filters[$and][1][$or][4][categories][title][$containsi]=${search}&filters[$and][1][$or][5][owner][username][$containsi]=${search}`);
         return response.data.data;
     }
     catch (error) {

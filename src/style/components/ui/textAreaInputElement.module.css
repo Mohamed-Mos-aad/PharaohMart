@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  position: relative;
 }
 .text_area_input_element label {
   font-size: 16px;
@@ -25,5 +26,12 @@
 }
 .text_area_input_element textarea:focus {
   outline: none;
+}
+.text_area_input_element p {
+  position: absolute;
+  top: 100%;
+  font-size: 12px;
+  font-weight: 500;
+  color: red;
 }
 /* End Teaxt Area Input element Components */

@@ -2,7 +2,7 @@
 import style from '../style/components/footer.module.css'
 // ** Assets
 import twitterIcon from '../assets/icons/footer/twitterIcon.svg'
-import facebookIcon from '../assets/icons/footer/facebookIcon.svg'
+// import facebookIcon from '../assets/icons/footer/facebookIcon.svg'
 import instagramIcon from '../assets/icons/footer/instagramIcon.svg'
 
 
@@ -18,15 +18,12 @@ export default function Footer() {
                     <li>Terms of Service</li>
                 </ul>
                 <div className={style.socials}>
-                    <span>
+                    <a href='https://x.com/Mohamed_Mos_aad' target='_blank'>
                         <img src={twitterIcon} alt="twitter icon" />
-                    </span>
-                    <span>
-                        <img src={facebookIcon} alt="facebook icon" />
-                    </span>
-                    <span>
+                    </a>
+                    <a href='https://www.instagram.com/mhmdahmedd._/' target='_blank'>
                         <img src={instagramIcon} alt="instagram icon" />
-                    </span>
+                    </a>
                 </div>
                 <h3>© 2024 PharaohMart. All rights reserved.</h3>
             </footer>

@@ -162,6 +162,7 @@ export default function AddProduct() {
               id="description"
               label="Product Description"
               value={productData.description}
+              error=""
               name="description"
               placeholder="Enter product description"
               onChange={inputValueChangeHandler}

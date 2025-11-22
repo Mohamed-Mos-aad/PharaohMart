@@ -7,6 +7,7 @@ interface ITextAreaInputElement {
   label: string;
   name: string;
   placeholder: string;
+  error: string;
   value?: string | number;
   onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
@@ -17,6 +18,7 @@ export default function TextAreaInputElement({
   name,
   placeholder,
   value,
+  error,
   onChange,
 }: ITextAreaInputElement) {
   return (
@@ -30,6 +32,7 @@ export default function TextAreaInputElement({
           value={value}
           onChange={onChange}
         ></textarea>
+        <p>{error}</p>
       </div>
     </>
   );

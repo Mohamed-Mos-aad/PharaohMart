@@ -28,7 +28,7 @@ footer .socials
     display: flex;
     gap: 24px;
 }
-footer .socials span
+footer .socials a
 {
     cursor: pointer;
 } 

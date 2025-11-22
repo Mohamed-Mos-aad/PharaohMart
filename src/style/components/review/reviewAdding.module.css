@@ -36,4 +36,11 @@
     padding: 8px;
     cursor: pointer;
 }
+.loading_spinner {
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
 /* End Review Adding Components */

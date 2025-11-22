@@ -14,11 +14,12 @@ import { getSpecificCategoryProductsAction } from '../../api/data/productActions
 // ** Interfaces
 interface ICardSlider{
     categoryId: string;
+    setIsHidden: ()=> void;
 }
 
 
 
-export default function CardSlider({categoryId}:ICardSlider) {
+export default function CardSlider({categoryId, setIsHidden}:ICardSlider) {
     // ** States
     const [sliderSteps,setSliderSteps] = useState<number>(0);
     const [displayedData, setDisplayedData] = useState<IProduct[]>([]);
@@ -75,6 +76,9 @@ export default function CardSlider({categoryId}:ICardSlider) {
         const getProducts = async ()=>{
         try{
             const result= await getSpecificCategoryProductsAction(categoryId)
+            if(result.length === 0){
+                setIsHidden();
+            }
             setDisplayedData(result);
         }catch(error){
             console.log(error)

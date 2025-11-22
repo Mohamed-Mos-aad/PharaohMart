@@ -16,8 +16,8 @@ export default function ProductData({name, category, seller}:IProductData) {
     return (
         <>
             <div className={style.product_data}>
-                <h3>Home <span>/</span> <div>{category}</div></h3>
-                <h2>{name}</h2>
+                <h2>Home <span>/</span> <div>{category}</div></h2>
+                <h3>{name}</h3>
                 <h4>{seller}</h4>
             </div>
         </>

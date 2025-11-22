@@ -91,11 +91,11 @@ export default function Setting() {
                     </section>
                     <section>
                         <h2>Return Policy</h2>
-                        <TextAreaInputElement id="returnPolicy" label="Return Policy" name="returnPolicy" placeholder="Enter Return Policy" value={sellerData.returnPolicy} onChange={inputValueChangeHandler}/>
+                        <TextAreaInputElement id="returnPolicy" label="Return Policy" error='' name="returnPolicy" placeholder="Enter Return Policy" value={sellerData.returnPolicy} onChange={inputValueChangeHandler}/>
                     </section>
                     <section>
                         <h2>Shipping Policy</h2>
-                        <TextAreaInputElement id="shippingPolicy" label="Shipping Policy" name="shippingPolicy" placeholder="Enter Shipping Policy" value={sellerData.shippingPolicy} onChange={inputValueChangeHandler}/>
+                        <TextAreaInputElement id="shippingPolicy" label="Shipping Policy" error='' name="shippingPolicy" placeholder="Enter Shipping Policy" value={sellerData.shippingPolicy} onChange={inputValueChangeHandler}/>
                     </section>
                     <section>
                         <h2>Store Status</h2>

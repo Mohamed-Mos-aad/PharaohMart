@@ -4,6 +4,7 @@ import style from "../../style/components/review/reviewAdding.module.css";
 import starIcon from '../../assets/icons/product/starIcon.svg'
 import unStarIcon from '../../assets/icons/product/unStarIcon.svg'
 import sendIcon from "../../assets/icons/form/sendIcon.svg";
+import loadingIcon from "../../assets/icons/ui/loadingIcon.svg";
 // ** Hooks && Tools
 import { useState } from "react";
 import { useDispatch } from 'react-redux';
@@ -15,7 +16,7 @@ import { usePharaohMartData } from "../../hooks/usePharaoMartData";
 import { addProductReviewAction } from "../../api/data/reviewsActions";
 // ** Interfaces
 import type { INewReview, IProduct } from "../../interfaces";
-import { errorMsg } from "../../app/features/messagePop/messagePopSlice";
+import { errorMsg, successMsg } from "../../app/features/messagePop/messagePopSlice";
 interface IReviewAdding{
     productData: IProduct;
     onSent: ()=> void;
@@ -26,46 +27,71 @@ interface IReviewAdding{
 export default function ReviewAdding({productData,onSent}:IReviewAdding) {
     // ** Defaults
     const { userData } = usePharaohMartData();
-    const dispatch = useDispatch();
-
-
-    // ** States
     const isLogin: boolean = userData ? true : false;
     const userId = userData?.id ? userData.id.toString() : '';
-    const [userStarsRate, setUserStartRate] = useState<number>(0);
-    const [review, setReview] = useState<INewReview>({
+    const reviewData:INewReview = {
         user: isLogin ? userId : "",
         product: productData?.documentId ?? "",
         userComment: "",
         like: 0,
         unLike: 0,
         userRate: 0,
-    });
+    }
+    const dispatch = useDispatch();
+
+
+    // ** States
+    const [isLoading, setIsLoading] = useState(false);
+    const [review, setReview] = useState<INewReview>(reviewData);
+    const [error, setError] = useState("");
+
 
 
     // ** Handlers
-    const inputValueChangeHandler = (
-        e: React.ChangeEvent<HTMLTextAreaElement>
-    ) => {
+    const inputValueChangeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         const { value } = e.currentTarget;
+        setError("");
         setReview((prev) => ({
-        ...prev,
-        userComment: value,
+            ...prev,
+            userComment: value,
         }));
     };
     const sentReview = async () => {
         try {
-        if (!productData && !isLogin && !userData) return;
+            if (!productData) return;
 
-        if(userStarsRate === 0){
-            dispatch(errorMsg({message: "Please Select Rate"}))
-            return
-        }
-        await addProductReviewAction(review);
-            setReview((prev) => ({ ...prev, userComment: "" }));
+            if(!isLogin || !userData){
+                dispatch(errorMsg({message: "Please Log in First"}))
+                return
+            }
+
+            if(review.userRate === 0){
+                dispatch(errorMsg({message: "Please Select Rate"}))
+                return
+            }
+
+
+            if(review.userComment.trim().length < 10){
+                setError("Review must be at least 10 characters")
+                return
+            }
+
+            if(review.userComment.trim().length > 500){
+                setError("Review is too long (max 500 characters)")
+                return
+            }
+
+            setIsLoading(true);
+            await addProductReviewAction(review);
+            dispatch(successMsg({message: "Review added successfully!"}));
+            setReview(reviewData);
+            setError("");
             onSent();
         } catch (error) {
-        console.log(error);
+            console.log(error);
+            dispatch(errorMsg({message: "Failed to add review"}));
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -74,20 +100,17 @@ export default function ReviewAdding({productData,onSent}:IReviewAdding) {
 
     // ** Renders
     const userStarsRateRender = Array.from({ length: 5 }, (_, idx) => (
-    <img 
-        src={idx < userStarsRate ? starIcon : unStarIcon}
-        alt="star" 
-        key={idx} 
-        onClick={()=>{
-        let rate = idx + 1;
-        if(rate === userStarsRate)
-        {
-            rate = 0
-        }
-        setUserStartRate(rate)
-        setReview(prev => ({...prev,userRate: rate}))
-        }}
-    />
+        <img 
+            src={idx < review.userRate ? starIcon : unStarIcon}
+            alt="star" 
+            key={idx} 
+            onClick={()=>{
+                let rate = idx + 1;
+                if(rate === review.userRate){
+                    rate = 0
+                }
+                setReview(prev => ({...prev,userRate: rate}))
+            }}/>
     ));
 
 
@@ -103,13 +126,14 @@ export default function ReviewAdding({productData,onSent}:IReviewAdding) {
                         id="review"
                         label="Review"
                         name="review"
+                        error={error}
                         placeholder="Enter Your Review"
                         value={review.userComment || ""}
                         onChange={inputValueChangeHandler}
                     />
                 </div>
-                <button onClick={sentReview}>
-                    <img src={sendIcon} alt="send button" />
+                <button onClick={sentReview} disabled={isLoading}>
+                    <img src={isLoading ? loadingIcon : sendIcon} alt="send button" className={isLoading ? style.loading_spinner : ''}/>
                 </button>
             </div>
         </>

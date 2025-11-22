@@ -46,6 +46,7 @@ export default function Help() {
               id="userMessage"
               label="Message"
               name="userMessage"
+              error=""
               placeholder="Enter the Message"
               onChange={() => {}}
             />
