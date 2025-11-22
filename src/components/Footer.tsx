@@ -25,7 +25,7 @@ export default function Footer() {
                         <img src={instagramIcon} alt="instagram icon" />
                     </a>
                 </div>
-                <h3>© 2024 PharaohMart. All rights reserved.</h3>
+                <p>© 2024 PharaohMart. All rights reserved.</p>
             </footer>
         </>
     )

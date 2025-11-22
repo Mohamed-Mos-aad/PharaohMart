@@ -35,19 +35,19 @@ export default function Analytics() {
                         </div>
                         <div className={style.cards}>
                             <div className={style.card}>
-                                <h4>Sales Overview</h4>
-                                <h5>$25,000</h5>
-                                <h6>Last 30 Days<span> +10%</span></h6>
+                                <h3>Sales Overview</h3>
+                                <h4>$25,000</h4>
+                                <h5>Last 30 Days<span> +10%</span></h5>
                             </div>
                             <div className={style.card}>
-                                <h4>Orders Trend</h4>
-                                <h5>500</h5>
-                                <h6>Last 30 Days<span> +5%</span></h6>
+                                <h3>Orders Trend</h3>
+                                <h4>500</h4>
+                                <h5>Last 30 Days<span> +5%</span></h5>
                             </div>
                             <div className={style.card}>
-                                <h4>Conversion Rate</h4>
-                                <h5>3.5%</h5>
-                                <h6>Last 30 Days<span> +2%</span></h6>
+                                <h3>Conversion Rate</h3>
+                                <h4>3.5%</h4>
+                                <h5>Last 30 Days<span> +2%</span></h5>
                             </div>
                         </div>
                     </section>

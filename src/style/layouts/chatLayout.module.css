@@ -94,7 +94,7 @@
   font-size: 14px;
   font-weight: 400;
   line-height: 21px;
-  color: #99854d;
+  color: #65532F;
 }
 .chat_layout .chat_container {
   display: flex;
@@ -111,7 +111,7 @@
   font-size: 14px;
   font-weight: 400;
   line-height: 21px;
-  color: #99854d;
+  color: #65532F;
 }
 .chat_layout .chat_messages {
   height: calc(100vh - 206px);
@@ -168,7 +168,7 @@
   font-size: 13px;
   font-weight: 400;
   line-height: 20px;
-  color: #99854d;
+  color: #65532F;
 }
 .chat_layout .chat_messages .message .message_content p {
   background-color: #f2f0e8;

@@ -18,9 +18,9 @@ export default function SwitchAuth({to}:ISwitchAuth) {
             <div className={style.auth_switch}>
                 {
                     to === 'login' ?
-                    <h3>Already have an account? <Link to={'/u/login'}>Log in</Link></h3>
+                    <h2>Already have an account? <Link to={'/u/login'}>Log in</Link></h2>
                     :
-                    <h3>Don't have an account? <Link to={'/u/sign-up'}>Sign Up</Link></h3>
+                    <h2>Don't have an account? <Link to={'/u/sign-up'}>Sign Up</Link></h2>
                 }
             </div>
         </>

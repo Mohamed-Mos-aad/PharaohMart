@@ -1,13 +1,13 @@
 /* Start Switch Auth Components */
-.auth_switch
+.auth_switch h2
 {
     font-size: 14px;
     font-weight: 400;
-    color: #8A7D61;
+    color: #5F5345;
 }
 .auth_switch a
 {
-    text-decoration: none;
-    color: #d4a746;
+    text-decoration: underline;
+    color: #685117;
 }
 /* End Switch Auth Components */
