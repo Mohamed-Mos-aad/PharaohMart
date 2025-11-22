@@ -1,0 +1,1 @@
+import{j as t,O as n}from"./index-DrBJZPAC.js";import{N as s,F as a}from"./NavBar-9ax2G8_q.js";import"./index-DD7Rslxi.js";const o="_main_content_dynwc_3",e={main_content:o};function c(){return t.jsxs(t.Fragment,{children:[t.jsxs("div",{className:e.main_content,children:[t.jsx(s,{}),t.jsx(n,{})]}),t.jsx(a,{})]})}export{c as default};
