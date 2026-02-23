@@ -5,6 +5,7 @@ import type { ISignInData } from "../../interfaces";
 // ** Config
 import { api } from "../config/axios.config";
 import { setPharaohMartData } from "../../utils/localStorage";
+// import CookieService from '../../services/CookieService';
 
 
 
@@ -17,6 +18,7 @@ export const LogInAction = async (loginData: ISignInData) =>{
         const responseData = await authenticateUser(loginData);
         const token = responseData.jwt;
         setPharaohMartData("token", token);
+        // CookieService.set("jwt",token)
         const userResponse = await api.get(`/users/${responseData.user.id}?populate=*`);
         setPharaohMartData("userData",userResponse.data);
         return {
@@ -64,7 +66,6 @@ const authenticateUser = async (logInData: ISignInData) => {
             identifier: logInData.userEmail,
             password: logInData.userPassword,
         })
-        
         return response.data;
     }catch (error) {
         console.error("[Login Error]:", error);

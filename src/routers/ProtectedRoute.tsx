@@ -15,7 +15,7 @@ export function ProtectedAuthRoutes({ children }: ProtectedRouteProps) {
     const { token } = usePharaohMartData();
 
     if (token) {
-        return <Navigate to="/" replace/>;
+        return <Navigate to="/login" replace/>;
     }
 
     
